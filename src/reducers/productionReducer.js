@@ -5,7 +5,7 @@ export const productionReducer = ( state = { fase:'boom' }, action ) => {
     switch (action.type) {
         case types.changeFaseP:
             return {
-                ...state,
+                ...action.payload,
                 fase: action.payload.fase
             };
     
