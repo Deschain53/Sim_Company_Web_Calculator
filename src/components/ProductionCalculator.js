@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch  } from 'react-redux';
 import { getPricesFromInternet } from '../actions/prices';
-import { changeProductionFaseToBoom, changeProductionFaseToNormal } from '../actions/production';
+//import { changeProductionFaseToBoom, changeProductionFaseToNormal } from '../actions/production';
+import {FaseDropDownButton } from '../components/ui/FaseDropDownButton';
+import { BuildingDropDownButton } from './ui/BuildingDropDownButton';
 
 export const ProductionCalculator = () => {
 
@@ -12,23 +14,29 @@ export const ProductionCalculator = () => {
         dispatch( getPricesFromInternet() );
     }
 
-    const handleChangeFase= () => {
-        dispatch( changeProductionFaseToNormal() );
+    const handleAction= () => {
+        console.log('action');
+        //dispatch( changeProductionFaseToNormal() );
     }
 
     return (
-        <div>
-            <h1>Production Calculator</h1>
+        <div className="window-app">
+            <h1 className="h1">Production Calculator</h1>
 
+            <div>
+                <FaseDropDownButton/>
 
+                <BuildingDropDownButton/>
 
-            <button className = "btn btn-primary" onClick = { handleGetPrices }> 
-                Extrae precios
-            </button>
+                <button className = "btn btn-primary" onClick = { handleGetPrices }> 
+                    Extrae precios
+                </button>
 
-            <button className = "btn btn-primary" onClick = { handleChangeFase }> 
-                ChangeFase
-            </button>
+                <button className = "btn btn-primary" onClick = { handleAction }> 
+                    Action
+                </button>
+            </div>
+
 
         </div>
     )

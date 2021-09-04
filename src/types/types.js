@@ -13,6 +13,7 @@ export const types = {
 
     //For productionReducer:
     changeFaseP: '[Production] ChangeFase',
-    
+    changeBuildingP: '[Production] ChangeBuilding',
+    changeInfoForm: '[Production] ChangeInfoForm',
 
 }

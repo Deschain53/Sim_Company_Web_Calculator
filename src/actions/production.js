@@ -32,3 +32,14 @@ export const changeProductionFaseToRecession = () => {
         )
     }
 }
+
+export const changeBuildingP = ( building = 'L' ) => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: types.changeBuildingP,
+                payload: { building }
+            }
+        )
+    }
+}

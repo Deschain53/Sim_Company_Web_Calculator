@@ -1,0 +1,25 @@
+html, body{
+    background-color: #18191f;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.window-app {
+    padding: 0.1em 1em 0.1em 1em;
+}
+
+h1 {
+  align-content: center;  
+}
+
+/*.dark-Mode {
+    background-color: #18191f;
+    color: white;
+}*/
+
+/*.window-darkMode {
+    background-color: #18191f;
+    color: white;
+    font-size: 1.3rem;
+    padding: 20px;
+}*/

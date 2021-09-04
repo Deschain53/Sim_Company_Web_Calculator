@@ -1,13 +1,18 @@
 import { types } from "../types/types";
 
-
-export const productionReducer = ( state = { fase:'boom' }, action ) => {
+export const productionReducer = ( state = { fase:'normal', building: 'L' }, action ) => {
     switch (action.type) {
         case types.changeFaseP:
             return {
-                ...action.payload,
+                ...state,
                 fase: action.payload.fase
             };
+
+        case types.changeBuildingP:
+            return {
+                ...state,
+                building: action.payload.building
+            }
     
         default:
             return state;

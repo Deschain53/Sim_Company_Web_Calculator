@@ -13,7 +13,7 @@ import { Navbar } from '../components/ui/Navbar';
   export const AppRouter = () => {
     return (
     <Router>
-      <div>
+      <div >
         
         <Navbar/>
         
