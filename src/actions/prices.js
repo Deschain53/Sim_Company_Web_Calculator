@@ -5,16 +5,16 @@ const savePricesInLocalStorage = ( prices = null ) => {
 };
 
 export const getPricesFromInternet = () => {
-    return (distpach) => {
+    return (dispatch) => {
 
-        const prices = { id: 123, precios: [1,2,3,4,5,6]};
+        const prices = [{ id: 123, precios: [1,2,3,4,5,6]}];
         
         console.log(prices);
 
-        distpach(
+        dispatch(
             {
-                action: types.updatePrices,
-                payload: {prices}
+                type: types.updatePrices,
+                payload: prices
             }
         )
 

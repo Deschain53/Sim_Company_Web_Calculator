@@ -1,10 +1,15 @@
-import React from 'react'
-import { getPricesFromInternet } from '../actions/prices'
+import React from 'react';
+import { useDispatch  } from 'react-redux';
+import { getPricesFromInternet } from '../actions/prices';
 
 export const ProductionCalculator = () => {
 
+    const dispatch = useDispatch();
 
-
+    const handleGetPrices = () => {
+        console.log('Accion disparada');
+        dispatch( getPricesFromInternet() );
+    }
 
     return (
         <div>
@@ -12,7 +17,7 @@ export const ProductionCalculator = () => {
 
 
 
-            <button className = "btn btn-primary" onClick = {() => getPricesFromInternet}> 
+            <button className = "btn btn-primary" onClick = { handleGetPrices }> 
                 Extrae precios
             </button>
 
