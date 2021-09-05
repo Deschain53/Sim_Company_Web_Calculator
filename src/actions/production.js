@@ -43,3 +43,14 @@ export const changeBuildingP = ( building = 'L' ) => {
         )
     }
 }
+
+export const updateInfoFormP = (faseInfo) => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: types.updateInfoFormP,
+                payload: {faseInfo}
+            }
+        )
+    }
+}

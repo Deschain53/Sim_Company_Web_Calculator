@@ -1,197 +1,141 @@
 import React, {useEffect} from 'react';
 import { useForm } from '../../hooks/useForm';
+import { useDispatch  } from 'react-redux';
+import { updateInfoFormP } from '../../actions/production';
  
 export const FormProduction= () => {        //Se podria recibir una funcion setState
 
-    const [formValues, handleInputChange] = useForm({
-        building: '',
-        PVM: '',
-        admin: '',
-        bonus: '',
-        transport: '',
-    });
-    
-    const {building,PVM,admin, bonus,transport} = formValues;
+  const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-        //updateFromFormInfo(formValues);
-    };
+  const [formValues, handleInputChange] = useForm({
+      buildingLevel: '',
+      PVM: '',
+      admin: '',
+      bonus: '',
+      transport: '',
+  });
+  
+  const {buildingLevel,PVM,admin, bonus,transport} = formValues;
 
-    /*useEffect(() => {
-        //updateFromFormInfo(formValues);
-    }, [formValues])*/
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formValues);
+      
+      dispatch( updateInfoFormP(formValues) );
+      //updateFromFormInfo(formValues);
+  };
 
+  //IMPORTANTE: Falta llamar al dispatch desde el submit. Tambien hace falta disparar el submit
+  //desde afuera del form (Esto es para tener un boton hasta el final de todos los datos)
+  /*useEffect(() => {
+      //updateFromFormInfo(formValues);
+  }, [formValues])*/
 
-    return (
-        <form onSubmit={handleSubmit}>
-
-            <div className="form-group row ">
-                <label for="colFormLabel" className="col-sm-2 col-form-label">
-                    Building Level
-                </label>
-                <div className="col-sm-10">
-                  <input    
-                    type = "text"
-                    name = "building"
-                    className="form-control text-white bg-dark" 
-                    id="colFormLabel" 
-                    placeholder = "Building Level"
-                    autoComplete = "off"
-                    value = {building}
-                    onChange = {handleInputChange}
-                  />
-                </div>
+  return (
+      <form onSubmit={handleSubmit}>
+        <div className="form-group row ">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Building Level
+            </label>
+            <div className="col-sm-10">
+              <input    
+                type = "number"
+                name = "buildingLevel"
+                className="form-control text-white bg-dark" 
+                id="buildingLevel" 
+                placeholder = "Building Level"    
+                autoComplete = "off"
+                value = {buildingLevel}
+                onChange = {handleInputChange}
+              />
             </div>
-
-            <div className="form-group row ">
-                <label for="colFormLabel" className="col-sm-2 col-form-label">
-                    Porcentage
-                </label>
-                <div className="col-sm-10">
-                  <input    
-                    type = "text"
-                    name = "PVM"
-                    className="form-control text-white bg-dark" 
-                    id="colFormLabel" 
-                    placeholder = "Porcentage of sell under market"
-                    autoComplete = "off"
-                    value = {PVM}
-                    onChange = {handleInputChange}
-                  />
-                </div>
+        </div>
+        
+        <div className="row mb-3">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Porcentage
+            </label>
+            <div className="input-group col-sm-10 mb-2 ">
+              
+              <input    
+                type = "text"
+                name = "PVM"
+                className="form-control  text-white bg-dark" 
+                id="PVM" 
+                placeholder = "Porcentage of sell under market"
+                autoComplete = "off"
+                value = {PVM}
+                onChange = {handleInputChange}
+              />
+              <div class="input-group-text  ">%</div>
             </div>
-
-            <div className="form-group row ">
-                <label for="colFormLabel" className="col-sm-2 col-form-label">
-                    Administration
-                </label>
-                <div className="col-sm-10">
-                  <input    
-                    type = "text"
-                    name = "admin"
-                    className="form-control text-white bg-dark" 
-                    id="colFormLabel" 
-                    placeholder = "Administration overhead"
-                    autoComplete = "off"
-                    value = {admin}
-                    onChange = {handleInputChange}
-                  />
-                </div>
+        </div>
+  
+        <div className="row mb-3">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Administration
+            </label>
+            <div className="input-group col-sm-10 mb-2 ">
+              <input    
+                type = "text"
+                name = "admin"
+                className="form-control text-white bg-dark" 
+                id="admin" 
+                placeholder = "Administration overhead"
+                autoComplete = "off"
+                value = {admin}
+                onChange = {handleInputChange}
+              />
+              <div class="input-group-text  ">%</div>
             </div>
+        </div>
 
-            <div className="form-group row ">
-                <label for="colFormLabel" className="col-sm-2 col-form-label">
-                    Bonus
-                </label>
-                <div className="col-sm-10">
-                  <input    
-                    type = "text"
-                    name = "bonus"
-                    className="form-control text-white bg-dark" 
-                    id="colFormLabel" 
-                    placeholder = "Production bonus"
-                    autoComplete = "off"
-                    value = {bonus}
-                    onChange = {handleInputChange}
-                  />
-                </div>
+        <div className="form-group row ">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Bonus
+            </label>
+            <div className="input-group col-sm-10 mb-2  ">
+              <input    
+                type = "text"
+                name = "bonus"
+                className="form-control text-white bg-dark" 
+                id="colFormLabel" 
+                placeholder = "Production bonus"
+                autoComplete = "off"
+                value = {bonus}
+                onChange = {handleInputChange}
+              />
+              <div class="input-group-text  ">%</div>
             </div>
+        </div>
 
-            <div className="form-group row ">
-                <label for="colFormLabel" className="col-sm-2 col-form-label">
-                    Transport
-                </label>
-                <div className="col-sm-10">
-                  <input    
-                    type = "text"
-                    name = "transport"
-                    className="form-control text-white bg-dark" 
-                    id="colFormLabel" 
-                    placeholder = "Transport price"
-                    autoComplete = "off"
-                    value = {transport}
-                    onChange = {handleInputChange}
-                  />
-                </div>
+        <div className="form-group row ">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Transport
+            </label>
+            <div className="input-group col-sm-10 mb-2 ">
+              <div class="input-group-text  ">$</div>
+              <input    
+                type = "text"
+                name = "transport"
+                className="form-control text-white bg-dark" 
+                id="transport" 
+                placeholder = "Transport price"
+                autoComplete = "off"
+                value = {transport}
+                onChange = {handleInputChange}
+              />
+              
             </div>
-        </form>
-    )
+        </div>
+
+        <button
+            type="submit"
+            className="btn m-1 btn-block btn-outline-primary"
+            onClick = { handleSubmit }
+        > Calculate</button>
+
+      </form>
+  )
 }
 
-
-
-
-
-
-
-
-
-
-
-    /*return (
-        <form onSubmit = {handleSubmit}>
-
-            <div className = "form-group form-dark">
-                <input
-                    type = "text"
-                    name = "edificio"
-                    className = "form-control"
-                    placeholder = "Nivel de edificio"
-                    autoComplete = "off"
-                    value = {edificio}
-                    onChange = {handleInputChange}
-                />
-            </div>
-
-            <div className = "form-group form-dark">
-                <input
-                    type = "text"
-                    name = "PVM"
-                    className = "form-control"
-                    placeholder = "Porcentaje de venta bajo mercado"
-                    autoComplete = "off"
-                    value = {PVM}
-                    onChange = {handleInputChange}
-                />
-            </div>
-
-            <div className = "form-group form-dark">
-                <input
-                    type = "text"
-                    name = "admin"
-                    className = "form-control"
-                    placeholder = "Gastos administrativos"
-                    autoComplete = "off"
-                    value = {admin}
-                    onChange = {handleInputChange}
-                />
-            </div>
-
-            <div className = "form-group form-dark">
-                <input
-                    type = "text"
-                    name = "bonificacion"
-                    className = "form-control"
-                    placeholder = "Bonificación de producción"
-                    autoComplete = "off"
-                    value = {bonificacion}
-                    onChange = {handleInputChange}
-                />
-            </div>
-
-            <div className = "form-group form-dark">
-                <input
-                    type = "text"
-                    name = "transporte"
-                    className = "form-control"
-                    placeholder = "Costo del transporte"
-                    autoComplete = "off"
-                    value = {transporte}
-                    onChange = {handleInputChange}
-                />
-            </div>
-
-        </form>
-    )*/

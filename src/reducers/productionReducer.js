@@ -1,6 +1,16 @@
 import { types } from "../types/types";
 
-export const productionReducer = ( state = { fase:'normal', building: 'L' }, action ) => {
+const initialState = {
+    fase:'normal', 
+    building: 'L',
+    buildingLevel:1,
+    PVM: 0,
+    admin: 0,
+    bonus: 0,
+    transport: 0,
+}
+
+export const productionReducer = ( state = initialState, action ) => {
     switch (action.type) {
         case types.changeFaseP:
             return {
@@ -13,6 +23,13 @@ export const productionReducer = ( state = { fase:'normal', building: 'L' }, act
                 ...state,
                 building: action.payload.building
             }
+
+        case types.updateInfoFormP:
+            return {
+                ...state,
+                ...action.payload.faseInfo
+            }
+
     
         default:
             return state;
