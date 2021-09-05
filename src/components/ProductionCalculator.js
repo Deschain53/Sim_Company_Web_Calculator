@@ -4,6 +4,7 @@ import { getPricesFromInternet } from '../actions/prices';
 //import { changeProductionFaseToBoom, changeProductionFaseToNormal } from '../actions/production';
 import {FaseDropDownButton } from '../components/ui/FaseDropDownButton';
 import { BuildingDropDownButton } from './ui/BuildingDropDownButton';
+import { FormProduction } from './ui/FormProduction';
 
 export const ProductionCalculator = () => {
 
@@ -25,7 +26,7 @@ export const ProductionCalculator = () => {
 
             <div>
                 <FaseDropDownButton/>
-
+                <FormProduction/>
                 <BuildingDropDownButton/>
 
                 <button className = "btn btn-primary" onClick = { handleGetPrices }> 
