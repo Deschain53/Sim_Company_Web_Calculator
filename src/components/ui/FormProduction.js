@@ -5,6 +5,17 @@ import { updateInfoFormP } from '../../actions/production';
  
 export const FormProduction= () => {        //Se podria recibir una funcion setState
 
+  const verifyNumber = (input) => {
+    const inputParse = parseFloat(input);
+    console.log( inputParse + ' - ' + typeof(inputParse) );
+
+    //return inputParse !== NaN ? inputParse : 0
+    return  (inputParse && (typeof(inputParse) === 'number')
+              ? inputParse 
+              : 0
+            )
+  }
+
   const dispatch = useDispatch();
 
   const [formValues, handleInputChange] = useForm({
@@ -18,11 +29,20 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
   const {buildingLevel,PVM,admin, bonus,transport} = formValues;
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log(formValues);
-      
-      dispatch( updateInfoFormP(formValues) );
-      //updateFromFormInfo(formValues);
+    e.preventDefault();
+
+    const info = {
+      buildingLevel: verifyNumber(buildingLevel),
+      PVM: verifyNumber(PVM),
+      admin: verifyNumber(admin),
+      bonus: verifyNumber(bonus),
+      transport: verifyNumber(transport)
+    }
+
+    console.log(info);
+    
+    dispatch( updateInfoFormP(info) );
+    //updateFromFormInfo(formValues);
   };
 
   //IMPORTANTE: Falta llamar al dispatch desde el submit. Tambien hace falta disparar el submit
@@ -67,7 +87,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 value = {PVM}
                 onChange = {handleInputChange}
               />
-              <div class="input-group-text  ">%</div>
+              <div className="input-group-text  ">%</div>
             </div>
         </div>
   
@@ -86,7 +106,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 value = {admin}
                 onChange = {handleInputChange}
               />
-              <div class="input-group-text  ">%</div>
+              <div className="input-group-text  ">%</div>
             </div>
         </div>
 
@@ -105,7 +125,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 value = {bonus}
                 onChange = {handleInputChange}
               />
-              <div class="input-group-text  ">%</div>
+              <div className="input-group-text  ">%</div>
             </div>
         </div>
 
@@ -114,7 +134,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 Transport
             </label>
             <div className="input-group col-sm-10 mb-2 ">
-              <div class="input-group-text  ">$</div>
+              <div className="input-group-text  ">$</div>
               <input    
                 type = "text"
                 name = "transport"

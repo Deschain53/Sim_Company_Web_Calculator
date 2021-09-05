@@ -27,7 +27,7 @@ export const productionReducer = ( state = initialState, action ) => {
         case types.updateInfoFormP:
             return {
                 ...state,
-                ...action.payload.faseInfo
+                ...action.payload.infoForm
             }
 
     
