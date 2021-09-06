@@ -1,10 +1,7 @@
 import React from 'react';
 import { useDispatch  } from 'react-redux';
 import { getPricesFromInternet } from '../actions/prices';
-//import { changeProductionFaseToBoom, changeProductionFaseToNormal } from '../actions/production';
-import {FaseDropDownButton } from '../components/ui/FaseDropDownButton';
 import { FormProduction } from './ui/FormProduction';
-import { QualityDropDownButton } from './ui/QualityDropDownButton';
 
 export const ProductionCalculator = () => {
 
@@ -25,11 +22,8 @@ export const ProductionCalculator = () => {
             <h1 className="h1">Production Calculator</h1>
 
             <div>
-                <FaseDropDownButton/>
                 <FormProduction/>
-                
-                <QualityDropDownButton/>
-
+            
                 <button className = "btn btn-primary" onClick = { handleGetPrices }> 
                     Extrae precios
                 </button>
@@ -38,7 +32,6 @@ export const ProductionCalculator = () => {
                     Action
                 </button>
             </div>
-            
 
 
         </div>

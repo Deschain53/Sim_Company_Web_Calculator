@@ -3,9 +3,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { dropDowButtonDark } from '../../styles/material-ui-styles/dropDownDark';
+import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
 import { useDispatch  } from 'react-redux';
-import { changeBuildingP } from '../../actions/production';
+import { changeBuildingP } from '../../../actions/production';
 
 export const BuildingDropDownButton = () => {
 

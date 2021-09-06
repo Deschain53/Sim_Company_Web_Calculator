@@ -3,21 +3,24 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { dropDowButtonDark } from '../../styles/material-ui-styles/dropDownDark';
+import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
 import { useDispatch  } from 'react-redux';
-import { changeQualityP } from '../../actions/production';
+import { changeProductionFaseToBoom, 
+  changeProductionFaseToNormal, 
+  changeProductionFaseToRecession 
+} from '../../../actions/production';
 
-export const QualityDropDownButton = () => {
+export const FaseDropDownButton = () => {
 
   const dispatch = useDispatch();
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
 
-  const [quality, setQuality] = useState('');
+  const [fase, setFase] = useState('');
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
-    setQuality(event.target.value);
+    setFase(event.target.value);
   };
 
   const handleClose = () => {
@@ -29,20 +32,30 @@ export const QualityDropDownButton = () => {
   };
 
   useEffect(() => {
+    console.log(fase);
     
-    switch (quality) {
+    switch (fase) {
+      case 0:
+          dispatch( changeProductionFaseToRecession() )
+        break;
       
+      case 1:
+          dispatch( changeProductionFaseToNormal() )
+        break;
+
+      case 2:
+          dispatch( changeProductionFaseToBoom() )
+        break;
+
       case '':
         break;
 
       default:
-          dispatch( changeQualityP(quality) )
+          dispatch( changeProductionFaseToNormal() )
         break;
     }
     
-  }, [quality]);
-
-  const qualities = [0,1,2,3,4,5,6];
+  }, [fase]);
 
   return (
     <div>
@@ -55,15 +68,12 @@ export const QualityDropDownButton = () => {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={quality}
+          value={fase}
           onChange={handleChange}
         >
-          {
-            qualities.map( q => (
-              <MenuItem value={q} >{q}</MenuItem>  
-            ))
-          }
-           
+          <MenuItem value={0} >Recesión</MenuItem>    
+          <MenuItem value={1} >Normal</MenuItem>
+          <MenuItem value={2} >Boom</MenuItem>  
         </Select>
       </FormControl>
     </div>

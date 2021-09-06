@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch  } from 'react-redux';
 import { updateInfoFormP } from '../../actions/production';
-import { BuildingDropDownButton } from './BuildingDropDownButton';
+import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
+
  
 export const FormProduction= () => {        //Se podria recibir una funcion setState
 
@@ -53,8 +54,9 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
   }, [formValues])*/
 
   return (
+    <div className="mt-4">
       <form onSubmit={handleSubmit}>
-        <div className="form-group row ">
+        <div className="row mb-3">
             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
                 Building Level
             </label>
@@ -111,7 +113,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
             </div>
         </div>
 
-        <div className="form-group row ">
+        <div className="row mb-3">
             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
                 Bonus
             </label>
@@ -130,7 +132,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
             </div>
         </div>
 
-        <div className="form-group row ">
+        <div className="row mb-1">
             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
                 Transport
             </label>
@@ -150,15 +152,25 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
             </div>
         </div>
 
-        <BuildingDropDownButton/>
+        <DropDownButtonProductionContainer/>
 
-        <button
-            type="submit"
-            className="btn m-1 btn-block btn-outline-primary"
-            onClick = { handleSubmit }
-        > Calculate</button>
+        <div className="container mt-2 mb-2">
+          <div className="row align-items-center">
+            <div className="col-sm-3"> </div>
+            <button
+                type="submit"
+                className="btn m-1 btn-block btn-outline-primary col-sm-6"
+                onClick = { handleSubmit }
+                >
+              Calculate
+            </button>
+            <div className="col-sm-3"> </div>
+          </div>
+        </div>
+
 
       </form>
+    </div>
   )
 }
 
