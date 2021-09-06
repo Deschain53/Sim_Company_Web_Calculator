@@ -1,6 +1,7 @@
 import { types } from "../types/types";
 
 const initialState = {
+    quality: 0,
     fase:'normal', 
     building: 'L',
     buildingLevel:1,
@@ -29,7 +30,12 @@ export const productionReducer = ( state = initialState, action ) => {
                 ...state,
                 ...action.payload.infoForm
             }
-
+        
+        case types.changeQualityP:
+            return {
+                ...state,
+                quality: action.payload.quality
+            }
     
         default:
             return state;

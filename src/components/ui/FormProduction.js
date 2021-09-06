@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch  } from 'react-redux';
 import { updateInfoFormP } from '../../actions/production';
+import { BuildingDropDownButton } from './BuildingDropDownButton';
  
 export const FormProduction= () => {        //Se podria recibir una funcion setState
 
@@ -148,6 +149,8 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
               
             </div>
         </div>
+
+        <BuildingDropDownButton/>
 
         <button
             type="submit"

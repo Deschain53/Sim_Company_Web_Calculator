@@ -15,5 +15,6 @@ export const types = {
     changeFaseP: '[Production] ChangeFase',
     changeBuildingP: '[Production] ChangeBuilding',
     updateInfoFormP: '[Production] UpdateInfoForm',
+    changeQualityP: '[Production] ChangeQuality',
 
 }

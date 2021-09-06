@@ -54,3 +54,14 @@ export const updateInfoFormP = (infoForm) => {
         )
     }
 }
+
+export const changeQualityP = (newQuality) => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: types.changeQualityP,
+                payload: {quality:newQuality}
+            }
+        )
+    }
+}
