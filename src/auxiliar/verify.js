@@ -10,7 +10,7 @@ export const verifyNumber = (input) => {
 export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport}) => {
   
         if(
-          buildingLevel === 1 &&
+          (buildingLevel === 1 || buildingLevel === 0) &&
           PVM === 0 &&
           admin === 0 &&
           bonus === 0 &&
@@ -24,7 +24,7 @@ export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport
 
 export const verifyddbBuilding= ({buildingLevel,PVM,admin,bonus,transport,building}) => { //ddb = DownDropButton
     if(
-        buildingLevel === 1 &&
+        (buildingLevel === 1 || buildingLevel === 0)  &&
         PVM === 0 &&
         admin === 0 &&
         bonus === 0 &&
@@ -39,7 +39,7 @@ export const verifyddbBuilding= ({buildingLevel,PVM,admin,bonus,transport,buildi
 
 export const verifyddbFase= ({buildingLevel,PVM,admin, bonus,transport,fase}) => { //ddb = DownDropButton
     if(
-        buildingLevel === 1 &&
+        (buildingLevel === 1 || buildingLevel === 0)  &&
         PVM === 0 &&
         admin === 0 &&
         bonus === 0 &&
@@ -54,12 +54,12 @@ export const verifyddbFase= ({buildingLevel,PVM,admin, bonus,transport,fase}) =>
 
 export const verifyddbQuality= ({buildingLevel,PVM,admin, bonus,transport,quality}) => { //ddb = DownDropButton
     if(
-        buildingLevel === 1 &&
+        (buildingLevel === 1 || buildingLevel === 0)  &&
         PVM === 0 &&
         admin === 0 &&
         bonus === 0 &&
         transport === 0 &&
-        quality
+        quality === 0
       ){
           return '' ;
       }else{

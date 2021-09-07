@@ -7,6 +7,7 @@ import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDa
 import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingP } from '../../../actions/production';
 import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
+import { verifyddbBuilding } from '../../../auxiliar/verify';
 
 const getBuildingsAccordingToLanguaje = ( languaje ) => {
   const pBuildings = productionBuildings();
@@ -27,12 +28,13 @@ export const BuildingDropDownButton = () => {
   
   const dispatch = useDispatch();
 
+  const dropDowButtonDarkStyle = dropDowButtonDark();
+  
   const { languaje } = useSelector( state => state.conf );
   const buildings = getBuildingsAccordingToLanguaje(languaje);
-
-  const dropDowButtonDarkStyle = dropDowButtonDark();
-
-  const [building, setFase] = useState('');
+  
+  const productionInfo = useSelector( state => state.production );
+  const [building, setFase] = useState(verifyddbBuilding(productionInfo));
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {

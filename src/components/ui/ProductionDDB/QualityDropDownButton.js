@@ -4,16 +4,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeQualityP } from '../../../actions/production';
+import { verifyddbQuality } from '../../../auxiliar/verify';
 
 export const QualityDropDownButton = () => {
 
   const dispatch = useDispatch();
+  const productionInfo = useSelector( state => state.production );
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
 
-  const [quality, setQuality] = useState('');
+  const [quality, setQuality] = useState(verifyddbQuality(productionInfo));
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
