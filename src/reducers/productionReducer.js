@@ -2,7 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
     quality: 0,
-    fase:'normal', 
+    fase:1, 
     building: 'L',
     buildingLevel:1,
     PVM: 0,
@@ -43,7 +43,7 @@ export const productionReducer = ( state = initialStateFromStorage, action ) => 
         case types.saveProductionInfo:
             localStorage.setItem('production', JSON.stringify(state));
             return {
-                state
+                ...state
             }
     
         default:

@@ -4,19 +4,21 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
-import { useDispatch  } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { changeProductionFaseToBoom, 
   changeProductionFaseToNormal, 
   changeProductionFaseToRecession 
 } from '../../../actions/production';
+import { verifyddbFase } from '../../../auxiliar/verify';
 
 export const FaseDropDownButton = () => {
 
   const dispatch = useDispatch();
+  const productionInfo = useSelector( state => state.production );
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
 
-  const [fase, setFase] = useState('');
+  const [fase, setFase] = useState(verifyddbFase(productionInfo));
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
@@ -47,11 +49,11 @@ export const FaseDropDownButton = () => {
           dispatch( changeProductionFaseToBoom() )
         break;
 
-      case '':
-        break;
+      /*case '':
+        break;*/
 
       default:
-          dispatch( changeProductionFaseToNormal() )
+          //dispatch( changeProductionFaseToNormal() )
         break;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,7 +73,7 @@ export const FaseDropDownButton = () => {
           value={fase}
           onChange={handleChange}
         >
-          <MenuItem value={0} >Recesión</MenuItem>    
+          <MenuItem value={0} >Recession</MenuItem>    
           <MenuItem value={1} >Normal</MenuItem>
           <MenuItem value={2} >Boom</MenuItem>  
         </Select>

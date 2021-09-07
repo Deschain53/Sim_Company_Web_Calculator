@@ -3,33 +3,14 @@ import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector  } from 'react-redux';
 import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/production';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
-
-const verifyNumber = (input) => {
-  const inputParse = parseFloat(input);
-
-  return  (inputParse && (typeof(inputParse) === 'number')
-            ? inputParse 
-            : 0
-          )
-}
-
-/*const saveInLocalStorageProduction = (production) => {
-  localStorage.setItem('production', JSON.stringify(production));
-}*/
+import { verifyNumber, verifyInitialStateForm } from '../../auxiliar/verify';
 
 export const FormProduction= () => {        //Se podria recibir una funcion setState
   
   const dispatch = useDispatch();
-  const production = useSelector( state => state.production );
+  const productionInfo = useSelector( state => state.production );
 
-
-  const [formValues, handleInputChange] = useForm({
-      buildingLevel: '',
-      PVM: '',
-      admin: '',
-      bonus: '',
-      transport: '',
-  });
+  const [formValues, handleInputChange] = useForm(verifyInitialStateForm(productionInfo));
   
   const {buildingLevel,PVM,admin, bonus,transport} = formValues;
 
@@ -44,8 +25,6 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
       transport: verifyNumber(transport)
     }
 
-    //console.log(info);
-    
     dispatch( updateInfoFormP(info) );
     dispatch( saveInLocalStorageProduction());
   };

@@ -5,7 +5,7 @@ export const changeProductionFaseToBoom = () => {
         dispatch(
             {
                 type: types.changeFaseP,
-                payload: { fase: 'boom'}
+                payload: { fase: 2}
             }
         )
     }
@@ -16,7 +16,7 @@ export const changeProductionFaseToNormal = () => {
         dispatch(
             {
                 type: types.changeFaseP,
-                payload: { fase: 'normal'}
+                payload: { fase: 1}
             }
         )
     }
@@ -27,7 +27,7 @@ export const changeProductionFaseToRecession = () => {
         dispatch(
             {
                 type: types.changeFaseP,
-                payload: { fase: 'recession'}
+                payload: { fase: 0}
             }
         )
     }
