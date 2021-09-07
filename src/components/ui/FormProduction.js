@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector  } from 'react-redux';
-import { updateInfoFormP } from '../../actions/production';
+import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/production';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 
 const verifyNumber = (input) => {
@@ -13,9 +13,9 @@ const verifyNumber = (input) => {
           )
 }
 
-const saveInLocalStorageProduction = (production) => {
+/*const saveInLocalStorageProduction = (production) => {
   localStorage.setItem('production', JSON.stringify(production));
-}
+}*/
 
 export const FormProduction= () => {        //Se podria recibir una funcion setState
   
@@ -47,8 +47,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     //console.log(info);
     
     dispatch( updateInfoFormP(info) );
-    console.log(production);
-    saveInLocalStorageProduction(production);
+    dispatch( saveInLocalStorageProduction());
   };
 
   return (

@@ -12,9 +12,10 @@ export const types = {
     resetProducts: '[Product] Reset',
 
     //For productionReducer:
-    changeFaseP: '[Production] ChangeFase',
-    changeBuildingP: '[Production] ChangeBuilding',
-    updateInfoFormP: '[Production] UpdateInfoForm',
-    changeQualityP: '[Production] ChangeQuality',
+    changeFaseP: '[Production] Change Fase',
+    changeBuildingP: '[Production] Change Building',
+    updateInfoFormP: '[Production] Update Production Information',
+    changeQualityP: '[Production] Change Quality',
+    saveProductionInfo: '[Production] Save Production Information'
 
 }

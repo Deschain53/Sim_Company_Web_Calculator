@@ -65,3 +65,13 @@ export const changeQualityP = (newQuality) => {
         )
     }
 }
+
+export const saveInLocalStorageProduction = () => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: types.saveProductionInfo
+            }
+        )
+    }
+}

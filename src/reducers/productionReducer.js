@@ -11,7 +11,10 @@ const initialState = {
     transport: 0,
 }
 
-export const productionReducer = ( state = initialState, action ) => {
+const initialStateFromStorage = JSON.parse(localStorage.getItem('production')) 
+    || initialState;
+
+export const productionReducer = ( state = initialStateFromStorage, action ) => {
     switch (action.type) {
         case types.changeFaseP:
             return {
@@ -35,6 +38,12 @@ export const productionReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 quality: action.payload.quality
+            }
+
+        case types.saveProductionInfo:
+            localStorage.setItem('production', JSON.stringify(state));
+            return {
+                state
             }
     
         default:
