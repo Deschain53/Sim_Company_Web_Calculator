@@ -1,24 +1,27 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useForm } from '../../hooks/useForm';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { updateInfoFormP } from '../../actions/production';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 
- 
+const verifyNumber = (input) => {
+  const inputParse = parseFloat(input);
+
+  return  (inputParse && (typeof(inputParse) === 'number')
+            ? inputParse 
+            : 0
+          )
+}
+
+const saveInLocalStorageProduction = (production) => {
+  localStorage.setItem('production', JSON.stringify(production));
+}
+
 export const FormProduction= () => {        //Se podria recibir una funcion setState
-
-  const verifyNumber = (input) => {
-    const inputParse = parseFloat(input);
-    console.log( inputParse + ' - ' + typeof(inputParse) );
-
-    //return inputParse !== NaN ? inputParse : 0
-    return  (inputParse && (typeof(inputParse) === 'number')
-              ? inputParse 
-              : 0
-            )
-  }
-
+  
   const dispatch = useDispatch();
+  const production = useSelector( state => state.production );
+
 
   const [formValues, handleInputChange] = useForm({
       buildingLevel: '',
@@ -41,17 +44,12 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
       transport: verifyNumber(transport)
     }
 
-    console.log(info);
+    //console.log(info);
     
     dispatch( updateInfoFormP(info) );
-    //updateFromFormInfo(formValues);
+    console.log(production);
+    saveInLocalStorageProduction(production);
   };
-
-  //IMPORTANTE: Falta llamar al dispatch desde el submit. Tambien hace falta disparar el submit
-  //desde afuera del form (Esto es para tener un boton hasta el final de todos los datos)
-  /*useEffect(() => {
-      //updateFromFormInfo(formValues);
-  }, [formValues])*/
 
   return (
     <div className="mt-4">

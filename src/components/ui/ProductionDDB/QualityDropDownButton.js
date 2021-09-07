@@ -39,7 +39,7 @@ export const QualityDropDownButton = () => {
           dispatch( changeQualityP(quality) )
         break;
     }
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quality]);
 
   const qualities = [0,1,2,3,4,5,6];

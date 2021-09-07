@@ -32,7 +32,7 @@ export const FaseDropDownButton = () => {
   };
 
   useEffect(() => {
-    console.log(fase);
+    //console.log(fase);
     
     switch (fase) {
       case 0:
@@ -54,7 +54,7 @@ export const FaseDropDownButton = () => {
           dispatch( changeProductionFaseToNormal() )
         break;
     }
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fase]);
 
   return (

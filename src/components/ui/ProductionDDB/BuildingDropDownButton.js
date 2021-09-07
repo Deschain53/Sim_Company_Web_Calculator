@@ -49,12 +49,11 @@ export const BuildingDropDownButton = () => {
   };
 
   useEffect(() => {
-    //console.log(building);
 
     if(building !== ''){
       dispatch( changeBuildingP(building) );
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [building]);
 
   return (
