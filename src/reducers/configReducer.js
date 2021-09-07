@@ -2,7 +2,7 @@
 //mode and the languaje
 import { types } from '../types/types';
 
-const initialState = { mode: 'dark', languaje: 'English' }; 
+const initialState = { mode: 'dark', languaje: 'english' }; 
 
 export const configReducer = ( state = initialState, action ) => {
 

@@ -4,12 +4,31 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingP } from '../../../actions/production';
+import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
+
+const getBuildingsAccordingToLanguaje = ( languaje ) => {
+  const pBuildings = productionBuildings();
+
+  switch (languaje) {
+    case 'english':
+      return  pBuildings.english;
+
+    case 'spanish':
+      return pBuildings.spanish;
+    
+    default:
+      return  pBuildings.english;
+  }
+}
 
 export const BuildingDropDownButton = () => {
-
+  
   const dispatch = useDispatch();
+
+  const { languaje } = useSelector( state => state.conf );
+  const buildings = getBuildingsAccordingToLanguaje(languaje);
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
 
@@ -30,7 +49,7 @@ export const BuildingDropDownButton = () => {
   };
 
   useEffect(() => {
-    console.log(building);
+    //console.log(building);
 
     if(building !== ''){
       dispatch( changeBuildingP(building) );
@@ -59,33 +78,11 @@ export const BuildingDropDownButton = () => {
           value={building}
           onChange={handleChange}
         >
-          < MenuItem value={'P'} >Plantación</MenuItem>
-          < MenuItem value={'o'} >Planta de concreto</MenuItem>
-          < MenuItem value={'Q'} >Cantera</MenuItem>
-          < MenuItem value={'x'} >Fábrica de construcción</MenuItem>
-          < MenuItem value={'g'} >Contratista general</MenuItem>
-          < MenuItem value={'T'} >Fábrica de moda</MenuItem>
-          < MenuItem value={'M'} >Mina</MenuItem>
-          < MenuItem value={'Y'} >Fábrica</MenuItem>
-          < MenuItem value={'L'} >Fábrica de electrónicos</MenuItem>
-          < MenuItem value={'8'} >Electrónica aeroespacial</MenuItem>
-          < MenuItem value={'D'} >Fábrica de propulsión</MenuItem>
-          < MenuItem value={'1'} >Fábrica de carros</MenuItem>
-          < MenuItem value={'7'} >Fábrica aeroespacial</MenuItem>
-          < MenuItem value={'O'} >PLataforma petrolera</MenuItem>
-          < MenuItem value={'R'} >Refinería</MenuItem>
-          < MenuItem value={'0'} >Hangar</MenuItem>
-          < MenuItem value={'9'} >Vertical integration facility</MenuItem>
-          < MenuItem value={'F'} >Granja</MenuItem>
-          < MenuItem value={'S'} >Depósito de embarque</MenuItem>
-          < MenuItem value={'W'} >Reservorio de agua</MenuItem>
-          < MenuItem value={'p'} >Centro de investigación agrícola</MenuItem>
-          < MenuItem value={'h'} >Laboratorio de física</MenuItem>
-          < MenuItem value={'b'} >Laboratorio ganadero</MenuItem>
-          < MenuItem value={'c'} >Laboratorio de química</MenuItem>
-          < MenuItem value={'a'} >I+D automotriz</MenuItem>
-          < MenuItem value={'f'} >Diseño de moda</MenuItem>
-          < MenuItem value={'E'} >Central eléctrica</MenuItem>
+          {
+            buildings.map( ({id, name}) => (
+              < MenuItem value={ id }   key={ id }> { name } </MenuItem>
+            ))
+          }
         </Select>
       </FormControl>
     </div>

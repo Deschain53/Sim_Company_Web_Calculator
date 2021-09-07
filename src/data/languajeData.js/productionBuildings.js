@@ -1,0 +1,67 @@
+export const productionBuildings = () => {
+    const spanish = [
+        { id: 'P' , name: 'Plantación'                      },      
+        { id: 'o' , name: 'Planta de concreto'              },              
+        { id: 'Q' , name: 'Cantera'                         },   
+        { id: 'x' , name: 'Fábrica de construcción'         },                   
+        { id: 'g' , name: 'Contratista general'             },               
+        { id: 'T' , name: 'Fábrica de moda'                 },           
+        { id: 'M' , name: 'Mina'                            },
+        { id: 'Y' , name: 'Fábrica'                         },   
+        { id: 'L' , name: 'Fábrica de electrónicos'         },                   
+        { id: '8' , name: 'Electrónica aeroespacial'        },                   
+        { id: 'D' , name: 'Fábrica de propulsión'           },                 
+        { id: '1' , name: 'Fábrica de carros'               },             
+        { id: '7' , name: 'Fábrica aeroespacial'            },               
+        { id: 'O' , name: 'PLataforma petrolera'            },               
+        { id: 'R' , name: 'Refinería'                       },     
+        { id: '0' , name: 'Hangar'                          },  
+        { id: '9' , name: 'Vertical integration facility'   },                         
+        { id: 'F' , name: 'Granja'                          },  
+        { id: 'S' , name: 'Depósito de embarque'            },               
+        { id: 'W' , name: 'Reservorio de agua'              },              
+        { id: 'p' , name: 'Centro de investigación agrícol' },                          
+        { id: 'h' , name: 'Laboratorio de física'           },                 
+        { id: 'b' , name: 'Laboratorio ganadero'            },               
+        { id: 'c' , name: 'Laboratorio de química'          },                  
+        { id: 'a' , name: 'I+D automotriz'                  },          
+        { id: 'f' , name: 'Diseño de moda'                  },          
+        { id: 'E' , name: 'Central eléctrica'               },             
+    ]
+
+
+    const english = [
+        { id: 'P' , name:  'Plantation'                     },              
+        { id: 'o' , name:  'Concrete plant'                 },                  
+        { id: 'Q' , name:  'Quarry'                         },          
+        { id: 'x' , name:  'Construction factory'           },                      
+        { id: 'g' , name:  'General Contractor'             },                      
+        { id: 'T' , name:  'Fashion Factory'                },                  
+        { id: 'M' , name:  'Mine'                           },      
+        { id: 'Y' , name:  'Factory'                        },          
+        { id: 'L' , name:  'Electronics Factory'            },                      
+        { id: '8' , name:  'Aerospace Electronics'          },                      
+        { id: 'D' , name:  'Propulsion Factory'             },                      
+        { id: '1' , name:  'Car Factory'                    },              
+        { id: '7' , name:  'Aerospace Factory'              },                  
+        { id: 'O' , name:  'Oil platform'                   },              
+        { id: 'R' , name:  'Refinery'                       },          
+        { id: '0' , name:  'Hangar'                         },          
+        { id: '9' , name:  'Vertical integration facility'  },                              
+        { id: 'F' , name:  'Farm'                           },      
+        { id: 'S' , name:  'Shipment depot'                 },                  
+        { id: 'W' , name:  'Water reservoir'                },                  
+        { id: 'p' , name:  'Agricultural Research Center'   },                              
+        { id: 'h' , name:  'Physics Laboratory'             },                      
+        { id: 'b' , name:  'Livestock laboratory'           },                      
+        { id: 'c' , name:  'Chemistry Laboratory'           },                      
+        { id: 'a' , name:  'Automotive R&D'                 },                  
+        { id: 'f' , name:  'Fashion design'                 },                  
+        { id: 'E' , name:  'Power plant'                    },              
+    ]
+
+    return {
+        spanish,
+        english
+    }
+}

@@ -60,7 +60,7 @@ export const QualityDropDownButton = () => {
         >
           {
             qualities.map( q => (
-              <MenuItem value={q} >{q}</MenuItem>  
+              <MenuItem value={q} key={q}>{q}</MenuItem>  
             ))
           }
            
