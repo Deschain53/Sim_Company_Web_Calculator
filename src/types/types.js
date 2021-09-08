@@ -6,6 +6,7 @@ export const types = {
     //For pricesReducer:
     updatePrices: '[Prices] Update',
     cleanPrices: '[Prices] Clean',
+    savePrices: '[Prices] Save Prices',
 
     //For productReducer:
     updateProducts: '[Product] Modify',

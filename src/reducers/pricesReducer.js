@@ -15,6 +15,10 @@ export const pricesReducer = (state = initialState, action) => {
         case types.cleanPrices: 
             return initialState;
     
+        case types.savePrices:
+            localStorage.setItem( 'prices',JSON.stringify(state) || null );
+            return state;
+
         default:
             return state;
     }

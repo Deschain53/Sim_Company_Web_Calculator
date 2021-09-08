@@ -1,9 +1,5 @@
 import { types } from '../types/types';
 
-const savePricesInLocalStorage = ( prices = null ) => {
-    localStorage.setItem('prices',JSON.stringify(prices) || null);
-};
-
 export const getPricesFromInternet = () => {
     return (dispatch) => {
 
@@ -18,6 +14,6 @@ export const getPricesFromInternet = () => {
             }
         )
 
-        savePricesInLocalStorage(prices);
+        dispatch({type: types.savePrices});
     }
 }
