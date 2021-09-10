@@ -2,7 +2,11 @@
 //mode and the languaje
 import { types } from '../types/types';
 
-const initialState = { mode: 'dark', languaje: 'english' }; 
+const initialState = { 
+    mode: 'dark', 
+    languaje: 'english' , 
+    pricesInitilizedFromStorage: 'false', 
+    }; 
 
 export const configReducer = ( state = initialState, action ) => {
 
@@ -18,6 +22,12 @@ export const configReducer = ( state = initialState, action ) => {
             return {
                 ...action.payload,
                 mode: 'light'
+            }
+        
+        case types.checkingPricesInStorage:
+            return {
+                ...state,
+                pricesInitilizedFromStorage: action.payload  
             }
 
         default:

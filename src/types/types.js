@@ -1,7 +1,8 @@
 export const types = {
     //For configReducer:
-    darkMode: '[Config] DarkMode',
-    ligthMode: '[Config] LigthMode',
+    darkMode: '[Config] Change to DarkMode',
+    ligthMode: '[Config] Change to LigthMode',
+    checkingPricesInStorage: '[Config] Checking prices in storage',
 
     //For pricesReducer:
     updatePrices: '[Prices] Update',
