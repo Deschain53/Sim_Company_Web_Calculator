@@ -1,31 +1,19 @@
 import React from 'react';
-import { updatePrices } from '../actions/prices';
 import { PricesButton } from './ui/Buttons/PricesButton';
 import { FormProduction } from './ui/FormProduction';
+import { TableCollapsibleProduction } from './ui/ProductionTable/TableCollapsibleProduction';
 
 export const ProductionCalculator = () => {
 
-    const handleAction= () => {
-        console.log('action');
-    }
-
     return (
         <div className="window-app">
-            <h1 className="h1">Production Calculator</h1>
+            <h1 className="h1 mb-8">Production Calculator</h1>
 
             <div>
+                <PricesButton/>
                 <FormProduction/>
             
-                <div className="container">
-                    <div className="row">
-                        <PricesButton/>
-                    </div>
-                    <div className="row">
-                        <button className = "btn btn-primary" onClick = { handleAction }> 
-                            Action
-                        </button>
-                    </div>
-                </div>
+                <TableCollapsibleProduction/>
 
 
             </div>

@@ -5,8 +5,8 @@ export const types = {
     checkingPricesInStorage: '[Config] Checking prices in storage',
 
     //For pricesReducer:
-    updatePrices: '[Prices] Update',
-    cleanPrices: '[Prices] Clean',
+    updatePrices: '[Prices] Update Prices',
+    cleanPrices: '[Prices] Clean Prices',
     savePrices: '[Prices] Save Prices',
 
     //For productReducer:
