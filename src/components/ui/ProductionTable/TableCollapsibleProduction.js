@@ -20,8 +20,8 @@ const createData = (product, cost, marketPrice, unitsHour, profitHourMarket, pro
     profitHourMarket,
     profitHourContract,
     detail: [
-      { date: '2020-01-05', customerId: '11091700', amount: 3 },
-      { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
+      { item: 'Pantallas', amount: 2, unitCost: 121 ,totalCost: 109 },
+      { item: 'Plastico', amount: 2, unitCost: 11, totalCost: 363 },
     ],
   };
 }

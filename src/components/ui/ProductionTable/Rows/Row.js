@@ -31,9 +31,10 @@ export const Row = ({row}) => {
         profitHourMarket: PropTypes.number.isRequired,
       detail: PropTypes.arrayOf(
         PropTypes.shape({
-          amount: PropTypes.number.isRequired,
-          customerId: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired,
+            item: PropTypes.string.isRequired,
+            amount: PropTypes.number.isRequired,
+            unitCost: PropTypes.number.isRequired,
+            totalCost: PropTypes.number.isRequired,
         }),
       ).isRequired,
     }).isRequired,

@@ -20,16 +20,12 @@ export const RowCollapsibleProduction = ({row, open}) => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {row.detail.map((detailRow) => (
-                      <TableRow key={detailRow.date}>
-                        <TableCell component="th" scope="row">
-                          {detailRow.date}
-                        </TableCell>
-                        <TableCell>{detailRow.customerId}</TableCell>
-                        <TableCell align="right">{detailRow.amount}</TableCell>
-                        <TableCell align="right">
-                          ${1998}
-                        </TableCell>
+                    {row.detail.map(({item, amount, unitCost, totalCost}) => (
+                      <TableRow key={item}>
+                        <TableCell component="th" scope="row">{item}</TableCell>
+                        <TableCell>{amount}</TableCell>
+                        <TableCell align="right">$&nbsp;{unitCost}</TableCell>
+                        <TableCell align="right">$&nbsp;{totalCost}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

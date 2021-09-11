@@ -15,6 +15,8 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
 
     const classes = useRowStyles();
 
+    const { product, cost, marketPrice, unitsHour, profitHourMarket, profitHourContract } = row;
+
     return (
         <TableRow className={classes.root}>
           <TableCell>
@@ -23,13 +25,13 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
             </IconButton>
           </TableCell>
           <TableCell component="th" scope="row">
-            {row.product}
+            {product}
           </TableCell>
-          <TableCell align="right">{row.cost}</TableCell>
-          <TableCell align="right">{row.marketPrice}</TableCell>
-          <TableCell align="right">{row.unitsHour}</TableCell>
-          <TableCell align="right">{row.profitHourMarket}</TableCell>
-          <TableCell align="right">{row.profitHourContract}</TableCell>
+          <TableCell align="right">$&nbsp;{cost}</TableCell>
+          <TableCell align="right">$&nbsp;{marketPrice}</TableCell>
+          <TableCell align="right">{unitsHour}</TableCell>
+          <TableCell align="right">$&nbsp;{profitHourMarket}</TableCell>
+          <TableCell align="right">$&nbsp;{profitHourContract}</TableCell>
         </TableRow>
     )
 }
