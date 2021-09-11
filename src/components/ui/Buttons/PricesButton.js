@@ -8,13 +8,13 @@ export const PricesButton = () => {
     const dispatch = useDispatch();
     const { pricesInitilizedFromStorage } = useSelector( state => state.conf );
 
-    const {precios, extraePreciosPrueba, extraePreciosOnline} = usePrecios();
+    const {precios, /*extraePreciosPrueba,*/ extraePreciosOnline} = usePrecios();
 
     const [isPricesExtracted, setIsPricesExtracted] = useState(false);
 
     const handleGetPrices = () => {
-        extraePreciosPrueba();
-        //extraePreciosOnline();
+        //extraePreciosPrueba();
+        extraePreciosOnline();
         setIsPricesExtracted(true);
     }
 
