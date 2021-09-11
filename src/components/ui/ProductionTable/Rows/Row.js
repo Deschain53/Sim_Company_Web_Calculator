@@ -21,7 +21,7 @@ export const Row = ({row}) => {
       </>
     );
   }
-  
+  //Flat a agregar proptypes aqui para validar las sumatorias de los detalles
   Row.propTypes = {
     row: PropTypes.shape({
         product: PropTypes.string.isRequired,         
@@ -37,5 +37,12 @@ export const Row = ({row}) => {
             totalCost: PropTypes.number.isRequired,
         }),
       ).isRequired,
+      resume: PropTypes.shape({
+        totalCostItems: PropTypes.number.isRequired,
+        wages: PropTypes.number.isRequired,
+        administrationOverhead: PropTypes.number.isRequired,
+        totalCostOfFabrication: PropTypes.number.isRequired,
+      })
+
     }).isRequired,
   };

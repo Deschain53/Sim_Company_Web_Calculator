@@ -1,14 +1,7 @@
 import React from 'react';
-
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-
+import { Table, TableBody, TableContainer, } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper';
-
+import { TableHeadMain } from './TableHeadMain';
 import { Row } from './Rows/Row';
 
 const createData = (product, cost, marketPrice, unitsHour, profitHourMarket, profitHourContract) => {
@@ -23,6 +16,12 @@ const createData = (product, cost, marketPrice, unitsHour, profitHourMarket, pro
       { item: 'Pantallas', amount: 2, unitCost: 121 ,totalCost: 109 },
       { item: 'Plastico', amount: 2, unitCost: 11, totalCost: 363 },
     ],
+    resume: {
+      totalCostItems: 123,
+      wages: 1988,
+      administrationOverhead: 2000,
+      totalCostOfFabrication: 2021
+    }
   };
 }
 
@@ -38,17 +37,9 @@ export const TableCollapsibleProduction = () => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Product</TableCell>
-            <TableCell align="right">Cost</TableCell>
-            <TableCell align="right">Market price</TableCell>
-            <TableCell align="right">Units/hour</TableCell>
-            <TableCell align="right">Profit/hour Market</TableCell>
-            <TableCell align="right">Profit/hour Contracts</TableCell>
-          </TableRow>
-        </TableHead>
+
+        <TableHeadMain/>
+
         <TableBody>
           {rows.map((row) => (
             <Row key={row.product} row={row} />

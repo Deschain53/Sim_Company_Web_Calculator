@@ -1,5 +1,7 @@
-import { Box, Collapse, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core'
+import { Box, Collapse, Table, TableBody, TableCell, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
+import { RowResume } from './RowResume'
+import { TableHeadDetail } from './TableHeadDetail'
 
 export const RowCollapsibleProduction = ({row, open}) => {
     return (
@@ -12,14 +14,7 @@ export const RowCollapsibleProduction = ({row, open}) => {
                 </Typography>
                 <Table size="small" aria-label="purchases">
 
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Item</TableCell>
-                      <TableCell>Amount</TableCell>
-                      <TableCell align="right">Unit cost</TableCell>
-                      <TableCell align="right">Total cost</TableCell>
-                    </TableRow>
-                  </TableHead>
+                <TableHeadDetail/>
 
                   <TableBody>
                     {row.detail.map(({item, amount, unitCost, totalCost}) => (
@@ -32,26 +27,8 @@ export const RowCollapsibleProduction = ({row, open}) => {
                     ))}
                     <TableRow/>
                   </TableBody>
-                  
-                  <TableBody>
-                    <TableRow>
-                      <TableCell rowSpan={4} />
-                      <TableCell colSpan={2}>Total cost items</TableCell>
-                      <TableCell align="right">$123541</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan={2}>Wages</TableCell>
-                      <TableCell align="right">$1999</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan={2}>Administration overhead</TableCell>
-                      <TableCell align="right">$0.5</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell colSpan={2}>Total Cost of fabrication</TableCell>
-                      <TableCell align="right">$999</TableCell>
-                    </TableRow>
-                  </TableBody>
+
+                  <RowResume resume={row.resume}/>
 
                 </Table>
               </Box>
