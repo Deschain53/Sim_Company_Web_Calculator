@@ -1,6 +1,7 @@
 import { typesTableProduction } from '../types/typesTableProduction';
 
 const createData = (product,
+    id,
     cost = 0, 
     marketPrice = 0, 
     unitsHour = 0, 
@@ -9,6 +10,7 @@ const createData = (product,
   ) => {
   return {
     product,
+    id,
     cost,
     marketPrice,
     unitsHour,
@@ -29,16 +31,20 @@ const createData = (product,
 }
 
 const initialState = [
-    createData('.'),
-    createData('..'),
-    createData('...' ),
+    createData('.',1),
+    createData('..',2),
+    createData('...',3 ),
   ];
 
 export const tableProductionReducer = (state = initialState, action) => {  
     switch (action.type) {
         case typesTableProduction.clean:
-            return initialState;        
-    
+            return initialState;   
+            
+        case typesTableProduction.updateNamesAndIds:
+          const newDataNameId = action.payload.map( ({db_letter,name}) => createData(name,db_letter));
+        return newDataNameId;
+
         default:
             return state;
     }

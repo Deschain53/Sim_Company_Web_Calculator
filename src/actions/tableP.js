@@ -1,18 +1,18 @@
 import { typesTableProduction } from "../types/typesTableProduction";
 
-export const calculaTodo = (tableP, production) => {
+export const updateNamesAndIds = (productsJSON) => {
     return (dispatch) => {
 
         console.log('Aqui se mostrará un Array');
-        console.log(production);
+        console.log(productsJSON);
 
-        /*dispatch(
+        dispatch(
             {
-                type: typesTableProduction.,
-                payload: newPrices
+                type: typesTableProduction.updateNamesAndIds,
+                payload: productsJSON
             }
         )
 
-        dispatch({type: types.savePrices});*/
+        
     }
 }
