@@ -26,3 +26,14 @@ export const updatePrices = ( marketPrices, {quality}) => {
 
     }
 }
+
+export const updateNamesAmountAndIdsItems = (productsJSON) => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.updateNamesAmountAndIdsItems,
+                payload: {productsJSON}
+            }
+        )
+    }
+}

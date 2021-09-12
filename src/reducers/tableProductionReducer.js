@@ -1,5 +1,5 @@
 import { typesTableProduction } from '../types/typesTableProduction';
-import { createData, getStateWWithMarketPrices } from './auxiliarReducers/tableProductionReducerAux';
+import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -18,8 +18,11 @@ export const tableProductionReducer = (state = initialState, action) => {
 
         case typesTableProduction.updatePrices:
         const newState =  getStateWWithMarketPrices(state, action.payload.marketPrices, action.payload.quality );
-        //console.log(newState);
         return newState;
+
+        case typesTableProduction.updateNamesAmountAndIdsItems:
+        const newState2 =  getStateWithNameIdAndAmoutItem(state, action.payload.productsJSON)
+        return newState2;
 
         default:
             return state;
