@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import { TableHeadMain } from './TableHeadMain';
 import { Row } from './Rows/Row';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateNamesAndIds } from '../../../actions/tableP';
+import { updateNamesAndIds, updatePrices } from '../../../actions/tableP';
 import { useProductsBuilding } from '../../../hooks/useProductsBuilding';
 
 export const TableCollapsibleProduction = () => {
@@ -13,14 +13,16 @@ export const TableCollapsibleProduction = () => {
 
   const  tableP  = useSelector( state => state.tableP );
   const  production  = useSelector( state => state.production );
-  const  products  =  useSelector( state => state.products );
+  const  products  =  useSelector( state => state.products ); 
+  const  prices  =  useSelector( state => state.prices ); 
 
   const {productsJSON} =  useProductsBuilding(products,production);
 
-  console.log(productsJSON);
+  //console.log(productsJSON);
 
   useEffect(() => {
     dispatch(updateNamesAndIds(productsJSON));
+    dispatch(updatePrices(prices,production));
   }, [production])
   
   return (
