@@ -7,8 +7,6 @@ export const usePrecios = () => {
     const {productsNormalJSON} = useSelector( state => state.products );
 
     const [precios, setPrecios] = useState([{}]);
-    //const [ispreciosObtenidos, setIspreciosObtenidos] = useState(false);
-    //const productosJSON = getProductosJSON(0);
     const productosJSON = productsNormalJSON;
     
     const getPrecios = async(id) =>{
@@ -28,8 +26,6 @@ export const usePrecios = () => {
             }
         }) 
 
-        //console.log(precios);
-    
         return precios;
     
         }catch(error){
@@ -40,9 +36,7 @@ export const usePrecios = () => {
 
     const precioObject = async(producto) => {
         const preciosProducto = await getPrecios(producto);
-        //console.log(typeof preciosProducto);
         const preciosOrdenados = getProductosOrdenados(preciosProducto);
-        //console.log(typeof preciosOrdenados);
     
         const objectPreciosOrdenados = {
             id: producto,
@@ -58,7 +52,6 @@ export const usePrecios = () => {
 
         const calidadMaxima = 6;
         let precios = [];
-        //preciosProductoPromise.then( preciosProducto => {
     
         //Para encontrar los precios de cada calidad
         for(let i = 0 ; i < calidadMaxima; i++){
@@ -78,9 +71,6 @@ export const usePrecios = () => {
                 precios[i-1] = precios[i];
             }
         }
-    
-        //});
-        //console.log(precios);
         return precios;
          
     };
@@ -93,8 +83,8 @@ export const usePrecios = () => {
         console.log(newPreciosPromises);        
         Promise.all(newPreciosPromises).then(
             newPreciosR => {
-                console.log(newPreciosR);
-                setPrecios(newPreciosR)
+                //console.log(newPreciosR);
+                setPrecios([...newPreciosR])
                 //return newPreciosR;
                 }
         );
@@ -106,14 +96,3 @@ export const usePrecios = () => {
 
     return {precios, extraePreciosPrueba, extraePreciosOnline};
 }
-
-
-
-
-        /*Iba dentro de ExtraePreciosOnline
-        
-        let newPrecios = [];
-        const precio1 = await precioObject(83);
-        newPrecios.push(precio1);
-        const precio2 = await precioObject(90);
-        newPrecios.push(precio2);*/

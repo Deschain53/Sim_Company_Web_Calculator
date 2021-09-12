@@ -13,7 +13,7 @@ const initialStateFromStorage = JSON.parse(localStorage.getItem('prices'))
 export const pricesReducer = (state = initialStateFromStorage, action) => {
     switch (action.type) {
         case types.updatePrices:
-            return {...action.payload}        
+            return action.payload;        
             
         case types.cleanPrices: 
             return initialState;
