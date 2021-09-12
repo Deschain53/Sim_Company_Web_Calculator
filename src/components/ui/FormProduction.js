@@ -12,7 +12,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
 
   const [formValues, handleInputChange] = useForm(verifyInitialStateForm(productionInfo));
   
-  const {buildingLevel,PVM,admin, bonus,transport} = formValues;
+  const {buildingLevel,PVM,admin, bonus,transport, abundance} = formValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,8 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
       PVM: verifyNumber(PVM),
       admin: verifyNumber(admin),
       bonus: verifyNumber(bonus),
-      transport: verifyNumber(transport)
+      transport: verifyNumber(transport),
+      abundance: verifyNumber(abundance)
     }
 
     dispatch( updateInfoFormP(info) );
@@ -102,6 +103,25 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 placeholder = "Production bonus"
                 autoComplete = "off"
                 value = {bonus}
+                onChange = {handleInputChange}
+              />
+              <div className="input-group-text  ">%</div>
+            </div>
+        </div>
+
+        <div className="row mb-3">
+            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+                Abundance
+            </label>
+            <div className="input-group col-sm-10 mb-2  ">
+              <input    
+                type = "text"
+                name = "abundance"
+                className="form-control text-white bg-dark" 
+                id="colFormLabel" 
+                placeholder = "Abundance"
+                autoComplete = "off"
+                value = {abundance}
                 onChange = {handleInputChange}
               />
               <div className="input-group-text  ">%</div>

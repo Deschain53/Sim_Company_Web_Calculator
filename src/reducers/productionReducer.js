@@ -9,6 +9,7 @@ const initialState = {
     admin: 0,
     bonus: 0,
     transport: 0,
+    abundance: 100
 }
 
 const initialStateFromStorage = JSON.parse(localStorage.getItem('production')) 

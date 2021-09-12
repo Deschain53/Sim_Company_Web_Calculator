@@ -7,18 +7,19 @@ export const verifyNumber = (input) => {
             )
 }
 
-export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport}) => {
+export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport, abundance}) => {
   
         if(
           (buildingLevel === 1 || buildingLevel === 0) &&
           PVM === 0 &&
           admin === 0 &&
           bonus === 0 &&
-          transport === 0
+          transport === 0 &&
+          abundance === 100
         ){
-            return {buildingLevel:'',PVM:'',admin:'',bonus:'',transport:''} ;
+            return {buildingLevel:'',PVM:'',admin:'',bonus:'',transport:'',abundance:''} ;
         }else{
-            return {buildingLevel,PVM,admin, bonus,transport} ;
+            return {buildingLevel,PVM,admin, bonus,transport,abundance} ;
         } 
     }
 
