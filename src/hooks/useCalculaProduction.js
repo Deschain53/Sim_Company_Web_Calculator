@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
-import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems } from '../actions/tableP';
+import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems } from '../actions/tableP';
 
 export const useCalculaProduction = () => {
 
@@ -15,11 +15,12 @@ export const useCalculaProduction = () => {
     const {productsJSON} =  useProductsBuilding(products,production);
 
     useEffect(() => {
-        dispatch(updateNamesAndIds(productsJSON));
-        dispatch(updatePrices(prices,production));
-        dispatch(updateNamesAmountAndIdsItems(productsJSON));
+        dispatch( updateNamesAndIds(productsJSON) );
+        dispatch( updatePrices(prices,production) );
+        dispatch( updateNamesAmountAndIdsItems(productsJSON) );
+        dispatch( updatePricesItems(prices,production) );
         // eslint-disable-next-line
-      }, [production])
+      }, [production,prices]);
     
     return {
         tableP

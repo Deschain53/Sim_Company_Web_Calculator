@@ -4,4 +4,5 @@ export const typesTableProduction = {
     updateNamesAndIds: '[tableP] Update names and ids',
     updatePrices: '[tableP] Update prices',
     updateNamesAmountAndIdsItems: '[tableP] Update names, amount and ids items',
+    updatePricesItems: '[tableP] Update prices items',
 }

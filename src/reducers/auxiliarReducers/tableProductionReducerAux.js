@@ -1,3 +1,5 @@
+import { SatelliteOutlined } from "@material-ui/icons";
+
 export const createData = (product,
     id,
     cost = 0, 
@@ -97,6 +99,31 @@ export const getStateWithNameIdAndAmoutItem = (state, productsJSON) => {
             detail: newDetailArray
         }
     })
+
+    return newState;
+}
+
+export const getStateWithDetailItemsPriced = (state, marketPrices,quality) => {
+
+    const newState = state.map( productTable => {
+
+        const { detail } = productTable;
+        //console.log(newUnitCost)
+        const newDetail = detail.map( detailItem =>  {   
+            //console.log(detailItem.id);
+            const newUnitCost = getPrice(detailItem.id, marketPrices, quality > 1 ? quality-1 : 0 );
+            //console.log('Para ' + productTable.product + ' - ' + detailItem.id + ' : ' + newUnitCost);
+            return{...detailItem, unitCost: newUnitCost}
+        });
+
+        return{
+            ...productTable,
+            detail: newDetail
+        }
+
+    })
+
+    //console.log(newState);
 
     return newState;
 }
