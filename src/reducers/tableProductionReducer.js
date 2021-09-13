@@ -1,5 +1,6 @@
 import { typesTableProduction } from '../types/typesTableProduction';
-import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated } from './auxiliarReducers/tableProductionReducerAux';
+import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, 
+  getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -19,6 +20,11 @@ export const tableProductionReducer = (state = initialState, action) => {
         case typesTableProduction.updatePrices:
           const newState =  getStateWWithMarketPrices(state, action.payload.marketPrices, action.payload.quality );
         return newState;
+
+        case typesTableProduction.updateUnitsHour:
+          const stateWithUnitsHourUpdated =  getStateWithUnitsHourUpdated(state, action.payload.productsJSON,
+            action.payload.bonus, action.payload.abundance);
+        return stateWithUnitsHourUpdated;
 
         case typesTableProduction.updateNamesAmountAndIdsItems:   //this action erase previous information of detail                      
           const stateWithNameIdAndAmoutItem =  getStateWithNameIdAndAmoutItem(state, action.payload.productsJSON)

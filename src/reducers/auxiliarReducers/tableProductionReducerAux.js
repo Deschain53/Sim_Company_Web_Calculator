@@ -86,6 +86,23 @@ const getNewDetailArray = ( { producedFrom } ) => {
 
 }
 
+export const getStateWithUnitsHourUpdated = (state, productsJSON, bonus, abundance) => {
+
+    const newState = state.map( productTable => {
+
+        const {producedAnHour} =  getProductJSONbyId(productsJSON, productTable.id);
+
+        const realProducedAnHour = producedAnHour * ( 1 + ( bonus !==0 ? (bonus)/100 : 0) ) * (abundance/100);
+
+        return { 
+            ...productTable,
+            unitsHour: realProducedAnHour
+        }
+    })
+
+    return newState;
+}
+
 export const getStateWithNameIdAndAmoutItem = (state, productsJSON) => {
 
     const newState = state.map( productTable => {
