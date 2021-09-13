@@ -1,5 +1,5 @@
 import { typesTableProduction } from '../types/typesTableProduction';
-import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, getStateWithTotalCostItemsCalculated } from './auxiliarReducers/tableProductionReducerAux';
+import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -31,6 +31,23 @@ export const tableProductionReducer = (state = initialState, action) => {
         case typesTableProduction.calculateTotalCostItems:
           const stateTotalCostItemsCalculated = getStateWithTotalCostItemsCalculated(state);
         return stateTotalCostItemsCalculated;
+
+        case typesTableProduction.calculateAdditionTotalCostItems:
+          console.log('calculateAdditionTotalCostItems');
+        return state;
+
+
+        case typesTableProduction.updateWagesItems: 
+          const stateWagesItemsUpdated = getStateWithWagesUpdated(state, action.payload.wages);
+        return stateWagesItemsUpdated;
+
+        case typesTableProduction.updateAdminItems: 
+          console.log('updateAdminItems');
+        return state;
+
+        case typesTableProduction.calculateTotalCostFabrication: 
+          console.log('calculateTotalCostFabrication');
+        return state;
 
         default:
             return state;

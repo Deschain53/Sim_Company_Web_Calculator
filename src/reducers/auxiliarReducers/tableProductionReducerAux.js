@@ -1,4 +1,4 @@
-import { SatelliteOutlined } from "@material-ui/icons";
+//import { SatelliteOutlined } from "@material-ui/icons";
 
 export const createData = (product,
     id,
@@ -124,7 +124,6 @@ export const getStateWithDetailItemsPriced = (state, marketPrices,quality) => {
 }
 
 export const getStateWithTotalCostItemsCalculated =(state) => {
-        console.log('aqui se calculará');
 
         const newState = state.map( productTable => {
 
@@ -143,6 +142,25 @@ export const getStateWithTotalCostItemsCalculated =(state) => {
     
         })
 
+    return newState;
+}
+
+export const getStateWithWagesUpdated =(state,wages) => {
+
+        const newState = state.map( productTable => {
+
+            const { resume, unitsHour } = productTable;
+            const newWages = (wages/unitsHour) !== Infinity ? wages/unitsHour  : 0   ;
+            const newResume = {...resume, wages: newWages}
+           
+            return {
+                ...productTable,
+                resume: newResume
+            }
+    
+        })
 
     return newState;
 }
+
+

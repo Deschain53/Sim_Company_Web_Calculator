@@ -58,3 +58,45 @@ export const calculateTotalCostItems = () => {
         )
     }
 }
+
+export const calculateAdditionTotalCostItems = () => {
+    return(dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.calculateAdditionTotalCostItems
+            }
+        )
+    }
+}
+
+export const updateWagesItems = ( wagesBuilding = 0 ) => {
+    return(dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.updateWagesItems ,
+                payload: { wages: wagesBuilding }
+            }
+        )
+    }
+}
+
+export const updateAdminItems = ({admin}) => {
+    return(dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.updateAdminItems ,
+                payload: ''
+            }
+        )
+    }
+}
+
+export const calculateTotalCostFabrication  = () => {
+    return(dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.calculateTotalCostFabrication ,
+            }
+        )
+    }
+}

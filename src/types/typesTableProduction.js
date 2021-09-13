@@ -6,4 +6,8 @@ export const typesTableProduction = {
     updateNamesAmountAndIdsItems: '[tableP] Update names, amount and ids items',
     updatePricesItems: '[tableP] Update prices items',
     calculateTotalCostItems: '[tableP] Calculate total cost items',
+    calculateAdditionTotalCostItems: '[tableP] Calculate addition total cost items',
+    updateWagesItems: '[tableP] Update wages items',
+    updateAdminItems: '[tableP] Update administration items',
+    calculateTotalCostFabrication: '[tableP] Calculate total cost fabrication',
 }

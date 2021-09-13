@@ -23,8 +23,9 @@ export const useProductsBuilding = ({productsNormalJSON, productsBoomJSON, produ
     const [allProductsJSON] = useState(selectInitialJSON);
 
     const building = getBuilding(buildingId);
+    const { wages } = building;
 
     const productsJSON = building.produce.map( id => allProductsJSON.find( ({db_letter}) => id === db_letter ) );
 
-    return {productsJSON}
+    return {productsJSON, wages}
 }
