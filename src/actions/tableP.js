@@ -48,3 +48,13 @@ export const updatePricesItems = (marketPrices,{quality=0}) => {
         )
     }
 }
+
+export const calculateTotalCostItems = () => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: typesTableProduction.calculateTotalCostItems
+            }
+        )
+    }
+}

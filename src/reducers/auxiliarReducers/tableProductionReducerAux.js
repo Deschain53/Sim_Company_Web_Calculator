@@ -108,11 +108,8 @@ export const getStateWithDetailItemsPriced = (state, marketPrices,quality) => {
     const newState = state.map( productTable => {
 
         const { detail } = productTable;
-        //console.log(newUnitCost)
         const newDetail = detail.map( detailItem =>  {   
-            //console.log(detailItem.id);
             const newUnitCost = getPrice(detailItem.id, marketPrices, quality > 1 ? quality-1 : 0 );
-            //console.log('Para ' + productTable.product + ' - ' + detailItem.id + ' : ' + newUnitCost);
             return{...detailItem, unitCost: newUnitCost}
         });
 
@@ -123,7 +120,29 @@ export const getStateWithDetailItemsPriced = (state, marketPrices,quality) => {
 
     })
 
-    //console.log(newState);
+    return newState;
+}
+
+export const getStateWithTotalCostItemsCalculated =(state) => {
+        console.log('aqui se calculará');
+
+        const newState = state.map( productTable => {
+
+            const { detail } = productTable;
+            const newDetail = detail.map( detailItem =>  { 
+                const {amount,unitCost} = detailItem;
+                const newTotalCost = amount*unitCost;
+
+                return {...detailItem, totalCost: newTotalCost}
+            });
+    
+            return {
+                ...productTable,
+                detail: newDetail
+            }
+    
+        })
+
 
     return newState;
 }
