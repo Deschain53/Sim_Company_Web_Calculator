@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
     calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, 
-    updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, 
+    updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, calculateProfitHourMarket, 
     /*calculateProfitHourMarket*/ } from '../actions/tableP';
 
 export const useCalculaProduction = () => {
@@ -30,8 +30,8 @@ export const useCalculaProduction = () => {
         dispatch( updateAdminItems(production));                //detail-4
         dispatch( calculateTotalCostFabrication());             //detail-end
 
-        dispatch( calculateProfitHourContract(production,productsJSON));
-        //dispatch( calculateProfitHourMarket(production,productsJSON));
+        dispatch( calculateProfitHourContract(production,productsJSON, production));
+        dispatch( calculateProfitHourMarket(production,productsJSON));
         
         // eslint-disable-next-line
       }, [production,prices]);

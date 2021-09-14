@@ -2,8 +2,8 @@ import { typesTableProduction } from '../types/typesTableProduction';
 import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, 
   getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated,
   getStateWithAdditionTotalCostItems, getStateWithAdmitItemsCalculated,
-  getStateWithTotalCostOfFabricationItems, 
-  getStateWithProfitHourMarketCalculated} from './auxiliarReducers/tableProductionReducerAux';
+  getStateWithTotalCostOfFabricationItems, getStateWithProfitHourMarketCalculated, getStateWithProfitHourContractCalculated, 
+  } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -59,12 +59,13 @@ export const tableProductionReducer = (state = initialState, action) => {
         return stateWithTotalCostOfFabricationItems;
 
         case typesTableProduction.calculateProfitHourContract:
-          const stateWithProfitHourMarketCalculated = getStateWithProfitHourMarketCalculated(state,action.payload.productsJSON, action.payload.transport);
-        return stateWithProfitHourMarketCalculated;
+          const stateWithProfitHourContractCalculated = getStateWithProfitHourContractCalculated(
+            state,action.payload.productsJSON, action.payload.transport, action.payload.porcentaje)
+        return stateWithProfitHourContractCalculated;
 
         case typesTableProduction.calculateProfitHourMarket:
-          console.log('calculateProfitHourMarket');
-        return state;
+          const stateWithProfitHourMarketCalculated = getStateWithProfitHourMarketCalculated(state,action.payload.productsJSON, action.payload.transport);
+        return stateWithProfitHourMarketCalculated;
 
         default:
         return state;

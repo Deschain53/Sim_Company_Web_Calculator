@@ -133,23 +133,27 @@ export const calculateTotalCostFabrication  = () => {
     }
 }
 
-export const calculateProfitHourContract = ({transport=0},productsJSON) => {
+export const calculateProfitHourContract = ({transport=0},productsJSON,{PVM}) => {
+    //console.log(porcentaje);
     return (dispatch) => {
         const newProductsJSONWithtransportNeeded = productsJSON.map( ({db_letter,transportNeeded}) => (
             {db_letter,transportNeeded}));
 
         dispatch({
             type:typesTableProduction.calculateProfitHourContract,
-            payload: {transport,productsJSON:newProductsJSONWithtransportNeeded}
+            payload: {transport,productsJSON:newProductsJSONWithtransportNeeded,porcentaje:PVM}
         })
     }
 }
 
-/*export const calculateProfitHourMarket = ({transport=0},productsJSON) => {
+export const calculateProfitHourMarket = ({transport=0},productsJSON) => {
+    const newProductsJSONWithtransportNeeded = productsJSON.map( ({db_letter,transportNeeded}) => (
+        {db_letter,transportNeeded}));
+
     return (dispatch) => {
         dispatch({
             type:typesTableProduction.calculateProfitHourMarket,
-            payload: {transport,transportNeeded}
+            payload: {transport,productsJSON:newProductsJSONWithtransportNeeded}
         })
     }
-}*/
+}

@@ -254,3 +254,20 @@ export const getStateWithProfitHourMarketCalculated = (state,productsJSON,transp
 
     return newState;
 }
+
+export const getStateWithProfitHourContractCalculated = (state,productsJSON,transport,porcentaje) => {
+    console.log(porcentaje);
+    const newState = state.map( productTable => {
+        const {transportNeeded} = getProductJSONbyId(productsJSON,productTable.id);
+        const { cost, marketPrice, unitsHour } = productTable;  
+        const newProfitHourContract= ((marketPrice*(1-porcentaje/100)-cost)-(transportNeeded*transport*0.5))*unitsHour;
+       
+        return {
+            ...productTable,
+            profitHourContract: newProfitHourContract
+        }
+
+    })
+
+    return newState;
+}
