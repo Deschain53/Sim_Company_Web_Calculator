@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
     calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, 
     updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, calculateProfitHourMarket, 
-    /*calculateProfitHourMarket*/ } from '../actions/tableP';
+    } from '../actions/tableP';
+import { getProductsBuilding } from '../data/getData/getProductsBuilding';
 
 export const useCalculaProduction = () => {
 
@@ -17,9 +17,10 @@ export const useCalculaProduction = () => {
     const  products  =  useSelector( state => state.products ); 
     const  prices  =  useSelector( state => state.prices );
 
-    const {productsJSON, wages} =  useProductsBuilding(products,production);
-
     const {quality,fase,building,PVM,admin, transport, abundance} = production;
+
+    const {productsJSON, wages} = useMemo(() => getProductsBuilding(products,fase,building), [products,fase,building]);
+     ;
 
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0

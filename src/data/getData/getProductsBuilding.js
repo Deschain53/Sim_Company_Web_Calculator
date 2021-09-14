@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { getBuilding } from "../data/getData/getBuilding";
+import { getBuilding } from "./getBuilding";
 
-export const useProductsBuilding = ({productsNormalJSON, productsBoomJSON, productsRecessionJSON },
-    {fase, building:buildingId}) => { 
+export const getProductsBuilding = ({productsNormalJSON, productsBoomJSON, productsRecessionJSON },
+    fase, buildingId='L') => {
 
-    const selectInitialJSON = () => {
+    const selectJSON = (fase) => {
         switch (fase) {
             case 0:
                 return productsRecessionJSON;
@@ -19,13 +18,13 @@ export const useProductsBuilding = ({productsNormalJSON, productsBoomJSON, produ
                 return productsRecessionJSON;
         }
     }
-
-    const [allProductsJSON] = useState(selectInitialJSON);
+    
+    const allProductsJSON = selectJSON(fase);
 
     const building = getBuilding(buildingId);
     const { wages } = building;
 
     const productsJSON = building.produce.map( id => allProductsJSON.find( ({db_letter}) => id === db_letter ) );
 
-    return {productsJSON, wages}
+    return { wages, productsJSON }
 }
