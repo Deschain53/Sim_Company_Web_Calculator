@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
-    calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems } from '../actions/tableP';
+    calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, updateAdminItems } from '../actions/tableP';
 
 export const useCalculaProduction = () => {
 
@@ -24,7 +24,11 @@ export const useCalculaProduction = () => {
         dispatch( updatePricesItems(prices,production) );       //detail-1
         dispatch( calculateTotalCostItems() );                  //detail-2
         dispatch( calculateAdditionTotalCostItems() );          //detail-3
-        dispatch( updateWagesItems(wages) );                    
+        dispatch( updateWagesItems(wages) );  
+        dispatch( updateAdminItems(production));
+        //calculate admin
+        //calculate total cost fabrication
+        
         // eslint-disable-next-line
       }, [production,prices]);
     

@@ -117,7 +117,7 @@ export const updateAdminItems = ({admin}) => {
         dispatch(
             {
                 type: typesTableProduction.updateAdminItems ,
-                payload: ''
+                payload: {admin}
             }
         )
     }

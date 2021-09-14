@@ -203,3 +203,19 @@ export const getStateWithAdditionTotalCostItems = (state) => {
     return newState
 }
 
+export const getStateWithAdmitItemsCalculated = (state, admin = 0) => {
+    const newState = state.map( productTable => {
+
+        const { resume } = productTable;   
+        const newAdministrationOverhead =  admin !== 0 ? (resume.wages*admin/100) : 0;
+        const newResume = {...resume, administrationOverhead: newAdministrationOverhead}
+       
+        return {
+            ...productTable,
+            resume: newResume
+        }
+
+    })
+
+    return newState;
+}
