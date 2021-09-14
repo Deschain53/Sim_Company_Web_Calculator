@@ -1,14 +1,15 @@
 import { typesTableProduction } from "../types/typesTableProduction";
 
 export const updateNamesAndIds = (productsJSON) => {
-    //Por optimizar
+    const newProductsJSONWithIdAndName= productsJSON.map( ({db_letter,name}) => (
+        {db_letter,name}));
 
     return (dispatch) => {
 
         dispatch( 
             {
                 type: typesTableProduction.updateNamesAndIds,
-                payload: productsJSON
+                payload: newProductsJSONWithIdAndName
             }
         )
 
@@ -45,11 +46,25 @@ export const updateUnitsHour = (productsJSON, {bonus, abundance}) => {
 }
 
 export const updateNamesAmountAndIdsItems = (productsJSON) => {
+
+    const newProductsJSONWithProducedFrom = productsJSON.map( ({db_letter,producedFrom}) => {
+        const newProducedFrom = producedFrom.map(({amount,resource}) => {
+            const id = resource.db_letter;
+            const name = resource.name;
+            return { amount ,
+                     resource: {db_letter: id,
+                                name}
+                    }
+        });
+        
+        return {db_letter,producedFrom: newProducedFrom}
+    });
+
     return (dispatch) => {
         dispatch(
             {
                 type: typesTableProduction.updateNamesAmountAndIdsItems,
-                payload: {productsJSON}
+                payload: {productsJSON: newProductsJSONWithProducedFrom}
             }
         )
     }
