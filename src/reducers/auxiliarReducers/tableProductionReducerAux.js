@@ -256,7 +256,6 @@ export const getStateWithProfitHourMarketCalculated = (state,productsJSON,transp
 }
 
 export const getStateWithProfitHourContractCalculated = (state,productsJSON,transport,porcentaje) => {
-    console.log(porcentaje);
     const newState = state.map( productTable => {
         const {transportNeeded} = getProductJSONbyId(productsJSON,productTable.id);
         const { cost, marketPrice, unitsHour } = productTable;  

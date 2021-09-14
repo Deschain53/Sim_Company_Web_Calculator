@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
@@ -10,12 +10,16 @@ export const useCalculaProduction = () => {
 
     const dispatch = useDispatch();
 
+    const [isFirstRender, setIsFirstRender] = useState(true);
+
     const  tableP  = useSelector( state => state.tableP );
     const  production  = useSelector( state => state.production );
     const  products  =  useSelector( state => state.products ); 
     const  prices  =  useSelector( state => state.prices );
 
     const {productsJSON, wages} =  useProductsBuilding(products,production);
+
+    const {quality,fase,building,PVM,admin, transport, abundance} = production;
 
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0
@@ -30,12 +34,25 @@ export const useCalculaProduction = () => {
         dispatch( updateAdminItems(production));                //detail-4
         dispatch( calculateTotalCostFabrication());             //detail-end
 
-        dispatch( calculateProfitHourContract(production,productsJSON, production));
-        dispatch( calculateProfitHourMarket(production,productsJSON));
+        dispatch( calculateProfitHourContract(production,productsJSON, production));    //product-end
+        dispatch( calculateProfitHourMarket(production,productsJSON));                  //product-end
         
         // eslint-disable-next-line
-      }, [production,prices]);
+    }, [quality,fase,building,admin,abundance,prices]);
     
+    useEffect(() => {
+        
+        if(!isFirstRender){
+            dispatch( calculateProfitHourContract(production,productsJSON, production));    //product-end
+            dispatch( calculateProfitHourMarket(production,productsJSON));                  //product-end    
+        }
+        // eslint-disable-next-line
+    }, [PVM,transport])
+
+    useEffect(() => {
+        setIsFirstRender(false);
+    }, [])
+
     return {
         tableP
     }

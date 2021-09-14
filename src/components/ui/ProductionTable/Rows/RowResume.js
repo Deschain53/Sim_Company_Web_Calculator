@@ -15,7 +15,7 @@ export const RowResume = ({resume}) => {
             <TableRow>
               <TableCell rowSpan={4} />
               <TableCell colSpan={2}>Total cost items</TableCell>
-              <TableCell align="right">$&nbsp;{totalCostItems}</TableCell>
+              <TableCell align="right">$&nbsp;{processDecimals(totalCostItems)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2}>Wages</TableCell>
