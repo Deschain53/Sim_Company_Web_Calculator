@@ -9,7 +9,6 @@ export const RowResume = ({resume}) => {
       const numeroDecimales = 3;
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
-    console.log('accionDisparada')
 
     return (
         <TableBody>

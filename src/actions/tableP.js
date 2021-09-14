@@ -132,3 +132,24 @@ export const calculateTotalCostFabrication  = () => {
         )
     }
 }
+
+export const calculateProfitHourContract = ({transport=0},productsJSON) => {
+    return (dispatch) => {
+        const newProductsJSONWithtransportNeeded = productsJSON.map( ({db_letter,transportNeeded}) => (
+            {db_letter,transportNeeded}));
+
+        dispatch({
+            type:typesTableProduction.calculateProfitHourContract,
+            payload: {transport,productsJSON:newProductsJSONWithtransportNeeded}
+        })
+    }
+}
+
+/*export const calculateProfitHourMarket = ({transport=0},productsJSON) => {
+    return (dispatch) => {
+        dispatch({
+            type:typesTableProduction.calculateProfitHourMarket,
+            payload: {transport,transportNeeded}
+        })
+    }
+}*/

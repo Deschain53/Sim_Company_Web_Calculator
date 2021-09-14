@@ -2,7 +2,8 @@ import { typesTableProduction } from '../types/typesTableProduction';
 import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, 
   getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated,
   getStateWithAdditionTotalCostItems, getStateWithAdmitItemsCalculated,
-  getStateWithTotalCostOfFabricationItems } from './auxiliarReducers/tableProductionReducerAux';
+  getStateWithTotalCostOfFabricationItems, 
+  getStateWithProfitHourMarketCalculated} from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -56,6 +57,14 @@ export const tableProductionReducer = (state = initialState, action) => {
         case typesTableProduction.calculateTotalCostFabrication: 
           const stateWithTotalCostOfFabricationItems = getStateWithTotalCostOfFabricationItems(state);
         return stateWithTotalCostOfFabricationItems;
+
+        case typesTableProduction.calculateProfitHourContract:
+          const stateWithProfitHourMarketCalculated = getStateWithProfitHourMarketCalculated(state,action.payload.productsJSON, action.payload.transport);
+        return stateWithProfitHourMarketCalculated;
+
+        case typesTableProduction.calculateProfitHourMarket:
+          console.log('calculateProfitHourMarket');
+        return state;
 
         default:
         return state;

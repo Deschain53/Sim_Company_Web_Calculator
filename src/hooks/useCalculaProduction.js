@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
     calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, 
-    updateAdminItems, calculateTotalCostFabrication } from '../actions/tableP';
+    updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, 
+    /*calculateProfitHourMarket*/ } from '../actions/tableP';
 
 export const useCalculaProduction = () => {
 
@@ -19,18 +20,18 @@ export const useCalculaProduction = () => {
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0
         dispatch( updateUnitsHour(productsJSON, production) );  //product-1
-        dispatch( updatePrices(prices,production) );            
+        dispatch( updatePrices(prices,production) );            //product-2
 
         dispatch( updateNamesAmountAndIdsItems(productsJSON) ); //detail-0
         dispatch( updatePricesItems(prices,production) );       //detail-1
         dispatch( calculateTotalCostItems() );                  //detail-2
         dispatch( calculateAdditionTotalCostItems() );          //detail-3
-        dispatch( updateWagesItems(wages) );                    //
-        dispatch( updateAdminItems(production));                //
-        dispatch( calculateTotalCostFabrication());             //
+        dispatch( updateWagesItems(wages) );                    //detail-4
+        dispatch( updateAdminItems(production));                //detail-4
+        dispatch( calculateTotalCostFabrication());             //detail-end
 
-        //calculate admin
-        //calculate total cost fabrication
+        dispatch( calculateProfitHourContract(production,productsJSON));
+        //dispatch( calculateProfitHourMarket(production,productsJSON));
         
         // eslint-disable-next-line
       }, [production,prices]);
