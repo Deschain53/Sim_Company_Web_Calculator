@@ -5,6 +5,12 @@ export const RowResume = ({resume}) => {
 
     const { totalCostItems, wages, administrationOverhead, totalCostOfFabrication } = resume; 
     
+    const processDecimals = (numero) => {
+      const numeroDecimales = 3;
+      return Number.parseFloat(numero).toFixed(numeroDecimales);
+    }
+    console.log('accionDisparada')
+
     return (
         <TableBody>
             <TableRow>
@@ -14,15 +20,15 @@ export const RowResume = ({resume}) => {
             </TableRow>
             <TableRow>
               <TableCell colSpan={2}>Wages</TableCell>
-              <TableCell align="right">$&nbsp;{wages}</TableCell>
+              <TableCell align="right">$&nbsp;{processDecimals(wages)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2}>Administration overhead</TableCell>
-              <TableCell align="right">$&nbsp;{administrationOverhead}</TableCell>
+              <TableCell align="right">$&nbsp;{processDecimals(administrationOverhead)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2}>Total Cost of fabrication</TableCell>
-              <TableCell align="right">$&nbsp;{totalCostOfFabrication}</TableCell>
+              <TableCell align="right">$&nbsp;{processDecimals(totalCostOfFabrication)}</TableCell>
             </TableRow>
         </TableBody>
     )

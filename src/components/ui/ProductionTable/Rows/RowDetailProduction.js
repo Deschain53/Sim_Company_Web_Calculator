@@ -3,7 +3,7 @@ import React from 'react'
 import { RowResume } from './RowResume'
 import { TableHeadDetail } from './TableHeadDetail'
 
-export const RowCollapsibleProduction = ({row, open}) => {
+export const RowDetailProduction = ({row, open}) => {
     return (
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>

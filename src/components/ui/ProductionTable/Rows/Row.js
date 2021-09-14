@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { RowNormalProduction } from './RowNormalProduction';
-import { RowCollapsibleProduction } from './RowCollapsibleProduction';
+import { RowDetailProduction } from './RowDetailProduction';
 
 export const Row = ({row}) => {
     const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ export const Row = ({row}) => {
             setOpen= { setOpen }
         />
   
-        <RowCollapsibleProduction
+        <RowDetailProduction
             row={ row }
             open={ open}
         />
