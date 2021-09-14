@@ -219,3 +219,22 @@ export const getStateWithAdmitItemsCalculated = (state, admin = 0) => {
 
     return newState;
 }
+
+export const getStateWithTotalCostOfFabricationItems = (state) => {
+    const newState = state.map( productTable => {
+
+        const { resume } = productTable;   
+        const {totalCostItems, wages, administrationOverhead } = resume;
+        const newTotalCostOfFabrication = totalCostItems + wages + administrationOverhead;
+        const newResume = {...resume, totalCostOfFabrication: newTotalCostOfFabrication}
+       
+        return {
+            ...productTable,
+            cost: newTotalCostOfFabrication,
+            resume: newResume
+        }
+
+    })
+
+    return newState;
+}
