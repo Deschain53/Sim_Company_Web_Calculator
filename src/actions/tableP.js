@@ -1,6 +1,8 @@
 import { typesTableProduction } from "../types/typesTableProduction";
 
 export const updateNamesAndIds = (productsJSON) => {
+    //Por optimizar
+
     return (dispatch) => {
 
         dispatch( 
@@ -28,11 +30,15 @@ export const updatePrices = ( marketPrices, {quality}) => {
 }
 
 export const updateUnitsHour = (productsJSON, {bonus, abundance}) => {
+
+    const newProductsJSONWithIDAndProducedHour = productsJSON.map( ({db_letter,producedAnHour}) => (
+        {db_letter,producedAnHour}));
+
     return (dispatch) => {
         dispatch(
             {
                 type: typesTableProduction.updateUnitsHour,
-                payload: {productsJSON, bonus, abundance}
+                payload: {productsJSON:newProductsJSONWithIDAndProducedHour, bonus, abundance}
             }
         )
     }
