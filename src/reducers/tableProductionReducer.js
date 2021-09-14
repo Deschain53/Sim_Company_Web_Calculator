@@ -1,6 +1,6 @@
 import { typesTableProduction } from '../types/typesTableProduction';
 import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, 
-  getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated } from './auxiliarReducers/tableProductionReducerAux';
+  getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated, getStateWithAdditionTotalCostItems } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
     createData('.',1),
@@ -39,8 +39,8 @@ export const tableProductionReducer = (state = initialState, action) => {
         return stateTotalCostItemsCalculated;
 
         case typesTableProduction.calculateAdditionTotalCostItems:
-          console.log('calculateAdditionTotalCostItems');
-        return state;
+          const stateWithAdditionTotalCostItem = getStateWithAdditionTotalCostItems(state);
+        return stateWithAdditionTotalCostItem;
 
 
         case typesTableProduction.updateWagesItems: 

@@ -180,4 +180,26 @@ export const getStateWithWagesUpdated =(state,wages) => {
     return newState;
 }
 
+export const getStateWithAdditionTotalCostItems = (state) => {
+
+    const newState = state.map( productTable => {
+
+        const { resume, detail } = productTable;
+
+        let additionTotalItems = 0;
+            detail.forEach( ({totalCost}) => { additionTotalItems += totalCost });        
+
+        const additionTotalItemsConst = additionTotalItems;
+        
+        const newResume = {...resume, totalCostItems: additionTotalItemsConst}
+       
+        return {
+            ...productTable,
+            resume: newResume
+        }
+
+    })
+
+    return newState
+}
 

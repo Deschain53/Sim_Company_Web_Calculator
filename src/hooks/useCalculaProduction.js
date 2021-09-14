@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useProductsBuilding } from './useProductsBuilding';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
-    calculateTotalCostItems, updateWagesItems, updateUnitsHour } from '../actions/tableP';
+    calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems } from '../actions/tableP';
 
 export const useCalculaProduction = () => {
 
@@ -16,15 +16,15 @@ export const useCalculaProduction = () => {
     const {productsJSON, wages} =  useProductsBuilding(products,production);
 
     useEffect(() => {
-        dispatch( updateNamesAndIds(productsJSON) );        
-        dispatch( updatePrices(prices,production) );
-        dispatch( updateUnitsHour(productsJSON, production) );
+        dispatch( updateNamesAndIds(productsJSON) );            //product-0
+        dispatch( updateUnitsHour(productsJSON, production) );  //product-1
+        dispatch( updatePrices(prices,production) );            
 
-        dispatch( updateNamesAmountAndIdsItems(productsJSON) );
-        dispatch( updatePricesItems(prices,production) );   
-        dispatch( calculateTotalCostItems() );
-
-        dispatch( updateWagesItems(wages) );
+        dispatch( updateNamesAmountAndIdsItems(productsJSON) ); //detail-0
+        dispatch( updatePricesItems(prices,production) );       //detail-1
+        dispatch( calculateTotalCostItems() );                  //detail-2
+        dispatch( calculateAdditionTotalCostItems() );          //detail-3
+        dispatch( updateWagesItems(wages) );                    
         // eslint-disable-next-line
       }, [production,prices]);
     
