@@ -9,6 +9,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
   
   const dispatch = useDispatch();
   const productionInfo = useSelector( state => state.production );
+  const {building} = productionInfo;
 
   const [formValues, handleInputChange] = useForm(verifyInitialStateForm(productionInfo));
   
@@ -23,7 +24,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
       admin: verifyNumber(admin),
       bonus: verifyNumber(bonus),
       transport: verifyNumber(transport),
-      abundance: verifyNumber(abundance)
+      abundance: verifyNumber(abundance) //(building === 'O' ||  building === 'Q'|| building === 'M') ? verifyNumber(abundance) : 100 ,
     }
 
     dispatch( updateInfoFormP(info) );
@@ -109,6 +110,8 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
             </div>
         </div>
 
+    { (building === 'O' ||  building === 'Q'|| building === 'M')  
+      ?(
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
                 Abundance
@@ -127,6 +130,9 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
               <div className="input-group-text  ">%</div>
             </div>
         </div>
+      ) 
+      : <></>
+    }
 
         <div className="row mb-1">
             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">

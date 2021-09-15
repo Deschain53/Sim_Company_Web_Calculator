@@ -1,4 +1,4 @@
-import { Box, Collapse, Table, TableBody, TableCell, TableRow, Typography } from '@material-ui/core'
+import { Box, Collapse, Table, TableBody, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles'
 import { RowResume } from './RowResume'

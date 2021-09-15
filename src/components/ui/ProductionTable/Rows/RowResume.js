@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableBody, TableCell, TableRow } from '@material-ui/core';
+import { TableBody, TableRow } from '@material-ui/core';
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 
 export const RowResume = ({resume}) => {

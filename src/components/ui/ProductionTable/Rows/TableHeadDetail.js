@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableCell, TableHead, TableRow } from '@material-ui/core'
+import { TableHead, TableRow } from '@material-ui/core'
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 
 export const TableHeadDetail = () => {

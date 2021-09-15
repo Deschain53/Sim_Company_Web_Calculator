@@ -31,7 +31,7 @@ export const updatePrices = ( marketPrices, {quality}) => {
 }
 
 export const updateUnitsHour = (productsJSON, {bonus, abundance}) => {
-
+    //console.log(abundance);
     const newProductsJSONWithIDAndProducedHour = productsJSON.map( ({db_letter,producedAnHour}) => (
         {db_letter,producedAnHour}));
 

@@ -23,7 +23,9 @@ export const useCalculaProduction = () => {
 
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0
-        dispatch( updateUnitsHour(productsJSON, production) );  //product-1
+        dispatch( updateUnitsHour(productsJSON, 
+            (building === 'O' ||  building === 'Q'|| building === 'M') 
+            ? production : {...production, abundance:100}) );  //product-1
         dispatch( updatePrices(prices,production) );            //product-2
 
         dispatch( updateNamesAmountAndIdsItems(productsJSON) ); //detail-0

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { IconButton, makeStyles, TableCell, TableRow } from '@material-ui/core'
+import { IconButton, makeStyles, TableRow } from '@material-ui/core'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
