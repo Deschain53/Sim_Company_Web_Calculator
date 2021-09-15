@@ -1,14 +1,16 @@
 import React from 'react'
 import { TableCell, TableHead, TableRow } from '@material-ui/core'
+import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 
 export const TableHeadDetail = () => {
+  const mode = 'dark';
     return (
         <TableHead>
         <TableRow>
-          <TableCell>Item</TableCell>
-          <TableCell>Amount</TableCell>
-          <TableCell align="right">Unit cost</TableCell>
-          <TableCell align="right">Total cost</TableCell>
+          <StyledTableCell mode={mode} >Item</StyledTableCell>
+          <StyledTableCell mode={mode} >Amount</StyledTableCell>
+          <StyledTableCell mode={mode}  align="right">Unit cost</StyledTableCell>
+          <StyledTableCell mode={mode}  align="right">Total cost</StyledTableCell>
         </TableRow>
       </TableHead>
     )

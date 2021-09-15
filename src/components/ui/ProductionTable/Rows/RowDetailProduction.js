@@ -1,12 +1,14 @@
 import { Box, Collapse, Table, TableBody, TableCell, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
+import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles'
 import { RowResume } from './RowResume'
 import { TableHeadDetail } from './TableHeadDetail'
 
 export const RowDetailProduction = ({row, open}) => {
+  const mode = 'dark';
     return (
         <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+          <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box margin={1}>
                 <Typography variant="h6" gutterBottom component="div">
@@ -19,10 +21,10 @@ export const RowDetailProduction = ({row, open}) => {
                   <TableBody>
                     {row.detail.map(({item, amount, unitCost, totalCost}) => (
                       <TableRow key={item}>
-                        <TableCell component="th" scope="row">{item}</TableCell>
-                        <TableCell>{amount}</TableCell>
-                        <TableCell align="right">$&nbsp;{unitCost}</TableCell>
-                        <TableCell align="right">$&nbsp;{totalCost}</TableCell>
+                        <StyledTableCell component="th" scope="row" mode={mode} >{item}</StyledTableCell>
+                        <StyledTableCell  mode={mode} >{amount}</StyledTableCell>
+                        <StyledTableCell align="right" mode={mode} >$&nbsp;{unitCost}</StyledTableCell>
+                        <StyledTableCell align="right" mode={mode} >$&nbsp;{totalCost}</StyledTableCell>
                       </TableRow>
                     ))}
                     <TableRow/>
@@ -33,7 +35,7 @@ export const RowDetailProduction = ({row, open}) => {
                 </Table>
               </Box>
             </Collapse>
-          </TableCell>
+          </StyledTableCell>
         </TableRow>
     )
 }

@@ -27,21 +27,23 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
 
+    const mode='dark';
+
     return (
         <TableRow className={classes.root}>
-          <TableCell>
-            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+          <StyledTableCell mode={mode}>
+            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} color={ mode === 'dark' ? "primary" : "" }>
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
-          </TableCell>
-          <TableCell component="th" scope="row">
+          </StyledTableCell>
+          <StyledTableCell component="th" scope="row" mode={mode}>
             {product}
-          </TableCell>
-          <StyledTableCell align="right" color='dark'>$&nbsp;{processDecimals(cost)}</StyledTableCell>
-          <TableCell align="right">$&nbsp;{marketPrice}</TableCell>
-          <TableCell align="right">{processDecimals(unitsHour*buildingLevel)}</TableCell>
-          <TableCell align="right">$&nbsp;{processDecimals(profitHourMarket*buildingLevel)}</TableCell>
-          <TableCell align="right">$&nbsp;{processDecimals(profitHourContract*buildingLevel)}</TableCell>
+          </StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(cost)}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{marketPrice}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(profitHourMarket*buildingLevel)}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(profitHourContract*buildingLevel)}</StyledTableCell>
         </TableRow>
     )
 }

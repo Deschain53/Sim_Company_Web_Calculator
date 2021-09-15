@@ -6,30 +6,34 @@ const styledBy = (property, mapping) => (props) => mapping[props[property]];
 
 const styles = {
     body: {
-      background: styledBy('color', {
-        default: 'white',
-        dark: '#18191f',
-      }),
-      color: styledBy('color', {
-        default: 'black',
-        dark:'white',
-      }),
+        background: styledBy('mode', {
+          default: 'white',
+          dark: '#18191f',
+        }),
+        color: styledBy('mode', {
+          default: 'black',
+          dark:'white',
+        }),
     },
+    /*head: {
+        background: styledBy('mode', {
+            default: 'white',
+            dark: '#696969',
+          }),
+        color: styledBy('mode', {
+          default: 'black',
+          dark:'white',
+        }),        
+    }*/
   };
 
 
 export const StyledTableCell = withStyles(() => ({
-    /*head: {
-      backgroundColor: styledBy('color', {
-        default: 'theme.palette.common.white',
-        dark: '#18191f',
-      }),
-      color: styledBy('color',{
-        default: 'theme.palette.common.black',
-        dark: 'theme.palette.common.white',
-      })
-
-    },*/
+    head: {
+      fontSize: 18,
+      backgroundColor: '#343a40',
+      color: 'white',
+    },
     body: {
       fontSize: 18,
       color: styles.body.color,

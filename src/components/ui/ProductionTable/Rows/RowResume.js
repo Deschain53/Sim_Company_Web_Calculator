@@ -1,5 +1,6 @@
 import React from 'react';
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
+import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 
 export const RowResume = ({resume}) => {
 
@@ -10,24 +11,26 @@ export const RowResume = ({resume}) => {
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
 
+    const mode='dark';
+
     return (
         <TableBody>
             <TableRow>
-              <TableCell rowSpan={4} />
-              <TableCell colSpan={2}>Total cost items</TableCell>
-              <TableCell align="right">$&nbsp;{processDecimals(totalCostItems)}</TableCell>
+              <StyledTableCell mode={mode} rowSpan={4} />
+              <StyledTableCell mode={mode} colSpan={2}>Total cost items</StyledTableCell>
+              <StyledTableCell mode={mode} align="right">$&nbsp;{processDecimals(totalCostItems)}</StyledTableCell>
             </TableRow>
             <TableRow>
-              <TableCell colSpan={2}>Wages</TableCell>
-              <TableCell align="right">$&nbsp;{processDecimals(wages)}</TableCell>
+              <StyledTableCell mode={mode} colSpan={2}>Wages</StyledTableCell>
+              <StyledTableCell mode={mode} align="right">$&nbsp;{processDecimals(wages)}</StyledTableCell>
             </TableRow>
             <TableRow>
-              <TableCell colSpan={2}>Administration overhead</TableCell>
-              <TableCell align="right">$&nbsp;{processDecimals(administrationOverhead)}</TableCell>
+              <StyledTableCell mode={mode} colSpan={2}>Administration overhead</StyledTableCell>
+              <StyledTableCell mode={mode} align="right">$&nbsp;{processDecimals(administrationOverhead)}</StyledTableCell>
             </TableRow>
             <TableRow>
-              <TableCell colSpan={2}>Total Cost of fabrication</TableCell>
-              <TableCell align="right">$&nbsp;{processDecimals(totalCostOfFabrication)}</TableCell>
+              <StyledTableCell mode={mode} colSpan={2}>Total Cost of fabrication</StyledTableCell>
+              <StyledTableCell mode={mode} align="right">$&nbsp;{processDecimals(totalCostOfFabrication)}</StyledTableCell>
             </TableRow>
         </TableBody>
     )
