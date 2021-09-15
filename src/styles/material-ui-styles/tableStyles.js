@@ -9,10 +9,16 @@ const styles = {
         background: styledBy('mode', {
           default: 'white',
           dark: '#18191f',
+          dark_positive: '#18191f',
+          dark_negative: '#18191f',
+
         }),
         color: styledBy('mode', {
           default: 'black',
-          dark:'white',
+          dark: '#6a9eda',//'#5086c1',    //'#33CCCC',
+          dark_positive:'#419f00',
+          dark_negative:'#e2504c',
+
         }),
     },
     /*head: {

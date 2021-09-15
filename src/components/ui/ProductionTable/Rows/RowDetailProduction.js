@@ -8,7 +8,7 @@ export const RowDetailProduction = ({row, open}) => {
   const mode = 'dark';
     return (
         <TableRow>
-          <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+          <StyledTableCell mode={mode} style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box margin={1}>
                 <Typography variant="h6" gutterBottom component="div">

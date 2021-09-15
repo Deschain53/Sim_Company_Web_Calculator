@@ -42,8 +42,12 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
           <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(cost)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{marketPrice}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(profitHourMarket*buildingLevel)}</StyledTableCell>
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(profitHourContract*buildingLevel)}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode ==='dark' && Math.sign(profitHourMarket) === -1 ? "dark_negative" : "dark_positive" }>
+            $&nbsp;{processDecimals(profitHourMarket*buildingLevel)}
+          </StyledTableCell>
+          <StyledTableCell align="right" mode={mode ==='dark' && Math.sign(profitHourContract) === -1 ? "dark_negative" : "dark_positive" }>
+            $&nbsp;{processDecimals(profitHourContract*buildingLevel)}
+          </StyledTableCell>
         </TableRow>
     )
 }
