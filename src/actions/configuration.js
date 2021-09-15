@@ -10,3 +10,19 @@ export const checkIfPricesAreInitilizedFromStorage = () => {
 
     }
 }
+
+export const setModeToDark = () => {
+    return ( dispatch ) => {
+        dispatch({
+            type: types.darkMode
+        })
+    }
+}
+
+export const setModeToLight = () => {
+    return ( dispatch ) => {
+        dispatch({
+            type: types.ligthMode
+        })
+    }
+}

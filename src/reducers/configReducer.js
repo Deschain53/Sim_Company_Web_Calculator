@@ -14,13 +14,13 @@ export const configReducer = ( state = initialState, action ) => {
 
         case types.darkMode:
             return {
-                ...action.payload,
+                ...state,
                 mode: 'dark'
             }
     
         case types.ligthMode:
             return {
-                ...action.payload,
+                ...state,
                 mode: 'light'
             }
         
