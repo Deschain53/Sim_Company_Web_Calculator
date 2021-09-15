@@ -20,7 +20,6 @@ export const useCalculaProduction = () => {
     const {quality,fase,building,PVM,admin, transport, abundance} = production;
 
     const {productsJSON, wages} = useMemo(() => getProductsBuilding(products,fase,building), [products,fase,building]);
-     ;
 
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0

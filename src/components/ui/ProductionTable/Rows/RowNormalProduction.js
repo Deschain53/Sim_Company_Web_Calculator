@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { IconButton, makeStyles, TableCell, TableRow } from '@material-ui/core'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 
 export const RowNormalProduction = ({row, open, setOpen}) => {
 
@@ -36,7 +37,7 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
           <TableCell component="th" scope="row">
             {product}
           </TableCell>
-          <TableCell align="right">$&nbsp;{processDecimals(cost)}</TableCell>
+          <StyledTableCell align="right" color='dark'>$&nbsp;{processDecimals(cost)}</StyledTableCell>
           <TableCell align="right">$&nbsp;{marketPrice}</TableCell>
           <TableCell align="right">{processDecimals(unitsHour*buildingLevel)}</TableCell>
           <TableCell align="right">$&nbsp;{processDecimals(profitHourMarket*buildingLevel)}</TableCell>
