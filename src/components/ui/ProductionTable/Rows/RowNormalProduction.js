@@ -8,7 +8,7 @@ import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyl
 export const RowNormalProduction = ({row, open, setOpen}) => {
 
   const {buildingLevel} = useSelector( state => state.production );
-  //console.log(buildingLevel);
+  const {mode} = useSelector(state => state.conf);
 
     const useRowStyles = makeStyles({
         root: {
@@ -27,8 +27,6 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
 
-    const mode='dark';
-
     return (
         <TableRow className={classes.root}>
           <StyledTableCell mode={mode}>
@@ -42,10 +40,14 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
           <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(cost)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{marketPrice}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
-          <StyledTableCell align="right" mode={mode ==='dark' && Math.sign(profitHourMarket) === -1 ? "dark_negative" : "dark_positive" }>
+          <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 
+            Math.sign(profitHourMarket) === -1 ? "dark_negative" : "dark_positive" }
+          >
             $&nbsp;{processDecimals(profitHourMarket*buildingLevel)}
           </StyledTableCell>
-          <StyledTableCell align="right" mode={mode ==='dark' && Math.sign(profitHourContract) === -1 ? "dark_negative" : "dark_positive" }>
+          <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 
+            Math.sign(profitHourContract) === -1 ? "dark_negative" : "dark_positive" }
+          >
             $&nbsp;{processDecimals(profitHourContract*buildingLevel)}
           </StyledTableCell>
         </TableRow>

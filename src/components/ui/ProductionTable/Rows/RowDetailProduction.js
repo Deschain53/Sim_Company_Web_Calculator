@@ -1,11 +1,12 @@
-import { Box, Collapse, Table, TableBody, TableRow, Typography } from '@material-ui/core'
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { Box, Collapse, Table, TableBody, TableRow, Typography } from '@material-ui/core'
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles'
 import { RowResume } from './RowResume'
 import { TableHeadDetail } from './TableHeadDetail'
 
 export const RowDetailProduction = ({row, open}) => {
-  const mode = 'dark';
+  const {mode} = useSelector(state => state.conf);
     return (
         <TableRow>
           <StyledTableCell mode={mode} style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
