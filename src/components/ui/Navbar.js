@@ -1,44 +1,141 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom' 
+import { DarkModeButton } from './Buttons/DarkModeButton'
 
 export const Navbar = () => {
-
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">       
+<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div className="container-fluid">
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+    <NavLink 
+        activeClassName="active"
+        className="navbar-brand text-info" 
+        exact
+        to="/"
+    >
+        Sim Company calculators
+    </NavLink>
 
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/production"
-                    >
-                        Production Calculator
-                    </NavLink>
+    <DarkModeButton/>
 
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/retail"
-                    >
-                        Retail Calculator
-                    </NavLink>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
 
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/search"
-                    >
-                        Instructions
-                    </NavLink>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+            <NavLink 
+                activeClassName="active"
+                className="nav-link" 
+                exact
+                to="/production"
+            >
+                Production Calculator
+            </NavLink>
+        </li>
 
-                </div>
-            </div>
+        <li className="nav-item">
+            <NavLink 
+                activeClassName="active"
+                className="nav-link" 
+                exact
+                to="/retail"
+            >
+                Retail Calculator
+            </NavLink>
+        </li>
 
-        </nav>
+        <li className="nav-item">
+            <NavLink 
+                activeClassName="active"
+                className="nav-link" 
+                exact
+                to="/search"
+            >
+                Instructions
+            </NavLink>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
     )
 }
+
+    /*return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">       
+        <div className="container-fluid">
+
+            <NavLink 
+                activeClassName="active"
+                className="navbar-brand" 
+                exact
+                to="/production"
+                >
+                SimCompanyCalculators
+            </NavLink>
+
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                        <NavLink 
+                            activeClassName="active"
+                            className="nav-link active" 
+                            exact
+                            to="/production"
+                            >
+                            Production Calculator
+                        </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                        <NavLink 
+                            activeClassName="active"
+                            className="nav-link active" 
+                            exact
+                            to="/retail"
+                            >
+                            Retail Calculator
+                        </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                        <NavLink 
+                            activeClassName="active"
+                            className="nav-link active" 
+                            exact
+                            to="/search"
+                            >
+                            Instructions
+                        </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                        <a className="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul className="navbar-nav ml-auto">
+
+                <span className ="nav-item nav-link text-info">
+                    mode
+                </span>
+           
+                <IconButton color="primary">
+                    <Brightness4Icon />
+                </IconButton>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    )
+    */
