@@ -16,6 +16,16 @@ h1 {
     background-color: #7a7a7a;
 }
 
+.label-dark {
+    background-color: #18191f;
+    color: white
+}
+
+.label-light {
+    background-color: white;
+    color: black
+}
+
 /*.dark-Mode {
     background-color: #18191f;
     color: white;

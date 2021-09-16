@@ -8,7 +8,10 @@ import { verifyNumber, verifyInitialStateForm } from '../../auxiliar/verify';
 export const FormProduction= () => {        //Se podria recibir una funcion setState
   
   const dispatch = useDispatch();
+
   const productionInfo = useSelector( state => state.production );
+  const {mode} = useSelector(state => state.conf);
+
   const {building} = productionInfo;
 
   const [formValues, handleInputChange] = useForm(verifyInitialStateForm(productionInfo));
@@ -31,18 +34,21 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     dispatch( saveInLocalStorageProduction());
   };
 
+  const inputClassName = "form-control " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
+  const labelClassName = "col-sm-2 col-form-label " + "label-" + mode + " ";
+
   return (
     <div className="mt-4">
       <form onSubmit={handleSubmit}>
         <div className="row mb-3">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Building Level
             </label>
             <div className="col-sm-10">
               <input    
                 type = "number"
                 name = "buildingLevel"
-                className="form-control text-white bg-dark" 
+                className={ inputClassName } 
                 id="buildingLevel" 
                 placeholder = "Building Level"    
                 autoComplete = "off"
@@ -53,7 +59,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         </div>
         
         <div className="row mb-3">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Porcentage
             </label>
             <div className="input-group col-sm-10 mb-2 ">
@@ -61,7 +67,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
               <input    
                 type = "text"
                 name = "PVM"
-                className="form-control  text-white bg-dark" 
+                className={ inputClassName } 
                 id="PVM" 
                 placeholder = "Porcentage of sell under market"
                 autoComplete = "off"
@@ -73,14 +79,14 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         </div>
   
         <div className="row mb-3">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Administration
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               <input    
                 type = "text"
                 name = "admin"
-                className="form-control text-white bg-dark" 
+                className={ inputClassName } 
                 id="admin" 
                 placeholder = "Administration overhead"
                 autoComplete = "off"
@@ -92,14 +98,14 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         </div>
 
         <div className="row mb-3">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Bonus
             </label>
             <div className="input-group col-sm-10 mb-2  ">
               <input    
                 type = "text"
                 name = "bonus"
-                className="form-control text-white bg-dark" 
+                className={ inputClassName } 
                 id="colFormLabel" 
                 placeholder = "Production bonus"
                 autoComplete = "off"
@@ -113,14 +119,14 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     { (building === 'O' ||  building === 'Q'|| building === 'M')  
       ?(
         <div className="row mb-3">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Abundance
             </label>
             <div className="input-group col-sm-10 mb-2  ">
               <input    
                 type = "text"
                 name = "abundance"
-                className="form-control text-white bg-dark" 
+                className={ inputClassName } 
                 id="colFormLabel" 
                 placeholder = "Abundance"
                 autoComplete = "off"
@@ -135,7 +141,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     }
 
         <div className="row mb-1">
-            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">
+            <label htmlFor="colFormLabel" className={ labelClassName }>
                 Transport
             </label>
             <div className="input-group col-sm-10 mb-2 ">
@@ -143,7 +149,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
               <input    
                 type = "text"
                 name = "transport"
-                className="form-control text-white bg-dark" 
+                className= { inputClassName } 
                 id="transport" 
                 placeholder = "Transport price"
                 autoComplete = "off"
