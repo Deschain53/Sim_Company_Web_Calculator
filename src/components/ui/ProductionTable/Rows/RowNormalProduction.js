@@ -30,7 +30,7 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
     return (
         <TableRow className={classes.root}>
           <StyledTableCell mode={mode}>
-            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} color={ mode === 'dark' ? "primary" : "" }>
+            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} color={ mode === 'dark' ? "primary" : "default" }>
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </StyledTableCell>

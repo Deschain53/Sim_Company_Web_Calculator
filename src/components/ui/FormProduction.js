@@ -35,7 +35,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
   };
 
   const inputClassName = "form-control " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
-  const labelClassName = "col-sm-2 col-form-label " + "label-" + mode + " ";
+  const labelClassName = "col-sm-2 col-form-label label-" + mode;
 
   return (
     <div className="mt-4">

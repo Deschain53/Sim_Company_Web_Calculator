@@ -23,7 +23,10 @@ export const DarkModeButton = () => {
 
     return (
         <IconButton onClick={ () => changeMode() }> 
-            <Brightness4Icon style={{ color: mode==='dark'? "white" : "black" }}/>
+            <Brightness4Icon style={{ color: mode ==='dark'? 'white' : 'black' }}  /> 
         </IconButton>
+        /*<button onClick={ () => changeMode() } >
+            mode
+        </button>*/
     )
 }
