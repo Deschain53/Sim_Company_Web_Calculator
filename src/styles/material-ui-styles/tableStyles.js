@@ -17,9 +17,9 @@ const styles = {
         color: styledBy('mode', {
           default: 'black',
           light: 'black',
-          dark: '#6a9eda',//'#5086c1',    //'#33CCCC',
-          dark_positive:'#419f00',
-          dark_negative:'#e2504c',
+          dark: '#6a9eda', ///'#78eeff', //'#66D9EF',//'#6a9eda' --> most simple,//'#5086c1',    //'#33CCCC',
+          dark_positive: '#419f00', //'#A6E22E', //'#419f00',
+          dark_negative: '#c74e4c', //'#b04846'-->very low,//'#e2504c',
 
         }),
     },

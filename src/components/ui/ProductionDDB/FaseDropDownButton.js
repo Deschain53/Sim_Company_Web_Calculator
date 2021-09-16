@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import { useDispatch , useSelector } from 'react-redux';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
-import { useDispatch , useSelector } from 'react-redux';
-import { changeProductionFaseToBoom, 
-  changeProductionFaseToNormal, 
-  changeProductionFaseToRecession 
-} from '../../../actions/production';
+import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
+import { useStylesMenuItem, styleMenu } from '../../../styles/material-ui-styles/menuStyle';
+import { changeProductionFaseToBoom, changeProductionFaseToNormal, changeProductionFaseToRecession } from '../../../actions/production';
 import { verifyddbFase } from '../../../auxiliar/verify';
 
 export const FaseDropDownButton = () => {
@@ -17,7 +15,8 @@ export const FaseDropDownButton = () => {
   const productionInfo = useSelector( state => state.production );
   const {mode} = useSelector(state => state.conf);
 
-  const dropDowButtonDarkStyle = dropDowButtonDark();
+  const dropDowButtonDarkStyle = useDropDowButtonDark();
+  const classeMenuButton = useStylesMenuItem();
 
   const [fase, setFase] = useState(verifyddbFase(productionInfo));
   const [open, setOpen] = useState(false);
@@ -35,8 +34,7 @@ export const FaseDropDownButton = () => {
   };
 
   useEffect(() => {
-    //console.log(fase);
-    
+
     switch (fase) {
       case 0:
           dispatch( changeProductionFaseToRecession() )
@@ -50,15 +48,14 @@ export const FaseDropDownButton = () => {
           dispatch( changeProductionFaseToBoom() )
         break;
 
-      /*case '':
-        break;*/
-
       default:
           //dispatch( changeProductionFaseToNormal() )
         break;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fase]);
+
+  
 
   return (
     <div>
@@ -67,6 +64,7 @@ export const FaseDropDownButton = () => {
         className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Fase</InputLabel>
         <Select
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
+          MenuProps={{classes: { list: classeMenuButton.list }}}
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
@@ -75,9 +73,9 @@ export const FaseDropDownButton = () => {
           value={fase}
           onChange={handleChange}
         >
-          <MenuItem value={0} >Recession</MenuItem>    
-          <MenuItem value={1} >Normal</MenuItem>
-          <MenuItem value={2} >Boom</MenuItem>  
+          <MenuItem value={0} style={ styleMenu } >Recession</MenuItem>    
+          <MenuItem value={1} style={ styleMenu } >Normal</MenuItem>
+          <MenuItem value={2} style={ styleMenu } >Boom</MenuItem> 
         </Select>
       </FormControl>
     </div>

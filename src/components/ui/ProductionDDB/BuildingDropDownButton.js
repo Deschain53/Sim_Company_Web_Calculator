@@ -3,7 +3,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { dropDowButtonDark } from '../../../styles/material-ui-styles/dropDownDark';
+import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
+import { useStylesMenuItem, styleMenu } from '../../../styles/material-ui-styles/menuStyle';
 import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingP } from '../../../actions/production';
 import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
@@ -28,9 +29,11 @@ const getBuildingsAccordingToLanguaje = ( languaje ) => {
 }
 
 export const BuildingDropDownButton = () => {
-  const dropDowButtonDarkStyle = dropDowButtonDark();
-  
+
   const dispatch = useDispatch();
+
+  const dropDowButtonDarkStyle = useDropDowButtonDark();
+  const classeMenuButton = useStylesMenuItem();
 
   const {mode} = useSelector(state => state.conf);
   const { languaje } = useSelector( state => state.conf );
@@ -75,6 +78,7 @@ export const BuildingDropDownButton = () => {
         
         <Select
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
+          MenuProps={{classes: { list: classeMenuButton.list }}}
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
@@ -85,7 +89,7 @@ export const BuildingDropDownButton = () => {
         >
           {
             buildings.map( ({id, name}) => (
-              < MenuItem value={ id }   key={ id }> { name } </MenuItem>
+              < MenuItem value={ id }  key={ id } style={ styleMenu } > { name } </MenuItem>
             ))
           }
         </Select>

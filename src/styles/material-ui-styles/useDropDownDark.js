@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const dropDowButtonDark = makeStyles((theme) => ({
+export const useDropDowButtonDark = makeStyles((theme) => ({
     button: {
       display: 'block',
       marginTop: theme.spacing(2),
@@ -26,7 +26,8 @@ export const dropDowButtonDark = makeStyles((theme) => ({
       color: theme.palette.common.black
     },
     inputBase_dark: {
-      color: theme.palette.common.white
+      color: theme.palette.common.white,
+      //backgroundColor: '#18191f',
     },
     inputBase_light: {
       color: theme.palette.common.black
