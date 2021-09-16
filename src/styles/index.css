@@ -1,11 +1,22 @@
 html, body{
-    background-color: #18191f;
-    color: white;
+
     font-size: 1.3rem;
 }
+/*    background-color: #18191f;
+    color: white;*/
 
 .window-app {
     padding: 0.1em 1em 0.1em 1em;
+}
+
+.style-dark {
+    background-color: #18191f;
+    color: white;
+}
+
+.style-light {
+    background-color: white;
+    color: black;
 }
 
 h1 {

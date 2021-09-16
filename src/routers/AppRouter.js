@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,9 +12,11 @@ import { RetailCalculator } from '../components/RetailCalculator';
 import { Navbar } from '../components/ui/Navbar';
 
   export const AppRouter = () => {
+    const {mode} = useSelector(state => state.conf);
+
     return (
     <Router>
-      <div >
+      <div className={"style-"+mode}>
         
         <Navbar/>
         
