@@ -1,10 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom' 
 import { DarkModeButton } from './Buttons/DarkModeButton'
 
 export const Navbar = () => {
+    const {mode} = useSelector(state => state.conf);
+    
     return (
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav className={"navbar navbar-expand-lg " + ( mode === 'dark' ? "navbar-dark bg-dark " : "navbar-light bg-light " )}>
   <div className="container-fluid">
 
     <NavLink 
