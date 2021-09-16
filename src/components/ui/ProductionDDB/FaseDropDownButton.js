@@ -15,6 +15,7 @@ export const FaseDropDownButton = () => {
 
   const dispatch = useDispatch();
   const productionInfo = useSelector( state => state.production );
+  const {mode} = useSelector(state => state.conf);
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
 
@@ -61,10 +62,11 @@ export const FaseDropDownButton = () => {
 
   return (
     <div>
-      <FormControl className={ dropDowButtonDarkStyle.formControl }>
-        <InputLabel id="demo-controlled-open-select-label" className={ dropDowButtonDarkStyle.inputLabel } >Fase</InputLabel>
+      <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
+        <InputLabel id="demo-controlled-open-select-label" 
+        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Fase</InputLabel>
         <Select
-          className={ dropDowButtonDarkStyle.inputBase }  
+          className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -10,6 +10,9 @@ import { productionBuildings } from '../../../data/languajeData.js/productionBui
 import { verifyddbBuilding } from '../../../auxiliar/verify';
 
 const getBuildingsAccordingToLanguaje = ( languaje ) => {
+
+  
+
   const pBuildings = productionBuildings();
 
   switch (languaje) {
@@ -25,15 +28,16 @@ const getBuildingsAccordingToLanguaje = ( languaje ) => {
 }
 
 export const BuildingDropDownButton = () => {
+  const dropDowButtonDarkStyle = dropDowButtonDark();
   
   const dispatch = useDispatch();
 
-  const dropDowButtonDarkStyle = dropDowButtonDark();
-  
+  const {mode} = useSelector(state => state.conf);
   const { languaje } = useSelector( state => state.conf );
-  const buildings = getBuildingsAccordingToLanguaje(languaje);
-  
   const productionInfo = useSelector( state => state.production );
+  
+  const buildings = useMemo(() => getBuildingsAccordingToLanguaje(languaje), [languaje]);
+
   const [building, setFase] = useState(verifyddbBuilding(productionInfo));
   const [open, setOpen] = useState(false);
 
@@ -60,17 +64,17 @@ export const BuildingDropDownButton = () => {
 
   return (
     <div>
-      <FormControl className={ dropDowButtonDarkStyle.formControl }>
+      <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
 
         <InputLabel 
           id="demo-controlled-open-select-label" 
-          className={ dropDowButtonDarkStyle.inputLabel } 
+          className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } 
         > 
           Building 
         </InputLabel>
         
         <Select
-          className={ dropDowButtonDarkStyle.inputBase }  
+          className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}

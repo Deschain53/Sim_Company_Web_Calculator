@@ -7,17 +7,29 @@ export const dropDowButtonDark = makeStyles((theme) => ({
       backgroundColor: '#18191f',
       color: theme.palette.common.white
     },
-    formControl: {
+    formControl_dark: {
       margin: theme.spacing(1),
       minWidth: 120,
       backgroundColor: '#18191f',
       color: theme.palette.common.white
     },
-    inputLabel: {
+    formControl_light: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+      backgroundColor: 'white',
+      color: theme.palette.common.black
+    },
+    inputLabel_dark: {
       color: theme.palette.common.white
     },
-    inputBase: {
+    inputLabel_light: {
+      color: theme.palette.common.black
+    },
+    inputBase_dark: {
       color: theme.palette.common.white
-    }
+    },
+    inputBase_light: {
+      color: theme.palette.common.black
+    },
     
   }));

@@ -11,6 +11,8 @@ import { verifyddbQuality } from '../../../auxiliar/verify';
 export const QualityDropDownButton = () => {
 
   const dispatch = useDispatch();
+
+  const {mode} = useSelector(state => state.conf);
   const productionInfo = useSelector( state => state.production );
 
   const dropDowButtonDarkStyle = dropDowButtonDark();
@@ -48,10 +50,11 @@ export const QualityDropDownButton = () => {
 
   return (
     <div>
-      <FormControl className={ dropDowButtonDarkStyle.formControl }>
-        <InputLabel id="demo-controlled-open-select-label" className={ dropDowButtonDarkStyle.inputLabel } >Quality</InputLabel>
+      <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
+        <InputLabel id="demo-controlled-open-select-label" 
+        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Quality</InputLabel>
         <Select
-          className={ dropDowButtonDarkStyle.inputBase }  
+          className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={open}
