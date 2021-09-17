@@ -44,8 +44,11 @@ export const LanguajeDropDownButton = () => {
   return (
     <div>
       <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
+        {/*
         <InputLabel id="demo-controlled-open-select-label" 
         className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Languaje</InputLabel>
+        */
+        }
         <Select
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           MenuProps={{classes: { list: classeMenuButton.list }}}

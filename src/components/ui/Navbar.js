@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom' 
 import { DarkModeButton } from './Buttons/DarkModeButton'
+import { LanguajeDropDownButton } from './ProductionDDB/LanguajeDropDownButton';
 
 export const Navbar = () => {
     const {mode} = useSelector(state => state.conf);
@@ -60,85 +61,15 @@ export const Navbar = () => {
             </NavLink>
         </li>
 
+        <li className="nav-item mt-1 ms-2">
+            <div className="mt-2 ">
+                <LanguajeDropDownButton/>
+            </div>
+        </li>
+
       </ul>
     </div>
   </div>
 </nav>
     )
 }
-
-    /*return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">       
-        <div className="container-fluid">
-
-            <NavLink 
-                activeClassName="active"
-                className="navbar-brand" 
-                exact
-                to="/production"
-                >
-                SimCompanyCalculators
-            </NavLink>
-
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                        <NavLink 
-                            activeClassName="active"
-                            className="nav-link active" 
-                            exact
-                            to="/production"
-                            >
-                            Production Calculator
-                        </NavLink>
-                    </li>
-
-                    <li className="nav-item">
-                        <NavLink 
-                            activeClassName="active"
-                            className="nav-link active" 
-                            exact
-                            to="/retail"
-                            >
-                            Retail Calculator
-                        </NavLink>
-                    </li>
-
-                    <li className="nav-item">
-                        <NavLink 
-                            activeClassName="active"
-                            className="nav-link active" 
-                            exact
-                            to="/search"
-                            >
-                            Instructions
-                        </NavLink>
-                    </li>
-
-                    <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-
-                <span className ="nav-item nav-link text-info">
-                    mode
-                </span>
-           
-                <IconButton color="primary">
-                    <Brightness4Icon />
-                </IconButton>
-                </ul>
-            </div>
-        </div>
-
-    </nav>
-    )
-    */
