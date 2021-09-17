@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
-import { useStylesMenuItem, styleMenu } from '../../../styles/material-ui-styles/menuStyle';
+import { useStylesMenuItem, styleMenuLight, styleMenuDark  } from '../../../styles/material-ui-styles/menuStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeQualityP } from '../../../actions/production';
 import { verifyddbQuality } from '../../../auxiliar/verify';
@@ -68,7 +68,7 @@ export const QualityDropDownButton = () => {
         >
           {
             qualities.map( q => (
-              <MenuItem value={q} key={q} style={ styleMenu } >{q}</MenuItem>  
+              <MenuItem value={q} key={q} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >{q}</MenuItem>  
             ))
           }
            

@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
-import { useStylesMenuItem, styleMenu } from '../../../styles/material-ui-styles/menuStyle';
+import { useStylesMenuItem, styleMenuLight, styleMenuDark  } from '../../../styles/material-ui-styles/menuStyle';
 import { changeProductionFaseToBoom, changeProductionFaseToNormal, changeProductionFaseToRecession } from '../../../actions/production';
 import { verifyddbFase } from '../../../auxiliar/verify';
 
@@ -73,9 +73,9 @@ export const FaseDropDownButton = () => {
           value={fase}
           onChange={handleChange}
         >
-          <MenuItem value={0} style={ styleMenu } >Recession</MenuItem>    
-          <MenuItem value={1} style={ styleMenu } >Normal</MenuItem>
-          <MenuItem value={2} style={ styleMenu } >Boom</MenuItem> 
+          <MenuItem value={0} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Recession</MenuItem>    
+          <MenuItem value={1} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Normal</MenuItem>
+          <MenuItem value={2} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Boom</MenuItem> 
         </Select>
       </FormControl>
     </div>

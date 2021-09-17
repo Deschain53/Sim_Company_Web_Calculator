@@ -4,15 +4,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
-import { useStylesMenuItem, styleMenu } from '../../../styles/material-ui-styles/menuStyle';
+import { useStylesMenuItem, styleMenuLight, styleMenuDark } from '../../../styles/material-ui-styles/menuStyle';
 import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingP } from '../../../actions/production';
 import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
 import { verifyddbBuilding } from '../../../auxiliar/verify';
 
 const getBuildingsAccordingToLanguaje = ( languaje ) => {
-
-  
 
   const pBuildings = productionBuildings();
 
@@ -89,7 +87,8 @@ export const BuildingDropDownButton = () => {
         >
           {
             buildings.map( ({id, name}) => (
-              < MenuItem value={ id }  key={ id } style={ styleMenu } > { name } </MenuItem>
+              < MenuItem value={ id }  key={ id } style={ mode === 'dark' ? styleMenuDark : styleMenuLight  } 
+              > { name } </MenuItem>
             ))
           }
         </Select>
