@@ -1,5 +1,19 @@
 import { types } from "../types/types";
 
+const selectValidLanguaje = (id) => {
+    switch (id) {
+        case 'En':
+            return 'english'
+    
+        case 'Es':
+            return 'spanish'
+
+        default:
+            return 'english';
+    }
+
+}
+
 export const checkIfPricesAreInitilizedFromStorage = () => {
     return ( dispatch ) => {
 
@@ -26,3 +40,19 @@ export const setModeToLight = () => {
         })
     }
 }
+
+export const changeLanguaje = (id) => {
+    const languaje = selectValidLanguaje(id);
+
+    return ( dispatch ) => {
+
+        dispatch({
+            type: types.changeLanguaje,
+            payload: { languaje: languaje}
+        })
+
+
+    }
+
+}
+

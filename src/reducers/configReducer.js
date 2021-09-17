@@ -7,7 +7,7 @@ const initialState = {
     languaje: 'english' , 
     pricesInitilizedFromStorage: 'false', 
     }; 
-
+//src={heroImages(`./${ id }.jpg`).default}  --> Para seleccionar un objeto de acuerdo a string
 export const configReducer = ( state = initialState, action ) => {
 
     switch ( action.type ) {
@@ -28,6 +28,12 @@ export const configReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 pricesInitilizedFromStorage: action.payload  
+            }
+
+        case types.changeLanguaje:
+            return {
+                ...state,
+                languaje: action.payload.languaje
             }
 
         default:

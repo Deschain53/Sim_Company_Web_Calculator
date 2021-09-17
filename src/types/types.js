@@ -3,6 +3,7 @@ export const types = {
     darkMode: '[Config] Change to DarkMode',
     ligthMode: '[Config] Change to LigthMode',
     checkingPricesInStorage: '[Config] Checking prices in storage',
+    changeLanguaje: '[Config] Change Languaje',
 
     //For pricesReducer:
     updatePrices: '[Prices] Update Prices',
