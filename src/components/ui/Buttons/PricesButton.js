@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkIfPricesAreInitilizedFromStorage } from '../../../actions/configuration';
 import { updatePrices } from '../../../actions/prices';
 import { usePrecios } from '../../../hooks/usePrecios';
+import { buttons_index } from '../../../languaje/buttons/buttons_index';
 
 export const PricesButton = () => {
     const dispatch = useDispatch();
+
     const { pricesInitilizedFromStorage } = useSelector( state => state.conf );
+    const { languaje } = useSelector(state => state.conf);
 
     const {precios, /*extraePreciosPrueba,*/ extraePreciosOnline} = usePrecios();
 
@@ -30,6 +33,7 @@ export const PricesButton = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const buttonsInfo = buttons_index[`${languaje}_buttons`];
 
     return (
         <div className="container mt-2 mb-2">
@@ -41,7 +45,7 @@ export const PricesButton = () => {
                                     : (pricesInitilizedFromStorage) ? "warning" : "danger")} 
                     onClick = { handleGetPrices }
                 > 
-                    Extrae precios
+                    {buttonsInfo.getPrices}
                 </button>
             <div className="col-sm-3"> </div>
           </div>

@@ -5,6 +5,7 @@ import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/pro
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 import { verifyNumber, verifyInitialStateForm } from '../../auxiliar/verify';
 import { calculationAndProduction_Index } from '../../languaje/forms/calculationAndProduction/calculationAndProduction_Index';
+import { CalculateButton } from './Buttons/CalculateButton';
 
 export const FormProduction= () => {        //Se podria recibir una funcion setState
   
@@ -171,13 +172,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         <div className="container mt-2 mb-2">
           <div className="row align-items-center">
             <div className="col-sm-3"> </div>
-            <button
-                type="submit"
-                className="btn m-1 btn-block btn-outline-primary col-sm-6"
-                onClick = { handleSubmit }
-                >
-              Calculate
-            </button>
+              <CalculateButton handleSubmit={ handleSubmit }/>
             <div className="col-sm-3"> </div>
           </div>
         </div>

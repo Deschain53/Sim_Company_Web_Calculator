@@ -4,6 +4,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModeToDark, setModeToLight } from '../../../actions/configuration';
 
+
 export const DarkModeButton = () => {
     
     const dispatch = useDispatch();

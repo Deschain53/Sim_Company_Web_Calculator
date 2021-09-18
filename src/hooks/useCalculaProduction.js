@@ -17,7 +17,7 @@ export const useCalculaProduction = () => {
     const  products  =  useSelector( state => state.products ); 
     const  prices  =  useSelector( state => state.prices );
 
-    const {quality,fase,building,PVM,admin, transport, abundance} = production;
+    const {quality,fase,building,PVM,admin, transport, abundance, bonus} = production;
 
     const {productsJSON, wages} = useMemo(() => getProductsBuilding(products,fase,building), [products,fase,building]);
 
@@ -40,7 +40,7 @@ export const useCalculaProduction = () => {
         dispatch( calculateProfitHourMarket(production,productsJSON));                  //product-end
         
         // eslint-disable-next-line
-    }, [quality,fase,building,admin,abundance,prices]);
+    }, [quality,fase,building,admin,abundance,prices, bonus]);
     
     useEffect(() => {
         
