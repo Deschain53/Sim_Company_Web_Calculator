@@ -4,13 +4,14 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/production';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 import { verifyNumber, verifyInitialStateForm } from '../../auxiliar/verify';
+import { calculationAndProduction_Index } from '../../languaje/forms/calculationAndProduction/calculationAndProduction_Index';
 
 export const FormProduction= () => {        //Se podria recibir una funcion setState
   
   const dispatch = useDispatch();
 
   const productionInfo = useSelector( state => state.production );
-  const {mode} = useSelector(state => state.conf);
+  const {mode, languaje} = useSelector(state => state.conf);
 
   const {building} = productionInfo;
 
@@ -34,15 +35,21 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     dispatch( saveInLocalStorageProduction());
   };
 
+  const labelLanguajeInformation = calculationAndProduction_Index[`${languaje}_label`];
+  const inputPlaceHolderlanguajeInformation = calculationAndProduction_Index[`${languaje}_input`];
+
+  //console.log(labelInformation)
+  //console.log(inputInformation)
+
   const inputClassName = "form-control " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
   const labelClassName = "col-sm-2 col-form-label label-" + mode;
-
+  
   return (
     <div className="mt-4">
       <form onSubmit={handleSubmit}>
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Building Level
+              {labelLanguajeInformation.buildingLevel}
             </label>
             <div className="col-sm-10">
               <input    
@@ -50,7 +57,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "buildingLevel"
                 className={ inputClassName } 
                 id="buildingLevel" 
-                placeholder = "Building Level"    
+                placeholder = {inputPlaceHolderlanguajeInformation.buildingLevel}   
                 autoComplete = "off"
                 value = {buildingLevel}
                 onChange = {handleInputChange}
@@ -60,7 +67,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Porcentage
+              {labelLanguajeInformation.porcentaje}
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               
@@ -69,7 +76,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "PVM"
                 className={ inputClassName } 
                 id="PVM" 
-                placeholder = "Porcentage of sell under market"
+                placeholder = {inputPlaceHolderlanguajeInformation.porcentaje}  
                 autoComplete = "off"
                 value = {PVM}
                 onChange = {handleInputChange}
@@ -80,7 +87,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
   
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Administration
+              {labelLanguajeInformation.administration}
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               <input    
@@ -88,7 +95,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "admin"
                 className={ inputClassName } 
                 id="admin" 
-                placeholder = "Administration overhead"
+                placeholder = {inputPlaceHolderlanguajeInformation.administration}  
                 autoComplete = "off"
                 value = {admin}
                 onChange = {handleInputChange}
@@ -99,7 +106,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
 
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Bonus
+              {labelLanguajeInformation.bonusProduction}
             </label>
             <div className="input-group col-sm-10 mb-2  ">
               <input    
@@ -107,10 +114,10 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "bonus"
                 className={ inputClassName } 
                 id="colFormLabel" 
-                placeholder = "Production bonus"
+                placeholder = { inputPlaceHolderlanguajeInformation.bonusProduction }  
                 autoComplete = "off"
-                value = {bonus}
-                onChange = {handleInputChange}
+                value = { bonus }
+                onChange = { handleInputChange }
               />
               <div className="input-group-text  ">%</div>
             </div>
@@ -120,7 +127,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
       ?(
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Abundance
+              {labelLanguajeInformation.abundance}
             </label>
             <div className="input-group col-sm-10 mb-2  ">
               <input    
@@ -128,10 +135,10 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "abundance"
                 className={ inputClassName } 
                 id="colFormLabel" 
-                placeholder = "Abundance"
+                placeholder = { inputPlaceHolderlanguajeInformation.abundance }  
                 autoComplete = "off"
-                value = {abundance}
-                onChange = {handleInputChange}
+                value = { abundance }
+                onChange = { handleInputChange }
               />
               <div className="input-group-text  ">%</div>
             </div>
@@ -142,7 +149,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
 
         <div className="row mb-1">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-                Transport
+              {labelLanguajeInformation.transport}
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               <div className="input-group-text  ">$</div>
@@ -151,7 +158,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "transport"
                 className= { inputClassName } 
                 id="transport" 
-                placeholder = "Transport price"
+                placeholder = { inputPlaceHolderlanguajeInformation.transport }  
                 autoComplete = "off"
                 value = {transport}
                 onChange = {handleInputChange}
