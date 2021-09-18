@@ -14,16 +14,8 @@ const getBuildingsAccordingToLanguaje = ( languaje ) => {
 
   const pBuildings = productionBuildings();
 
-  switch (languaje) {
-    case 'english':
-      return  pBuildings.english;
-
-    case 'spanish':
-      return pBuildings.spanish;
-    
-    default:
-      return  pBuildings.english;
-  }
+  const buildingArray = pBuildings[`${languaje}`];
+  return buildingArray;
 }
 
 export const BuildingDropDownButton = () => {
