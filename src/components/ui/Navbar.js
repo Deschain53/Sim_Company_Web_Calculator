@@ -1,12 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom' 
+import { navbar_index } from '../../languaje/navbar/navbar_Index';
 import { DarkModeButton } from './Buttons/DarkModeButton'
 import { LanguajeDropDownButton } from './ProductionDDB/LanguajeDropDownButton';
 
 export const Navbar = () => {
-    const {mode} = useSelector(state => state.conf);
-    
+    const {mode, languaje} = useSelector(state => state.conf);
+    const navbarInfo = navbar_index[`${languaje}_navbar`];
+
     return (
 <nav className={"navbar navbar-expand-lg " + ( mode === 'dark' ? "navbar-dark bg-dark " : "navbar-light bg-light " )}>
   <div className="container-fluid">
@@ -35,7 +37,7 @@ export const Navbar = () => {
                 exact
                 to="/production"
             >
-                Production Calculator
+                { navbarInfo.productionCalculator }
             </NavLink>
         </li>
 
@@ -46,7 +48,7 @@ export const Navbar = () => {
                 exact
                 to="/retail"
             >
-                Retail Calculator
+                { navbarInfo.retailCalculator }
             </NavLink>
         </li>
 
@@ -57,7 +59,7 @@ export const Navbar = () => {
                 exact
                 to="/search"
             >
-                Instructions
+                { navbarInfo.instuctions }
             </NavLink>
         </li>
 

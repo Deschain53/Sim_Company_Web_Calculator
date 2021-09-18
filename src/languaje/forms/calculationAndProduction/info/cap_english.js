@@ -1,6 +1,6 @@
 export const english_label = {
     buildingLevel: 'Building Level',
-    porcentaje: 'Porcentaje',
+    porcentaje: 'Porcentage',
     administration: 'Administration',
     bonusProduction: 'Bonus',
     abundance: 'Abundance',

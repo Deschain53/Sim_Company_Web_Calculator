@@ -35,12 +35,11 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
     dispatch( saveInLocalStorageProduction());
   };
 
+  //Languaje information:
   const labelLanguajeInformation = calculationAndProduction_Index[`${languaje}_label`];
   const inputPlaceHolderlanguajeInformation = calculationAndProduction_Index[`${languaje}_input`];
 
-  //console.log(labelInformation)
-  //console.log(inputInformation)
-
+  //Style information:
   const inputClassName = "form-control " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
   const labelClassName = "col-sm-2 col-form-label label-" + mode;
   
