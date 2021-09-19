@@ -8,12 +8,13 @@ import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDrop
 import { useStylesMenuItem, styleMenuLight, styleMenuDark  } from '../../../styles/material-ui-styles/menuStyle';
 import { changeProductionFaseToBoom, changeProductionFaseToNormal, changeProductionFaseToRecession } from '../../../actions/production';
 import { verifyddbFase } from '../../../auxiliar/verify';
+import { fase_index } from '../../../languaje/dropDownButtons/fase/fase_index';
 
 export const FaseDropDownButton = () => {
 
   const dispatch = useDispatch();
   const productionInfo = useSelector( state => state.production );
-  const {mode} = useSelector(state => state.conf);
+  const {mode, languaje} = useSelector(state => state.conf);
 
   const dropDowButtonDarkStyle = useDropDowButtonDark();
   const classeMenuButton = useStylesMenuItem();
@@ -55,13 +56,14 @@ export const FaseDropDownButton = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fase]);
 
-  
+  const faseInfo = fase_index[`${languaje}_faseInfo`];
+  const { faseArray } = faseInfo;
 
   return (
     <div>
       <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
         <InputLabel id="demo-controlled-open-select-label" 
-        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Fase</InputLabel>
+        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >{ faseInfo.faseLabel }</InputLabel>
         <Select
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           MenuProps={{classes: { list: classeMenuButton.list }}}
@@ -73,9 +75,11 @@ export const FaseDropDownButton = () => {
           value={fase}
           onChange={handleChange}
         >
-          <MenuItem value={0} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Recession</MenuItem>    
-          <MenuItem value={1} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Normal</MenuItem>
-          <MenuItem value={2} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } >Boom</MenuItem> 
+          {
+            faseArray.map( ({id,faseName}) => (
+              <MenuItem value={id} key={id} style={ mode === 'dark' ? styleMenuDark : styleMenuLight } > { faseName } </MenuItem>    
+            ) )
+          }
         </Select>
       </FormControl>
     </div>
