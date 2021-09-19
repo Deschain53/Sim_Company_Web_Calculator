@@ -8,12 +8,13 @@ import { useStylesMenuItem, styleMenuLight, styleMenuDark  } from '../../../styl
 import { useDispatch, useSelector } from 'react-redux';
 import { changeQualityP } from '../../../actions/production';
 import { verifyddbQuality } from '../../../auxiliar/verify';
+import { quality_index } from '../../../languaje/dropDownButtons/quality/quality_index';
 
 export const QualityDropDownButton = () => {
 
   const dispatch = useDispatch();
 
-  const {mode} = useSelector(state => state.conf);
+  const {mode,languaje} = useSelector(state => state.conf);
   const productionInfo = useSelector( state => state.production );
 
   const dropDowButtonDarkStyle = useDropDowButtonDark();
@@ -50,11 +51,13 @@ export const QualityDropDownButton = () => {
 
   const qualities = [0,1,2,3,4,5,6];
 
+  const { qualityLabel } = quality_index[`${languaje}_qualityInfo`];
+
   return (
     <div>
       <FormControl className={ mode==='dark' ? dropDowButtonDarkStyle.formControl__dark: dropDowButtonDarkStyle.formControl_light }>
         <InputLabel id="demo-controlled-open-select-label" 
-        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >Quality</InputLabel>
+        className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } >{ qualityLabel }</InputLabel>
         <Select
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputBase_dark : dropDowButtonDarkStyle.inputBase_light }  
           MenuProps={{classes: { list: classeMenuButton.list }}}
