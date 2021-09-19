@@ -1,20 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { TableHead, TableRow } from '@material-ui/core'
 import { StyledTableCell } from '../../../styles/material-ui-styles/tableStyles'
+import { tableProduction_index } from '../../../languaje/tables/tableProduction/tableProduction_index'
+
 
 export const TableHeadMain = () => {
+  const { languaje } = useSelector(state => state.conf);
+
+  const infoTable = tableProduction_index[`${languaje}_tableP`];
 
   const mode ='dark';
     return (
         <TableHead>
           <TableRow>
             <StyledTableCell  mode={mode} />
-            <StyledTableCell  mode={mode} >Product</StyledTableCell>
-            <StyledTableCell align="right" mode={mode} >Cost</StyledTableCell>
-            <StyledTableCell align="right" mode={mode} >Market price</StyledTableCell>
-            <StyledTableCell align="right" mode={mode} >Units/hour</StyledTableCell>
-            <StyledTableCell align="right" mode={mode} >Profit/hour Market</StyledTableCell>
-            <StyledTableCell align="right" mode={mode} >Profit/hour Contracts</StyledTableCell>
+            <StyledTableCell  mode={mode} > { infoTable.product } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.productionCost } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.marketPrice } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.unitsHour } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.profitHourMarket } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.profitHourContract } </StyledTableCell>
           </TableRow>
         </TableHead>
     )

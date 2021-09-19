@@ -4,16 +4,20 @@ import { Box, Collapse, Table, TableBody, TableRow, Typography } from '@material
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles'
 import { RowResume } from './RowResume'
 import { TableHeadDetail } from './TableHeadDetail'
+import { tableProduction_index } from '../../../../languaje/tables/tableProduction/tableProduction_index';
 
 export const RowDetailProduction = ({row, open}) => {
-  const {mode} = useSelector(state => state.conf);
+
+  const { mode, languaje } = useSelector(state => state.conf);
+  const { detail } = tableProduction_index[`${languaje}_tableP`];
+
     return (
         <TableRow>
           <StyledTableCell mode={mode} style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box margin={1}>
                 <Typography variant="h6" gutterBottom component="div">
-                  Detail
+                  { detail }
                 </Typography>
                 <Table size="small" aria-label="purchases">
 
