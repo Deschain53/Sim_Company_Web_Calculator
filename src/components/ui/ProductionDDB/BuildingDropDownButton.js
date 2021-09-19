@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, { useState, useEffect } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -7,16 +7,17 @@ import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDrop
 import { useStylesMenuItem, styleMenuLight, styleMenuDark } from '../../../styles/material-ui-styles/menuStyle';
 import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingP } from '../../../actions/production';
-import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
+//import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
 import { verifyddbBuilding } from '../../../auxiliar/verify';
+import { buildingsProduction_index } from '../../../languaje/dropDownButtons/buildingProduction/buildingsProduction_index';
 
-const getBuildingsAccordingToLanguaje = ( languaje ) => {
+/*const getBuildingsAccordingToLanguaje = ( languaje ) => {
 
   const pBuildings = productionBuildings();
 
   const buildingArray = pBuildings[`${languaje}`];
   return buildingArray;
-}
+}*/
 
 export const BuildingDropDownButton = () => {
 
@@ -25,14 +26,15 @@ export const BuildingDropDownButton = () => {
   const dropDowButtonDarkStyle = useDropDowButtonDark();
   const classeMenuButton = useStylesMenuItem();
 
-  const {mode} = useSelector(state => state.conf);
-  const { languaje } = useSelector( state => state.conf );
+  const {mode, languaje} = useSelector(state => state.conf);
   const productionInfo = useSelector( state => state.production );
   
-  const buildings = useMemo(() => getBuildingsAccordingToLanguaje(languaje), [languaje]);
-
   const [building, setFase] = useState(verifyddbBuilding(productionInfo));
   const [open, setOpen] = useState(false);
+  
+  //const buildings =  //useMemo(() => getBuildingsAccordingToLanguaje(languaje), [languaje]);
+
+  const { buildingLabel, buildingArray } = buildingsProduction_index[`${languaje}_buildingInfo`];
 
   const handleChange = (event) => {
     setFase(event.target.value);
@@ -63,7 +65,7 @@ export const BuildingDropDownButton = () => {
           id="demo-controlled-open-select-label" 
           className={ mode==='dark' ? dropDowButtonDarkStyle.inputLabel_dark : dropDowButtonDarkStyle.inputLabel_light } 
         > 
-          Building 
+          { buildingLabel }
         </InputLabel>
         
         <Select
@@ -78,7 +80,7 @@ export const BuildingDropDownButton = () => {
           onChange={handleChange}
         >
           {
-            buildings.map( ({id, name}) => (
+            buildingArray.map( ({id, name}) => (
               < MenuItem value={ id }  key={ id } style={ mode === 'dark' ? styleMenuDark : styleMenuLight  } 
               > { name } </MenuItem>
             ))
