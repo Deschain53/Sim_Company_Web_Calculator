@@ -1,3 +1,4 @@
+import { products_index } from "../languaje/products/products_index";
 import { typesTableProduction } from "../types/typesTableProduction";
 
 export const updateNamesAndIds = (productsJSON) => {
@@ -154,6 +155,16 @@ export const calculateProfitHourMarket = ({transport=0},productsJSON) => {
         dispatch({
             type:typesTableProduction.calculateProfitHourMarket,
             payload: {transport,productsJSON:newProductsJSONWithtransportNeeded}
+        })
+    }
+}
+
+export const updateLanguajeNameProducts = (languaje='english') => {
+    const namesProductsInfo = products_index[`${languaje}_productsInfo`];
+    return (dispatch) => {
+        dispatch({
+            type: typesTableProduction.updateLanguajeNameProducts,
+            payload: { namesProductsInfo }
         })
     }
 }

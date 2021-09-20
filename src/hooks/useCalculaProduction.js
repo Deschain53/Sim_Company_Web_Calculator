@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, updatePricesItems, 
     calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, 
     updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, calculateProfitHourMarket, 
-    } from '../actions/tableP';
+    updateLanguajeNameProducts} from '../actions/tableP';
 import { getProductsBuilding } from '../data/getData/getProductsBuilding';
 
 export const useCalculaProduction = () => {
@@ -16,6 +16,7 @@ export const useCalculaProduction = () => {
     const  production  = useSelector( state => state.production );
     const  products  =  useSelector( state => state.products ); 
     const  prices  =  useSelector( state => state.prices );
+    const  {languaje}  =  useSelector( state => state.conf );
 
     const {quality,fase,building,PVM,admin, transport, abundance, bonus} = production;
 
@@ -50,6 +51,10 @@ export const useCalculaProduction = () => {
         }
         // eslint-disable-next-line
     }, [PVM,transport])
+
+    useEffect(() => {
+        dispatch( updateLanguajeNameProducts(languaje) );
+    }, [languaje])
 
     useEffect(() => {
         setIsFirstRender(false);

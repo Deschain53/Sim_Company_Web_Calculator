@@ -2,7 +2,7 @@ import { typesTableProduction } from '../types/typesTableProduction';
 import { createData, getStateWWithMarketPrices, getStateWithNameIdAndAmoutItem, getStateWithDetailItemsPriced, 
   getStateWithTotalCostItemsCalculated, getStateWithWagesUpdated, getStateWithUnitsHourUpdated,
   getStateWithAdditionTotalCostItems, getStateWithAdmitItemsCalculated,
-  getStateWithTotalCostOfFabricationItems, getStateWithProfitHourMarketCalculated, getStateWithProfitHourContractCalculated, 
+  getStateWithTotalCostOfFabricationItems, getStateWithProfitHourMarketCalculated, getStateWithProfitHourContractCalculated, getStateWithNameLanguajeUpdate, 
   } from './auxiliarReducers/tableProductionReducerAux';
 
 const initialState = [
@@ -66,6 +66,10 @@ export const tableProductionReducer = (state = initialState, action) => {
         case typesTableProduction.calculateProfitHourMarket:
           const stateWithProfitHourMarketCalculated = getStateWithProfitHourMarketCalculated(state,action.payload.productsJSON, action.payload.transport);
         return stateWithProfitHourMarketCalculated;
+
+        case typesTableProduction.updateLanguajeNameProducts:
+          const stateWithNameLanguajeUpdated = getStateWithNameLanguajeUpdate(state, action.payload.namesProductsInfo);
+        return stateWithNameLanguajeUpdated;
 
         default:
         return state;

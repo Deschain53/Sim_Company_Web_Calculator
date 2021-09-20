@@ -7,6 +7,7 @@ export const typesTableProduction = {
     updateUnitsHour: '[tableP] Update units/hour',
     calculateProfitHourMarket: '[tableP] Calculate profit/hour Market',
     calculateProfitHourContract: '[tableP] Calculate profit/hour Contract',
+    updateLanguajeNameProducts: '[tableP] Update languaje name products',
 
     //For the detail section:
     updateNamesAmountAndIdsItems: '[tableP] Update names, amount and ids items',
