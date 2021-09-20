@@ -58,10 +58,6 @@ export const changeLanguaje = (id) => {
 
 export const saveConfState = () => {
     
-    const saveConfInLocalStorage = (state) => {
-        localStorage.setItem( 'conf',JSON.stringify(state) || null );
-    }
-
     return ( dispatch ) => {
         dispatch({
             type: types.saveConfState

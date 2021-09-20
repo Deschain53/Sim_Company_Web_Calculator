@@ -51,9 +51,10 @@ export const getPrice = (idProduct, marketPrices, quality) => {
 export const getStateWWithMarketPrices = (state,marketPrices,quality) => {
     const newState = state.map( productTable => {
         const newPrice = getPrice( productTable.id, marketPrices, quality);
+        
         return {
             ...productTable,
-            marketPrice: newPrice
+            marketPrice: newPrice === undefined ? -1 : newPrice ,
         }
     });
     return newState;

@@ -34,7 +34,6 @@ export const LanguajeDropDownButton = () => {
 
   useEffect(() => {
     dispatch( changeLanguaje(languaje) );
-    console.log(languaje);
     dispatch( saveConfState() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [languaje]);
