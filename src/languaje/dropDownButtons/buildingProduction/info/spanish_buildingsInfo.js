@@ -12,7 +12,7 @@ const buildingArray = [
     { id: 'D' , name: 'Fábrica de propulsión'           },                 
     { id: '1' , name: 'Fábrica de carros'               },             
     { id: '7' , name: 'Fábrica aeroespacial'            },               
-    { id: 'O' , name: 'PLataforma petrolera'            },               
+    { id: 'O' , name: 'Plataforma petrolera'            },               
     { id: 'R' , name: 'Refinería'                       },     
     { id: '0' , name: 'Hangar'                          },  
     { id: '9' , name: 'Vertical integration facility'   },                         
