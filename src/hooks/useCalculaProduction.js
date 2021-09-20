@@ -59,6 +59,7 @@ export const useCalculaProduction = () => {
         if(!isFirstRender){
             dispatch( updateLanguajeNameProducts(languaje) );
         }
+    // eslint-disable-next-line
     }, [languaje])
 
     useEffect(() => {
