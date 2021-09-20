@@ -7,8 +7,10 @@ const initialState = {
     languaje: 'english' , 
     pricesInitilizedFromStorage: 'false', 
     }; 
+
+const initialStateFromStorage = JSON.parse(localStorage.getItem('conf')) || initialState;
 //src={heroImages(`./${ id }.jpg`).default}  --> Para seleccionar un objeto de acuerdo a string
-export const configReducer = ( state = initialState, action ) => {
+export const configReducer = ( state = initialStateFromStorage, action ) => {
 
     switch ( action.type ) {
 
@@ -34,6 +36,12 @@ export const configReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 languaje: action.payload.languaje
+            }
+
+        case types.saveConfState:
+            localStorage.setItem( 'conf',JSON.stringify(state) );  
+            return {
+                ...state
             }
 
         default:

@@ -2,10 +2,10 @@ import { types } from "../types/types";
 
 const selectValidLanguaje = (id) => {
     switch (id) {
-        case 'En':
+        case 'english':
             return 'english'
     
-        case 'Es':
+        case 'spanish':
             return 'spanish'
 
         default:
@@ -54,5 +54,18 @@ export const changeLanguaje = (id) => {
 
     }
 
+}
+
+export const saveConfState = () => {
+    
+    const saveConfInLocalStorage = (state) => {
+        localStorage.setItem( 'conf',JSON.stringify(state) || null );
+    }
+
+    return ( dispatch ) => {
+        dispatch({
+            type: types.saveConfState
+        })
+    }
 }
 

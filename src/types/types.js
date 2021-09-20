@@ -4,6 +4,7 @@ export const types = {
     ligthMode: '[Config] Change to LigthMode',
     checkingPricesInStorage: '[Config] Checking prices in storage',
     changeLanguaje: '[Config] Change Languaje',
+    saveConfState: '[Config] Save Conf state',
 
     //For pricesReducer:
     updatePrices: '[Prices] Update Prices',

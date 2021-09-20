@@ -6,18 +6,18 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
 import { useStylesMenuItem, styleMenuLight, styleMenuDark  } from '../../../styles/material-ui-styles/menuStyle';
-import { changeLanguaje } from '../../../actions/configuration';
+import { changeLanguaje, saveConfState } from '../../../actions/configuration';
 
 export const LanguajeDropDownButton = () => {
 
   const dispatch = useDispatch();
   //const productionInfo = useSelector( state => state.production );
-  const {mode} = useSelector(state => state.conf);
+  const {mode, languaje:languajeConfState} = useSelector(state => state.conf);
 
   const dropDowButtonDarkStyle = useDropDowButtonDark();
   const classeMenuButton = useStylesMenuItem();
 
-  const [languaje, setLanguaje] = useState('En');
+  const [languaje, setLanguaje] = useState(languajeConfState);
   const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
@@ -34,12 +34,14 @@ export const LanguajeDropDownButton = () => {
 
   useEffect(() => {
     dispatch( changeLanguaje(languaje) );
+    console.log(languaje);
+    dispatch( saveConfState() );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [languaje]);
 
   const languajes = [
-    {id:'En', languajeLabel:'English'},
-    {id:'Es', languajeLabel:'Spanish'}];
+    {id:'english', languajeLabel:'English'},
+    {id:'spanish', languajeLabel:'Spanish'}];
 
   return (
     <div>
