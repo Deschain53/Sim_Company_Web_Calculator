@@ -2,8 +2,7 @@ import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { useSelector, useDispatch } from 'react-redux';
-import { setModeToDark, setModeToLight } from '../../../actions/configuration';
-
+import { saveConfState, setModeToDark, setModeToLight } from '../../../actions/configuration';
 
 export const DarkModeButton = () => {
     
@@ -14,11 +13,13 @@ export const DarkModeButton = () => {
     const changeMode = () => {
 
         if ( mode === 'dark' ) {
-            dispatch( setModeToLight() ) 
+            dispatch( setModeToLight() );
+            dispatch( saveConfState() ); 
         }
 
         if ( mode === 'light') {
-            dispatch( setModeToDark() )
+            dispatch( setModeToDark() );
+            dispatch( saveConfState() );
         }
     }
 
