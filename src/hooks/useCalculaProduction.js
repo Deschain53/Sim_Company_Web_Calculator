@@ -28,8 +28,8 @@ export const useCalculaProduction = () => {
             (building === 'O' ||  building === 'Q'|| building === 'M') 
             ? production : {...production, abundance:100}) );  //product-1
         dispatch( updatePrices(prices,production) );            //product-2
-
         dispatch( updateNamesAmountAndIdsItems(productsJSON) ); //detail-0
+
         dispatch( updatePricesItems(prices,production) );       //detail-1
         dispatch( calculateTotalCostItems() );                  //detail-2
         dispatch( calculateAdditionTotalCostItems() );          //detail-3
@@ -40,6 +40,9 @@ export const useCalculaProduction = () => {
         dispatch( calculateProfitHourContract(production,productsJSON, production));    //product-end
         dispatch( calculateProfitHourMarket(production,productsJSON));                  //product-end
         
+        if(languaje!=='spanish'){ //This 'if' condition is here because JSON saved have the name in spanish. Otherwwise it would be necessary to do always
+            dispatch( updateLanguajeNameProducts(languaje) );
+        }
         // eslint-disable-next-line
     }, [quality,fase,building,admin,abundance,prices, bonus]);
     
@@ -53,7 +56,9 @@ export const useCalculaProduction = () => {
     }, [PVM,transport])
 
     useEffect(() => {
-        dispatch( updateLanguajeNameProducts(languaje) );
+        if(!isFirstRender){
+            dispatch( updateLanguajeNameProducts(languaje) );
+        }
     }, [languaje])
 
     useEffect(() => {

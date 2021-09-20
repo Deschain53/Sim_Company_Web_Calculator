@@ -273,11 +273,20 @@ export const getStateWithProfitHourContractCalculated = (state,productsJSON,tran
 
 export const getStateWithNameLanguajeUpdate = (state, namesProductsInfo) => {
     const newState = state.map( productTable => {
+
         const {name:productName} = namesProductsInfo.find( ({id}) => id === productTable.id );
         
+        const newDetail = productTable.detail.map( detailItem =>  { 
+            
+            const {name:itemName} = namesProductsInfo.find( ({id}) => id === detailItem.id );
+
+            return {...detailItem, item: itemName}
+        });
+
         return {
             ...productTable,
-            product: productName
+            product: productName,
+            detail: newDetail,
         }
 
     })
