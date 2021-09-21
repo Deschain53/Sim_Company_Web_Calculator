@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableDemoProduction } from './ProductionTable/TableDemoProduction';
+import { TableDemoProduction } from './ProductionDemoTable/TableDemoProduction';
 
 export const Instructions = () => {
     return (
