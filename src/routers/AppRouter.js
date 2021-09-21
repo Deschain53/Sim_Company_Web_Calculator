@@ -9,6 +9,7 @@ import {
 
 import { ProductionCalculator } from '../components/ProductionCalculator';
 import { RetailCalculator } from '../components/RetailCalculator';
+import { Instructions } from '../components/ui/Instructions';
 import { Navbar } from '../components/ui/Navbar';
 
   export const AppRouter = () => {
@@ -31,6 +32,12 @@ import { Navbar } from '../components/ui/Navbar';
                 exact 
                 path="/retail" 
                 component={ RetailCalculator } 
+            />
+
+            <Route 
+                exact 
+                path="/instructions" 
+                component={ Instructions } 
             />
             
             <Redirect to="/production"/>

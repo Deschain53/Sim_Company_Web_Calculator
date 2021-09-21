@@ -57,9 +57,9 @@ export const Navbar = () => {
                 activeClassName="active"
                 className="nav-link" 
                 exact
-                to="/search"
+                to="/instructions"
             >
-                { navbarInfo.instuctions }
+                { navbarInfo.instructions } 
             </NavLink>
         </li>
 
@@ -75,3 +75,4 @@ export const Navbar = () => {
 </nav>
     )
 }
+//{ navbarInfo.instuctions }
