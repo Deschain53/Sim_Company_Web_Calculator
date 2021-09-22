@@ -35,7 +35,7 @@ export const RowNormalProduction = ({row, open, setOpen}) => {
             </IconButton>
           </StyledTableCell>
           <StyledTableCell component="th" scope="row" mode={mode}>
-            {product}
+          &#40;A&#41;&nbsp;&nbsp;{product}
           </StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(cost)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{marketPrice}</StyledTableCell>

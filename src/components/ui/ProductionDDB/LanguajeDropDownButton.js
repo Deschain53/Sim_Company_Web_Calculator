@@ -40,7 +40,7 @@ export const LanguajeDropDownButton = () => {
 
   const languajes = [
     {id:'english', languajeLabel:'English'},
-    {id:'spanish', languajeLabel:'Spanish'}];
+    {id:'spanish', languajeLabel:'Español'}];
 
   return (
     <div>
