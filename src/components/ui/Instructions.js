@@ -11,40 +11,48 @@ export const Instructions = () => {
                 <div className="col col-sm-12 col-md-12 ">
                     <h2 className="h2 mt-2 mb-3" >Instructions for production calculator</h2>
                     <div className="row">
-                        <p>
-                            This tool was made to calculate the profit per hour for each product 
-                            from a building. It is a way to know the viability at that moment
-                            and can be used to take better decisions at the game. 
-                        </p>
+                        <div className="col-sm">
+                            <p>
+                                This tool was made to calculate the profit per hour for each product 
+                                from a building. It is a way to know the viability at that moment
+                                and can be used to take better decisions at the game. 
+                            </p>
+                        </div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
-                        <p> 
-                            1.- Push the button 'Get prices'. This action is going to get the current prices from the market 
+                        <p className="display-5"> 
+                            <strong>1.- Push the button 'Get prices'. </strong> <br/>
+                            This action is going to get the current prices from the market 
                             using the Sim company's API and is going to save them in your browser.
                         </p>
                       </div>
                       <div className="col-sm">
                         <p>
-                            2.- Fill the information needed. All numbers should be positive. If you made a mistake the
+                            <strong> 2.- Fill the information needed.</strong> <br/>
+                            All numbers should be positive. If you made a mistake the
                             value per defaul is going to be readed as 0.
                         </p>
                       </div>
                       <div className="col-sm">
                         <p>
-                            3.- Select the building, fase and quality.
+                            <strong>3.- Select the building, fase and quality.</strong> <br/>
+                            When you change this values the changes are applied inmediatly.
                         </p>
                       </div>
                       <div className="col-sm">
                         <p>
-                            4.- Press the button 'Calculate' to apply and save the changes.
+                            <strong>4.- Press the button 'Calculate'. </strong> <br/>
+                            This will apply and save the changes.
                         </p>
                       </div>
                     </div>
                 </div>
 
                 <div className="col col-sm-12 col-md-12">
+
                     <h2 className="h3 mt-2 mb-3" >Some considerations</h2>
+
                     <div className="row">
                         <div className="col">
                             <p>
@@ -52,6 +60,7 @@ export const Instructions = () => {
                             </p>
                         </div>
                     </div>
+
                     <div className="row">
                       <div className="col-sm">
                           <p>
@@ -60,6 +69,7 @@ export const Instructions = () => {
                                 green if you pressed the button in the current sesion. 
                           </p>
                       </div>
+
                       <div className="col-sm">
                             <p>
                                 The calculator get the prices of all qualitys for all products and save them in your local 
@@ -68,15 +78,19 @@ export const Instructions = () => {
                                 and open the website again in most cases the prices are going to be there, saved.    
                             </p>
                       </div>
+
                       <div className="col-sm">
                             <p>
                                 You can change the languaje using the mode between light/dark pressing
                                 the next button <DarkModeButton/> here and in the top of the site. <br/>
-                                You can also chang the langue using the menu: <LanguajeDropDownButton/>
-                                These changes are also saved in your browser.
+                                You can also change the langue using the menu: 
                             </p>              
-                                       
+                                <LanguajeDropDownButton/>
+                            <p>
+                            These changes are also saved in your browser.
+                            </p>
                       </div>
+
                       <div className="col-sm">
                             <p>
                                 The reason this tool take the market prices to make the calculus is because
@@ -86,17 +100,158 @@ export const Instructions = () => {
                             </p>                          
                       </div>
                     </div>
+
                 </div>
                 
             
             </div>
 
             <div className="container-xxl">
-                <div className="mb-3">
-                    <h3> Parts of the production calculator table </h3>
-                    <TableDemoProduction/>
+                <div className="row">
+                    <div className="col ">
+                        <h3> Parts of the production calculator table </h3>
+                        <TableDemoProduction/>
+                    </div>
+                </div>
+
+                <h4> Columns </h4>
+
+                <div className="row">
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;1&#41;&nbsp;</strong><br/>
+                            The name of the product
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;2&#41;&nbsp;</strong><br/>
+                            The total cost of production of one unit. More information about
+                            how this number was get it's in the section 'Detail'. 
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;3&#41;&nbsp;</strong><br/>
+                            This is the current market price of one unit for 
+                            the quality selected.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;4&#41;&nbsp;</strong><br/>
+                            The units/hour produced per hour. This is calculated using the 
+                            information of the building level, the bonus and the fase selected.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;5&#41;&nbsp;</strong><br/>
+                            This indicate the amount you would get per hour if you 
+                            sold in the market at the price indicated in &#40;3&#41;.
+                            To get this number colum &#40;2&#41;,&#40;4&#41; and
+                            the comission of -3% is used. The information of the 
+                            cost of one unit of transport and the hole amount needed is considered as well.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                        <strong>&#40;6&#41;&nbsp;</strong><br/>
+                            This indicate the amount you would get per hour if you 
+                            sold by contract with the discount of the porcentaje under
+                            market price indicated. In this example a porcentaje of -3% is used.
+                            To get this numer also colum &#40;2&#41;,&#40;4&#41; and information of the 
+                            cost of transport and a half of the amount needed is used.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;7&#41;&nbsp;</strong><br/>
+                            The name of the items that are needed to make one unit of the product.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;8&#41;&nbsp;</strong><br/>
+                            Amount of the item needed.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;9&#41;&nbsp;</strong><br/>
+                            Price in the market of one unit of the item needed. 
+                            Remember that this price is one qualiy less than the 
+                            product you are making. So if you are making a product 
+                            quality 6 you will need items quality 5. 
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;10&#41;&nbsp;</strong><br/>
+                            This number is the result of multiplying &#40;8&#41;*&#40;9&#41;.
+                        </p>
+                    </div>
+                </div>
+
+                <h4> Rows </h4>
+                
+                <div className="row">
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;A&#41;&nbsp;</strong><br/>
+                            Row corresponding at the product you are making
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;a&#41;&nbsp;</strong><br/>
+                            Items needed to make the product in &#40;A&#41;&nbsp;.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;b&#41;&nbsp;</strong><br/>
+                            The addition of the total cost of items &#40;a&#41;&nbsp;.
+                        </p>
+                    </div>
+                    <div className="col-sm">
+                        <p>
+                            <strong>&#40;c&#41;&nbsp;</strong><br/>
+                            This inficates the wages you pay per unit is 
+                            calculated using the information from &#40;4&#41;&nbsp;
+                            and the wages of the building.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-4">
+                        <p>
+                            <strong>&#40;d&#41;&nbsp;</strong><br/>
+                            Administration overhead calculated using the info of the admin
+                            you indicated and the wages from &#40;c&#41;&nbsp;.
+                        </p>
+                    </div>
+                    <div className="col-sm-4">
+                        <p>
+                            <strong>&#40;e&#41;&nbsp;</strong><br/>
+                            Total cost of fabrication. It's calculated 
+                            adding up &#40;b&#41;&nbsp;,
+                            &#40;c&#41;&nbsp;, &#40;d&#41;&nbsp; and 
+                            &#40;e&#41;&nbsp;.
+                        </p>
+                    </div>
+
                 </div>
             </div>
+
+            
         
         </div>
     )
