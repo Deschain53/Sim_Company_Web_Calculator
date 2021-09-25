@@ -1,10 +1,10 @@
-export const spanish_instruction = {
-    productionTitle: 'Instrucciones en español',
-    productionText: '',
-    productionArray = [
+export const spanish_instructions = {
+    productionTitle: 'Instrucciones',
+    productionText: 'Ésta herramienta fué hecha para calcular la ganancia por hora para cada edificio. Es una forma de saber la viabilidad en determinado momento y puede servir para tomar mejorares decisiones dentro del juego.',
+    productionArray: [
         {
             id: 1,
-            title: 'Presione el botó "Get prices" ',
+            title: 'Presione el botón "Obtén precios" ',
             text: 'Ésta acción obtendrá los precios desde el mercado usando la API de Sim Company y los guardará en tu navegador',
         },
         {
@@ -25,97 +25,111 @@ export const spanish_instruction = {
     ],
 
     considerationsTitle: 'Algunas consideraciones',
-    considerationsText: '',
+    considerationsText: 'Hay algunas cosas que debes tener en cuenta antes de usar ésta herramienta. Algunas de ellas son:',
     considerationsArray: [
         {
             id: 1,
-            text: '',
+            text: 'El botón "Obtén precios" estará en color amarillo si los precios fueron leidos del almacenamiento de tu navegador, rojo si no los tienes ni los has descargado y verde cuando ya hayas pulsado el botón en la sesión actual',
+        },
+        {
+            id: 2,
+            text: 'La calculadora obtiene los precios de todas las calidades para todos los productos y los guarda en el almacenamiento local de tu navegador. Esto significa que no es necesario presionarlo antes de cada cálculo o modificación. Incluso si reabres el sitio web en la mayoría de casos los precios seguirán ahí',
+        },
+        {
+            id: 3,
+            text: 'Puedes cambiar el modo entre claro/oscuro, así como el lenguaje usando el respectivo botón y menú. Los cambios se guardarán también en el navegador.',
+        },
+        {
+            id: 4,
+            text: 'La razón por la cuál esta herramienta toma los precios desde el mercado es que de ésa forma es más fácil conocer la ganancia real. Ésto puede ayudarte a tomar mejores desiciónes pero aún debes tener tu propio criterio.',
         },
     ],
 
     partsProductionTitle: 'Partes de la calculadora de producción',
-    columsProductionArray: [
+    columnsTitle:'Columnas',
+    columnsProductionArray: [
         {
             id: 1,
-            title: '',
-            text: '',
+            title: 'Producto',
+            text: 'El nombre del producto',
         },
         {
             id: 2,
-            title: '',
-            text: '',
+            title: 'Costo total de producción',
+            text: 'Se refiere al costo por unidad. Puedes ver más información en la sección "Detalle".',
         },
         {
             id: 3,
-            title: '',
-            text: '',
+            title: 'Precio en mercado',
+            text: 'Se refiere al precio por unidad de la calidad seleccionada para éste producto.',
         },
         {
             id: 4,
-            title: '',
-            text: '',
+            title: 'Unidades/hora',
+            text: 'Para llegar a éste número se toma en cuenta el bonus de producción, el nivel de edificio y la fase seleccionada.',
         },
         {
             id: 5,
-            title: '',
-            text: '',
+            title: 'Ganancia/hora Mercado',
+            text: 'La ganancia que obtendrías por hora si vendieras tus productos en el mercado al precio indicado en (3). Para llegar a éste número se toma en cuanta la columna (2),(4), la comisión, así como el costo del trasnporte.',
         },
         {
             id: 6,
-            title: '',
-            text: '',
+            title: 'Ganancia/hora Contrato',
+            text: 'La ganancia que obtendrías por hora si se vendieran los productos vía contratos. Para llegar a ésta cifra se toman en cuenta las columnas (3),(4) así como el precio del transporte y el porcentate de venta bajo mercado indicado',
         },
         {
             id: 7,
-            title: '',
-            text: '',
+            title: 'Materia prima',
+            text: 'El nombre de las materias primas usadas para elaborar el producto final.',
         },
         {
             id: 8,
-            title: '',
-            text: '',
+            title: 'Cantidad',
+            text: 'Cantidad de materia prima necesaria',
         },
         {
             id: 9,
-            title: '',
-            text: '',
+            title: 'Costo unitario',
+            text: 'Se refier al precio de mercado de una unidad de la materia prima. Éste precio es el de un nivel de calidad menor a tu producto final. Por ejemplo, si se intenta elaborar un producto nivel 6 necesitarás materias primas nivel 5.',
         },
         {
             id: 10,
-            title: '',
-            text: '',
+            title: 'Costo total',
+            text: 'Éste es el resultado de multiplicar la columna (8) y (9).',
         }, 
     ],
+    rowsTitle:'Filas',
     rowsProductionArray: [
         {
             id: 'A',
-            title: '',
-            text: '',
+            title: 'Producto',
+            text: 'Fila que incluye la información del producto a elaborar.',
         },
         {
             id: 'a',
-            title: '',
-            text: '',
+            title: 'Materias primas',
+            text: 'Filas que contienen la información de las materias primas necesarias para elaboarar un producto.',
         },
         {
             id: 'b',
-            title: '',
-            text: '',
+            title: 'Costo total de materias primas',
+            text: 'Es la suma de los costos de las materias primas',
         },
         {
             id: 'c',
-            title: '',
-            text: '',
+            title: 'Salarios',
+            text: 'Hace referencia al costo de los salarios que hay que pagar por unidad. Esto se calcula usando la información de (4) y los salarios por hora del edificio.',
         },
         {
             id: 'd',
-            title: '',
-            text: '',
+            title: 'Administración',
+            text: 'Cantidad de dinero que se paga por gastos administrativos. Se calcula usando la información de (c) y el porcentaje de gastos administrativos proporcionado.',
         },
         {
             id: 'e',
-            title: '',
-            text: '',
+            title: 'Costo total de produción',
+            text: 'Costo total de fabricación de una unidad. Es la suma de (b),(c),(d) y (e).',
         },
     ],
 }
