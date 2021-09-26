@@ -1,6 +1,6 @@
 export const spanish_instructions = {
     productionTitle: 'Instrucciones',
-    productionText: 'Ésta herramienta fué hecha para calcular la ganancia por hora para cada edificio. Es una forma de saber la viabilidad en determinado momento y puede servir para tomar mejorares decisiones dentro del juego.',
+    productionText: 'Ésta herramienta fué hecha para calcular la ganancia por hora para cada edificio. Es una forma de saber la viabilidad en determinado momento y puede servir para tomar mejores decisiones dentro del juego.',
     productionArray: [
         {
             id: 1,
@@ -29,11 +29,11 @@ export const spanish_instructions = {
     considerationsArray: [
         {
             id: 1,
-            text: 'El botón "Obtén precios" estará en color amarillo si los precios fueron leidos del almacenamiento de tu navegador, rojo si no los tienes ni los has descargado y verde cuando ya hayas pulsado el botón en la sesión actual',
+            text: 'El botón "Obtén precios" estará en color amarillo si los precios fueron leidos del almacenamiento de tu navegador, rojo si no los tienes ni los has descargado y verde cuando ya hayas pulsado el botón en la sesión actual.',
         },
         {
             id: 2,
-            text: 'La calculadora obtiene los precios de todas las calidades para todos los productos y los guarda en el almacenamiento local de tu navegador. Esto significa que no es necesario presionarlo antes de cada cálculo o modificación. Incluso si reabres el sitio web en la mayoría de casos los precios seguirán ahí',
+            text: 'La calculadora obtiene los precios de todas las calidades para todos los productos y los guarda en el almacenamiento local de tu navegador. Esto significa que no es necesario presionarlo antes de cada cálculo o modificación. Incluso si reabres el sitio web en la mayoría de casos los precios seguirán ahí.',
         },
         {
             id: 3,
