@@ -3,7 +3,7 @@ import { Collapse } from '@material-ui/core';
 import { IconDropDownButton } from '../../Buttons/IconDropDownButton';
 
 export const RowsExplain = React.memo(({instructions}) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     return (
       <>
         <div className="d-flex flex-row bd-highlight mb-2">

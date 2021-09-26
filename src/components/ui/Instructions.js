@@ -25,7 +25,7 @@ export const Instructions = () => {
                     <div className="row">
                         <ProductionTableParts instructions={instructions}/>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
