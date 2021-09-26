@@ -11,28 +11,23 @@ export const Instructions = () => {
 
     return (
         <div className="window-app">
-
             <div className="container-xxl">
+                <div className="col-12"> 
+                
+                    <div className="row">
+                        <InstructionsProduction instructions={instructions}/>
+                    </div>
 
-                <div className="row">
-                    <h2 className="h2 mt-2 mb-3" >{ instructions.productionTitle }</h2>
-                    <InstructionsProduction instructions={instructions}/>
+                    <div className="row">
+                        <ConsiderationsProduction instructions={instructions}/>
+                    </div>
+
+                    <div className="row">
+                        <ProductionTableParts instructions={instructions}/>
+                    </div>
+                    
                 </div>
-
-                <div className="row">
-                    <h2 className="h3 mt-2 mb-3" >{ instructions.considerationsTitle }</h2>
-                    <ConsiderationsProduction instructions={instructions}/>
-                </div>
-
-                <div className="row">
-                    <h3> { instructions.partsProductionTitle } </h3>
-                    <ProductionTableParts instructions={instructions}/>
-                </div>
-
-
             </div>
-
-
         </div>
     )
 }
