@@ -1,8 +1,8 @@
-import React from 'react'
-import { BuildingDropDownButton } from './BuildingDropDownButton'
-import { FaseDropDownButton } from './FaseDropDownButton'
-import { QualityDropDownButton } from './QualityDropDownButton'
-import { TypeSellPriceDropDownButton } from './TypeSellPriceDropDownButton.js'
+import React from 'react';
+import { BuildingDropDownButton } from './BuildingDropDownButton';
+import { FaseDropDownButton } from './FaseDropDownButton';
+import { QualityDropDownButton } from './QualityDropDownButton';
+import { TypeSellPriceDropDownButton } from './TypeSellPriceDropDownButton';
 
 export const DropDownButtonRetailContainer = () => {
     return (

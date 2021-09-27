@@ -9,7 +9,7 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { changeBuildingR } from '../../../actions/retail';
 //import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
 import { verifyddbBuildingRetail } from '../../../auxiliar/verify';
-import { buildingsProduction_index } from '../../../languaje/dropDownButtons/buildingProduction/buildingsProduction_index';
+import { buildingsRetail_index } from '../../../languaje/dropDownButtons/buildingRetail/buildingsRetail_index';
 
 export const BuildingDropDownButton = () => {
 
@@ -25,7 +25,7 @@ export const BuildingDropDownButton = () => {
   const [open, setOpen] = useState(false);
   
 
-  const { buildingLabel, buildingArray } = buildingsProduction_index[`${languaje}_buildingInfo`];
+  const { buildingLabel, buildingArray } = buildingsRetail_index[`${languaje}_buildingInfo`];
 
   const handleChange = (event) => {
     setBuilding(event.target.value);
