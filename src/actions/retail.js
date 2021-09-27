@@ -66,6 +66,17 @@ export const changeQualityR = (newQuality) => {
     }
 }
 
+export const changeTypeSellPrice = (newTypeSellPrice='average') => {
+    return (dispatch) => {
+        dispatch(
+            {
+                type: types.changeTypeSellPrice,
+                payload: {typeSellPrice:newTypeSellPrice}
+            }
+        )
+    }
+}
+
 export const saveInLocalStorageRetail = () => {
     return (dispatch) => {
         dispatch(
@@ -75,3 +86,4 @@ export const saveInLocalStorageRetail = () => {
         )
     }
 }
+

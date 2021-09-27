@@ -81,6 +81,20 @@ export const verifyddbFase= ({buildingLevel,PVM,admin, bonus,transport,fase}) =>
       } 
     }
 
+export const verifyddbTypeSellPrice= ({buildingLevel,PCM,admin, bonus, typeSellPrice}) => { //ddb = DownDropButton
+    if(
+        (buildingLevel === 1 || buildingLevel === 0)  &&
+        PCM === 0 &&
+        admin === 0 &&
+        bonus === 0 &&
+        typeSellPrice === 'average'
+      ){
+          return '' ;
+      }else{
+          return typeSellPrice ;
+      } 
+    }
+
 export const verifyddbQuality= ({buildingLevel,PVM,admin, bonus,transport,quality}) => { //ddb = DownDropButton
     if(
         (buildingLevel === 1 || buildingLevel === 0)  &&

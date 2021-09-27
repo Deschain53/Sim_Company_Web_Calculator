@@ -28,5 +28,6 @@ export const types = {
     updateInfoFormR: '[Retail] Update Retail Information',
     changeQualityR: '[Retail] Change Quality',
     saveRetailInfo: '[Retail] Save Retail Information',
+    changeTypeSellPrice: '[Retail] Change type sell price',
 
 }

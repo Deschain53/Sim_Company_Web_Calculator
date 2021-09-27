@@ -40,6 +40,12 @@ export const retailReducer = ( state = initialStateFromStorage, action ) => {
                 quality: action.payload.quality
             }
 
+        case types.changeTypeSellPrice:
+            return {
+                ...state,
+                typeSellPrice: action.payload.typeSellPrice
+            }
+
         case types.saveRetailInfo:
             localStorage.setItem('retail', JSON.stringify(state));
             return {
