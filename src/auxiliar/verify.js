@@ -7,7 +7,7 @@ export const verifyNumber = (input) => {
             )
 }
 
-export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport, abundance}) => {
+export const verifyInitialStateFormProduction = ({buildingLevel,PVM,admin, bonus,transport, abundance}) => {
   
         if(
           (buildingLevel === 1 || buildingLevel === 0) &&
@@ -21,7 +21,21 @@ export const verifyInitialStateForm = ({buildingLevel,PVM,admin, bonus,transport
         }else{
             return {buildingLevel,PVM,admin, bonus,transport,abundance} ;
         } 
-    }
+}
+
+export const verifyInitialStateFormRetail = ({buildingLevel,PCM,admin, bonus}) => {
+  
+        if(
+          (buildingLevel === 1 || buildingLevel === 0) &&
+          PCM === 0 &&
+          admin === 0 &&
+          bonus === 0 
+        ){
+            return {buildingLevel:'',PCM:'',admin:'',bonus:''} ;
+        }else{
+            return {buildingLevel,PCM,admin, bonus} ;
+        } 
+}
 
 export const verifyddbBuilding= ({buildingLevel,PVM,admin,bonus,transport,building}) => { //ddb = DownDropButton
     if(

@@ -20,6 +20,13 @@ export const types = {
     changeBuildingP: '[Production] Change Building',
     updateInfoFormP: '[Production] Update Production Information',
     changeQualityP: '[Production] Change Quality',
-    saveProductionInfo: '[Production] Save Production Information'
+    saveProductionInfo: '[Production] Save Production Information',
+
+    //For retailReducer:
+    changeFaseR: '[Retail] Change Fase',
+    changeBuildingR: '[Retail] Change Building',
+    updateInfoFormR: '[Retail] Update Retail Information',
+    changeQualityR: '[Retail] Change Quality',
+    saveProductionInfoR: '[Retail] Save Retail Information',
 
 }

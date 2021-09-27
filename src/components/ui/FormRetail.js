@@ -3,37 +3,36 @@ import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector  } from 'react-redux';
 import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/production';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
-import { verifyNumber, verifyInitialStateFormProduction } from '../../auxiliar/verify';
+import { verifyNumber, verifyInitialStateFormRetail } from '../../auxiliar/verify';
 import { calculationAndProduction_Index } from '../../languaje/forms/calculationAndProduction/calculationAndProduction_Index';
 import { CalculateButton } from './Buttons/CalculateButton';
 
-export const FormProduction= () => {        //Se podria recibir una funcion setState
+export const FormRetail= () => {        //Se podria recibir una funcion setState
   
   const dispatch = useDispatch();
 
-  const productionInfo = useSelector( state => state.production );
+  const retailInfo = useSelector( state => state.retail );
   const {mode, languaje} = useSelector(state => state.conf);
 
-  const {building} = productionInfo;
-
-  const [formValues, handleInputChange] = useForm(verifyInitialStateFormProduction(productionInfo));
+  const [formValues, handleInputChange] = useForm(verifyInitialStateFormRetail(retailInfo));
   
-  const {buildingLevel,PVM,admin, bonus,transport, abundance} = formValues;
+  const {buildingLevel,PCM,admin, bonus} = formValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formValues);
+    console.log(retailInfo);
 
-    const info = {
+    /*const info = {
       buildingLevel: verifyNumber(buildingLevel),
-      PVM: verifyNumber(PVM),
+      PCM: verifyNumber(PVM),
       admin: verifyNumber(admin),
       bonus: verifyNumber(bonus),
-      transport: verifyNumber(transport),
-      abundance: verifyNumber(abundance) //(building === 'O' ||  building === 'Q'|| building === 'M') ? verifyNumber(abundance) : 100 ,
     }
 
     dispatch( updateInfoFormP(info) );
     dispatch( saveInLocalStorageProduction());
+    */
   };
 
   //Languaje information:
@@ -73,12 +72,12 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
               
               <input    
                 type = "text"
-                name = "PVM"
+                name = "PCM"
                 className={ inputClassName } 
-                id="PVM" 
+                id="PCM" 
                 placeholder = {inputPlaceHolderlanguajeInformation.porcentaje}  
                 autoComplete = "off"
-                value = {PVM}
+                value = {PCM}
                 onChange = {handleInputChange}
               />
               <div className="input-group-text  ">%</div>
@@ -120,50 +119,6 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 onChange = { handleInputChange }
               />
               <div className="input-group-text  ">%</div>
-            </div>
-        </div>
-
-    { (building === 'O' ||  building === 'Q'|| building === 'M')  
-      ?(
-        <div className="row mb-3">
-            <label htmlFor="colFormLabel" className={ labelClassName }>
-              {labelLanguajeInformation.abundance}
-            </label>
-            <div className="input-group col-sm-10 mb-2  ">
-              <input    
-                type = "text"
-                name = "abundance"
-                className={ inputClassName } 
-                id="colFormLabel" 
-                placeholder = { inputPlaceHolderlanguajeInformation.abundance }  
-                autoComplete = "off"
-                value = { abundance }
-                onChange = { handleInputChange }
-              />
-              <div className="input-group-text  ">%</div>
-            </div>
-        </div>
-      ) 
-      : <></>
-    }
-
-        <div className="row mb-1">
-            <label htmlFor="colFormLabel" className={ labelClassName }>
-              {labelLanguajeInformation.transport}
-            </label>
-            <div className="input-group col-sm-10 mb-2 ">
-              <div className="input-group-text  ">$</div>
-              <input    
-                type = "text"
-                name = "transport"
-                className= { inputClassName } 
-                id="transport" 
-                placeholder = { inputPlaceHolderlanguajeInformation.transport }  
-                autoComplete = "off"
-                value = {transport}
-                onChange = {handleInputChange}
-              />
-              
             </div>
         </div>
 
