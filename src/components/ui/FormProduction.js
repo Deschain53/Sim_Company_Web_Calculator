@@ -67,7 +67,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
         
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-              {labelLanguajeInformation.porcentaje}
+              {labelLanguajeInformation.percentage}
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               
@@ -76,7 +76,7 @@ export const FormProduction= () => {        //Se podria recibir una funcion setS
                 name = "PVM"
                 className={ inputClassName } 
                 id="PVM" 
-                placeholder = {inputPlaceHolderlanguajeInformation.porcentaje}  
+                placeholder = {inputPlaceHolderlanguajeInformation.percentageSelling}  
                 autoComplete = "off"
                 value = {PVM}
                 onChange = {handleInputChange}

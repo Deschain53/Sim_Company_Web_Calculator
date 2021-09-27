@@ -27,6 +27,6 @@ export const types = {
     changeBuildingR: '[Retail] Change Building',
     updateInfoFormR: '[Retail] Update Retail Information',
     changeQualityR: '[Retail] Change Quality',
-    saveProductionInfoR: '[Retail] Save Retail Information',
+    saveRetailInfo: '[Retail] Save Retail Information',
 
 }

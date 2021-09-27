@@ -1,6 +1,6 @@
 export const english_label = {
     buildingLevel: 'Building Level',
-    porcentaje: 'Porcentage',
+    percentage: 'Percentage',
     administration: 'Administration',
     bonusProduction: 'Bonus',
     abundance: 'Abundance',
@@ -9,9 +9,11 @@ export const english_label = {
 
 export const english_input = {
     buildingLevel: 'Building Level',
-    porcentaje: 'Porcentaje of selling under market price',
+    percentageSelling: 'Percentage of selling under market price',
     administration: 'Administration overhead',
     bonusProduction: 'Production Bonus',
     abundance: 'Abundance',
     transport: 'Transport price',
+    bonusSales: 'Sales bonus',
+    percentageBuying: 'Percentage of buying under market price',
 }

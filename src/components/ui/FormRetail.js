@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector  } from 'react-redux';
-import { saveInLocalStorageProduction, updateInfoFormP } from '../../actions/production';
+import { saveInLocalStorageRetail, updateInfoFormR } from '../../actions/retail';
 import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 import { verifyNumber, verifyInitialStateFormRetail } from '../../auxiliar/verify';
 import { calculationAndProduction_Index } from '../../languaje/forms/calculationAndProduction/calculationAndProduction_Index';
@@ -20,19 +20,16 @@ export const FormRetail= () => {        //Se podria recibir una funcion setState
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
-    console.log(retailInfo);
-
-    /*const info = {
+    
+    const info = {
       buildingLevel: verifyNumber(buildingLevel),
-      PCM: verifyNumber(PVM),
+      PCM: verifyNumber(PCM),
       admin: verifyNumber(admin),
       bonus: verifyNumber(bonus),
     }
 
-    dispatch( updateInfoFormP(info) );
-    dispatch( saveInLocalStorageProduction());
-    */
+    dispatch( updateInfoFormR(info) );
+    dispatch( saveInLocalStorageRetail());
   };
 
   //Languaje information:
@@ -66,7 +63,7 @@ export const FormRetail= () => {        //Se podria recibir una funcion setState
         
         <div className="row mb-3">
             <label htmlFor="colFormLabel" className={ labelClassName }>
-              {labelLanguajeInformation.porcentaje}
+              {labelLanguajeInformation.percentage}
             </label>
             <div className="input-group col-sm-10 mb-2 ">
               
@@ -75,7 +72,7 @@ export const FormRetail= () => {        //Se podria recibir una funcion setState
                 name = "PCM"
                 className={ inputClassName } 
                 id="PCM" 
-                placeholder = {inputPlaceHolderlanguajeInformation.porcentaje}  
+                placeholder = {inputPlaceHolderlanguajeInformation.percentageBuying}  
                 autoComplete = "off"
                 value = {PCM}
                 onChange = {handleInputChange}
@@ -113,7 +110,7 @@ export const FormRetail= () => {        //Se podria recibir una funcion setState
                 name = "bonus"
                 className={ inputClassName } 
                 id="colFormLabel" 
-                placeholder = { inputPlaceHolderlanguajeInformation.bonusProduction }  
+                placeholder = { inputPlaceHolderlanguajeInformation.bonusSales }  
                 autoComplete = "off"
                 value = { bonus }
                 onChange = { handleInputChange }
