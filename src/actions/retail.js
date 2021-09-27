@@ -37,7 +37,7 @@ export const changeBuildingR = ( building = 'L' ) => {
     return (dispatch) => {
         dispatch(
             {
-                type: types.changeBuildingP,
+                type: types.changeBuildingR,
                 payload: { building }
             }
         )

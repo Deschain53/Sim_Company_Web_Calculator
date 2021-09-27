@@ -6,18 +6,10 @@ import Select from '@material-ui/core/Select';
 import { useDropDowButtonDark } from '../../../styles/material-ui-styles/useDropDownDark';
 import { useStylesMenuItem, styleMenuLight, styleMenuDark } from '../../../styles/material-ui-styles/menuStyle';
 import { useDispatch, useSelector  } from 'react-redux';
-import { changeBuildingP } from '../../../actions/production';
+import { changeBuildingR } from '../../../actions/retail';
 //import { productionBuildings } from '../../../data/languajeData.js/productionBuildings';
-import { verifyddbBuilding } from '../../../auxiliar/verify';
+import { verifyddbBuildingRetail } from '../../../auxiliar/verify';
 import { buildingsProduction_index } from '../../../languaje/dropDownButtons/buildingProduction/buildingsProduction_index';
-
-/*const getBuildingsAccordingToLanguaje = ( languaje ) => {
-
-  const pBuildings = productionBuildings();
-
-  const buildingArray = pBuildings[`${languaje}`];
-  return buildingArray;
-}*/
 
 export const BuildingDropDownButton = () => {
 
@@ -27,18 +19,16 @@ export const BuildingDropDownButton = () => {
   const classeMenuButton = useStylesMenuItem();
 
   const {mode, languaje} = useSelector(state => state.conf);
-  const productionInfo = useSelector( state => state.production );
+  const retailInfo = useSelector( state => state.retail );
   
-  const [building, setFase] = useState(verifyddbBuilding(productionInfo));
+  const [building, setBuilding] = useState(verifyddbBuildingRetail(retailInfo));
   const [open, setOpen] = useState(false);
   
-  //const buildings =  //useMemo(() => getBuildingsAccordingToLanguaje(languaje), [languaje]);
 
   const { buildingLabel, buildingArray } = buildingsProduction_index[`${languaje}_buildingInfo`];
 
   const handleChange = (event) => {
-    setFase(event.target.value);
-    //updateQuality(quality);
+    setBuilding(event.target.value);
   };
 
   const handleClose = () => {
@@ -52,7 +42,7 @@ export const BuildingDropDownButton = () => {
   useEffect(() => {
 
     if(building !== ''){
-      dispatch( changeBuildingP(building) );
+      dispatch( changeBuildingR(building) );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [building]);

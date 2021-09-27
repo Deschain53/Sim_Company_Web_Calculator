@@ -3,7 +3,7 @@ import { types } from "../types/types";
 const initialState = {
     quality: 0,
     fase: 1, 
-    building: 'L',
+    building: 'C',
     buildingLevel: 1,
     PCM: 0,
     admin: 0,

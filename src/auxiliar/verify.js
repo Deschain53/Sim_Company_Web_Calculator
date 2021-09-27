@@ -50,7 +50,21 @@ export const verifyddbBuilding= ({buildingLevel,PVM,admin,bonus,transport,buildi
       }else{
           return building ;
       } 
-    }
+}
+
+export const verifyddbBuildingRetail= ({buildingLevel,PCM,admin, bonus,building}) => { //ddb = DownDropButton
+    if(
+        (buildingLevel === 1 || buildingLevel === 0)  &&
+        PCM === 0 &&
+        admin === 0 &&
+        bonus === 0 &&
+        building === 'C'
+      ){
+          return '' ;
+      }else{
+          return building ;
+      } 
+}
 
 export const verifyddbFase= ({buildingLevel,PVM,admin, bonus,transport,fase}) => { //ddb = DownDropButton
     if(
