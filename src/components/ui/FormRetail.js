@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector  } from 'react-redux';
 import { saveInLocalStorageRetail, updateInfoFormR } from '../../actions/retail';
-import { DropDownButtonProductionContainer } from './ProductionDDB/DropDownButtonProductionContainer';
 import { verifyNumber, verifyInitialStateFormRetail } from '../../auxiliar/verify';
 import { calculationAndProduction_Index } from '../../languaje/forms/calculationAndProduction/calculationAndProduction_Index';
 import { CalculateButton } from './Buttons/CalculateButton';
+import { DropDownButtonRetailContainer } from './RetailDDB/DropDownButtonRetailContainer';
 
 export const FormRetail= () => {        //Se podria recibir una funcion setState
   
@@ -119,7 +119,7 @@ export const FormRetail= () => {        //Se podria recibir una funcion setState
             </div>
         </div>
 
-        <DropDownButtonProductionContainer/>
+        <DropDownButtonRetailContainer/>
 
         <div className="container mt-2 mb-2">
           <div className="row align-items-center">

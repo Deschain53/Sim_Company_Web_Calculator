@@ -4,7 +4,7 @@ export const changeRetailFaseToBoom = () => {
     return (dispatch) => {
         dispatch(
             {
-                type: types.changeFaseP,
+                type: types.changeFaseR,
                 payload: { fase: 2}
             }
         )
@@ -15,7 +15,7 @@ export const changeRetailFaseToNormal = () => {
     return (dispatch) => {
         dispatch(
             {
-                type: types.changeFaseP,
+                type: types.changeFaseR,
                 payload: { fase: 1}
             }
         )
@@ -26,7 +26,7 @@ export const changeRetailFaseToRecession = () => {
     return (dispatch) => {
         dispatch(
             {
-                type: types.changeFaseP,
+                type: types.changeFaseR,
                 payload: { fase: 0}
             }
         )
@@ -59,7 +59,7 @@ export const changeQualityR = (newQuality) => {
     return (dispatch) => {
         dispatch(
             {
-                type: types.changeQualityP,
+                type: types.changeQualityR,
                 payload: {quality:newQuality}
             }
         )
