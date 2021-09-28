@@ -2,18 +2,19 @@ import { buildingArrayString } from '../staticData/EdificiosArreglo';
 
 export const getBuildingObjects = () =>{
 
-    const getDoesProduceArreglo = (produceArreglo) => {
-        const info = produceArreglo.map( (materiaPrima) => (materiaPrima.db_letter));
+    const getDoesUseArray = (array) => {
+        const info = array.map( (materiaPrima) => (materiaPrima.db_letter));
         return info;
     }
  
     const buildingJSONs =  buildingArrayString.map( (building) => JSON.parse(building) ); 
 
-    const buildingsObject = buildingJSONs.map( ({db_letter,name, doesProduce,wages}) => (
+    const buildingsObject = buildingJSONs.map( ({db_letter,name, doesProduce, doesSell,wages}) => (
         {
             idBuilding: db_letter,
             name,
-            produce: getDoesProduceArreglo(doesProduce),
+            produce: getDoesUseArray(doesProduce),
+            sell: getDoesUseArray(doesSell),
             wages
         }
     ));

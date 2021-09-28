@@ -4,7 +4,7 @@ import { updateNamesAndIds , updatePrices , updateNamesAmountAndIdsItems, update
     calculateTotalCostItems, updateWagesItems, updateUnitsHour, calculateAdditionTotalCostItems, 
     updateAdminItems, calculateTotalCostFabrication, calculateProfitHourContract, calculateProfitHourMarket, 
     updateLanguajeNameProducts} from '../actions/tableP';
-import { getProductsBuilding } from '../data/getData/getProductsBuilding';
+import { getProductsBuildingProduction } from '../data/getData/getProductsBuilding';
 
 export const useCalculaProduction = () => {
 
@@ -20,7 +20,7 @@ export const useCalculaProduction = () => {
 
     const {quality,fase,building,PVM,admin, transport, abundance, bonus} = production;
 
-    const {productsJSON, wages} = useMemo(() => getProductsBuilding(products,fase,building), [products,fase,building]);
+    const {productsJSON, wages} = useMemo(() => getProductsBuildingProduction(products,fase,building), [products,fase,building]);
 
     useEffect(() => {
         dispatch( updateNamesAndIds(productsJSON) );            //product-0
