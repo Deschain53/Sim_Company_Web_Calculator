@@ -6,6 +6,7 @@ import { productionReducer } from '../reducers/productionReducer';
 import { productReducer } from '../reducers/productReducer';
 import { retailReducer } from '../reducers/retailReducer';
 import { tableProductionReducer } from '../reducers/tableProductionReducer';
+import { tableRetailReducer } from '../reducers/tableRetailReducer';
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
@@ -16,6 +17,7 @@ const reducers = combineReducers({  //Se recomienda hacerlo de esta manera porqu
     production: productionReducer,
     tableP: tableProductionReducer,
     retail: retailReducer,
+    tableR: tableRetailReducer,
 });
 
 export const store = createStore(
