@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { evaluate } from 'mathjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsBuildingRetail } from '../data/getData/getProductsBuilding';
+import { setJSONInformation } from '../actions/tableR';
 
 export const useCalculaRetail = () => {
 
@@ -16,6 +17,13 @@ export const useCalculaRetail = () => {
     const {quality,fase,building,PCM,admin, bonus} = retail;
 
     const {productsJSON, wages} = useMemo(() => getProductsBuildingRetail(products,fase,building), [products,fase,building]);
+
+
+    useEffect(() => {
+        dispatch( setJSONInformation(productsJSON) );
+
+    }, [productsJSON])
+
 
     //Para ejemplo 
     const pJ = productsJSON[0];

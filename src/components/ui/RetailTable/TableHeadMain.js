@@ -16,10 +16,10 @@ export const TableHeadMain = () => {
           <TableRow>
             <StyledTableCell  mode={mode} />
             <StyledTableCell  mode={mode} > { infoTable.product } </StyledTableCell>
-            <StyledTableCell align="right" mode={mode} > { infoTable.productionCost } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.cost } </StyledTableCell>
             <StyledTableCell align="right" mode={mode} > { infoTable.marketPrice } </StyledTableCell>
             <StyledTableCell align="right" mode={mode} > { infoTable.unitsHour } </StyledTableCell>
-            <StyledTableCell align="right" mode={mode} > { infoTable.profitHourMarket } </StyledTableCell>
+            <StyledTableCell align="right" mode={mode} > { infoTable.profitHour } </StyledTableCell>
 
           </TableRow>
         </TableHead>

@@ -1,4 +1,4 @@
-import { typesTableProduction } from '../types/typesTableProduction';
+import { types } from '../types/typesRetailProduction';
 
 export const createData = (product,
     id,
@@ -6,7 +6,7 @@ export const createData = (product,
     sellingPrice = 0, 
     unitsHour = 0, 
     profitHour = 0, 
-
+    productJSON = null,
   ) => {
   return {
     product,
@@ -14,7 +14,8 @@ export const createData = (product,
     cost,
     sellingPrice,
     unitsHour,
-    profitHour
+    profitHour,
+    productJSON,
   };
 }
 
@@ -26,8 +27,14 @@ const initialState = [
 
 export const tableRetailReducer = (state = initialState, action) => {  
     switch (action.type) {
-        case typesTableProduction.clean:
+        case types.clean:
             return initialState;   
+
+        case types.setJSONInformation:
+            return  action.payload.productsJSON.map( productJSON => 
+                createData(productJSON.name, productJSON.db_letter, 0, 0, 0, 0, productJSON)
+            );
+
             
         default:
         return state;
