@@ -19,6 +19,24 @@ export const createData = (product,
   };
 }
 
+export const getPrices = (idProduct, marketPrices) => {
+    const pricesObject = marketPrices.find(({id}) => id === idProduct);
+    if(pricesObject!== undefined){
+        return pricesObject.precio;
+    }else{
+        return null;
+    }
+}
+
+export const getPrice = (idProduct, marketPrices, quality) => {
+    const prices = getPrices(idProduct, marketPrices);
+    if(prices !== null){
+        return prices[quality];
+    }else{
+        return -1;
+    }
+}
+
 const initialState = [
     createData('.',1),
     createData('..',2),
@@ -34,6 +52,18 @@ export const tableRetailReducer = (state = initialState, action) => {
             return  action.payload.productsJSON.map( productJSON => 
                 createData(productJSON.name, productJSON.db_letter, 0, 0, 0, 0, productJSON)
             );
+        
+        case types.updateMarketPrices:
+            const { marketPrices, quality } = action.payload;
+
+            return  state.map( productTable => {
+                const newPrice = getPrice( productTable.id, marketPrices, quality);
+                
+                return {
+                    ...productTable,
+                    cost: newPrice === undefined ? -1 : newPrice ,
+                }
+            });
 
             
         default:

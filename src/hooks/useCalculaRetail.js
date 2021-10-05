@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { evaluate } from 'mathjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsBuildingRetail } from '../data/getData/getProductsBuilding';
-import { setJSONInformation } from '../actions/tableR';
+import { setJSONInformation, updateMarketPrices } from '../actions/tableR';
 
 export const useCalculaRetail = () => {
 
@@ -11,6 +11,7 @@ export const useCalculaRetail = () => {
     const  retail  = useSelector( state => state.retail );
     const  products  =  useSelector( state => state.products );
     const  tableR  = useSelector( state => state.tableR );
+    const  prices  = useSelector( state => state.prices );
 
     const [isFirstRender, setIsFirstRender] = useState(true);
 
@@ -21,8 +22,9 @@ export const useCalculaRetail = () => {
 
     useEffect(() => {
         dispatch( setJSONInformation(productsJSON) );
+        dispatch( updateMarketPrices(prices, quality) );
 
-    }, [productsJSON])
+    }, [productsJSON, retail])
 
 
     //Para ejemplo 

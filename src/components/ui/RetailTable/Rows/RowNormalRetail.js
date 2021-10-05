@@ -37,7 +37,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
           <StyledTableCell component="th" scope="row" mode={mode}>
             {product}
           </StyledTableCell>
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{processDecimals(cost)}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
           <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 

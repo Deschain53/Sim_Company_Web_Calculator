@@ -14,3 +14,18 @@ export const setJSONInformation = (productsJSON) => {
         
     }
 }
+
+export const updateMarketPrices = (marketPrices, quality = 0) => {
+
+    return (dispatch) => {
+
+        dispatch( 
+            {
+                type: types.updateMarketPrices,
+                payload: { marketPrices, quality }
+            }
+        )
+
+        
+    }
+}
