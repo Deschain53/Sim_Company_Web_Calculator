@@ -8,6 +8,7 @@ export const spanish_tableP = {
     profitHourContract: 'Ganancia/hora Contrato',
     profitHour:'Ganancia/hora',
     cost:'Costo',
+    sellPrice: 'Precio de venta',
 
     //Detail header:
     detail: 'Detalle',
@@ -33,6 +34,7 @@ export const english_tableP = {
     profitHourContract: 'Profit/hour Contracts',
     profitHour:'Profit/Hour',
     cost:'Cost',
+    sellPrice: 'Sell price',
 
     //Detail header:
     detail: 'Detail' ,

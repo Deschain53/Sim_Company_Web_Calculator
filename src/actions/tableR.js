@@ -29,3 +29,18 @@ export const updateMarketPrices = (marketPrices, quality = 0) => {
         
     }
 }
+
+export const calculateUnitsHour = (bonus = 0, quality = 0) => {
+
+    return (dispatch) => {
+
+        dispatch( 
+            {
+                type: types.calculateUnitsHour,
+                payload: { bonus, quality }
+            }
+        )
+
+        
+    }
+}
