@@ -1,9 +1,10 @@
 export const types = {
-    clean: '[Retail] Clean',
-    setJSONInformation: '[Retail] Set JSON information',
-    updateMarketPrices: '[Retail] Update market prices',
-    calculateUnitsHour: '[Retail] Calculate units/hour',
-    calculateProfitHour: '[Retail] Calculate profit/hour',
-    calculateAndUpdateBestPrice: '[Retail] Calculate and update best price',
+    clean: '[TableR] Clean',
+    setJSONInformation: '[TableR] Set JSON information',
+    updateMarketPrices: '[TableR] Update market prices',
+    updateSellPrice: '[TableR] Update sell price',
+    calculateUnitsHour: '[TableR] Calculate units/hour',
+    calculateProfitHour: '[TableR] Calculate profit/hour',
+    calculateAndUpdateBestPrice: '[TableR] Calculate and update best price',
     
 }

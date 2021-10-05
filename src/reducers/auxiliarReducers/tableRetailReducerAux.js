@@ -72,17 +72,12 @@ export const getLettersModel = (model = null) => {
 }
 
 export const getUnitsHourDefault = ( model = null, quality = 0, saturationDefault = 0, price = 0 ) => {
-    //console.log(modelo);
-    //console.log(saturationDefault, quality);
+
     const saturationCalculated = saturationDefault - 0.24 * quality;
     const saturation = saturationCalculated > -0.38 ? saturationCalculated : -0.38 ;   
     const amount = 1;
-
     const secondsPerUnit = evaluate(model,{price,saturation,amount, Math});
-    //console.log(secondsPerUnit);
-
     const unitsPerHourDefault = 3600/secondsPerUnit;
-    //console.log(unitsPerHourDefault)
     
     return unitsPerHourDefault;
 }

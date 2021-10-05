@@ -44,3 +44,18 @@ export const calculateUnitsHour = (bonus = 0, quality = 0) => {
         
     }
 }
+
+export const updateSellPrice = ({typeSellPrice='average'}) => {
+
+    return (dispatch) => {
+
+        dispatch( 
+            {
+                type: types.updateSellPrice,
+                payload: { typeSellPrice }
+            }
+        )
+
+        
+    }
+}

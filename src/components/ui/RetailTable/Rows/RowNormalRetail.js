@@ -22,8 +22,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
 
     const { product, cost, sellingPrice, unitsHour, profitHour } = row;
 
-    const processDecimals = (numero) => {
-      const numeroDecimales = 3;
+    const processDecimals = (numero,numeroDecimales=3) => {
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
 
@@ -38,7 +37,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
             {product}
           </StyledTableCell>
           <StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice}</StyledTableCell>
+          <StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice < 100 ? processDecimals(sellingPrice) : processDecimals(sellingPrice,0)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
           <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 
             Math.sign(profitHour) === -1 ? "dark_negative" : "dark_positive" }

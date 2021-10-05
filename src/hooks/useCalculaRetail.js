@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { evaluate } from 'mathjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsBuildingRetail } from '../data/getData/getProductsBuilding';
-import { setJSONInformation, updateMarketPrices, calculateUnitsHour } from '../actions/tableR';
+import { setJSONInformation, updateMarketPrices, updateSellPrice, calculateUnitsHour } from '../actions/tableR';
 
 export const useCalculaRetail = () => {
 
@@ -22,6 +22,7 @@ export const useCalculaRetail = () => {
     useEffect(() => {
         dispatch( setJSONInformation( productsJSON) );
         dispatch( updateMarketPrices( prices, quality, bonus) );
+        dispatch( updateSellPrice(retail));
         dispatch( calculateUnitsHour( bonus, quality) );
 
     }, [productsJSON, retail])

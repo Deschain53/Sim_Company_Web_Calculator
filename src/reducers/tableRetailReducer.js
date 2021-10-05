@@ -34,18 +34,27 @@ export const tableRetailReducer = (state = initialState, action) => {
                 }
             });
             
-        
+        case types.updateSellPrice:
+            return  state.map( productTable => {
+
+                const { retailData } = productTable.productJSON;
+                const averageRetailPrice = retailData[retailData.length - 1].averagePrice;
+                const newSellingPrice = averageRetailPrice; //Ponerlo condicional usando productTable.sellingPrice********
+                
+                return {
+                    ...productTable,
+                    sellingPrice: newSellingPrice === undefined ? -1 : newSellingPrice ,
+                }
+            });
+
         case types.calculateUnitsHour:
             return state.map( productTable => {
-                
+
                 const { bonus, quality } = action.payload;
                 const { retailModeling, marketSaturation, retailData } = productTable.productJSON;
-                const averageRetailPrice = retailData[retailData.length - 1].averagePrice;
-
-                const price = averageRetailPrice; //conditional depending of the sell mode
 
                 const unitsHourDefault = getUnitsHourDefault( retailModeling, 
-                    quality, marketSaturation , price );
+                    quality, marketSaturation , productTable.sellingPrice );
                 
                 const newUnitsHour = unitsHourDefault/(1-(bonus/100));
 
