@@ -139,4 +139,5 @@ export const english_productsInfo = [
     { id:141 , name: "Vegetable oil"},
     { id:142 , name: "Salad"},
     { id:143 , name: "Samosa"},
+    { id: 145, name: "Recipes"},
 ]

@@ -139,4 +139,5 @@ export const spanish_productsInfo = [
     {id: 141, name: "Aceite vegetal"},
     {id: 142, name: "Ensalada"},
     {id: 143, name: "Samosa"},
+    {id: 145, name: "Recetas"},
 ]

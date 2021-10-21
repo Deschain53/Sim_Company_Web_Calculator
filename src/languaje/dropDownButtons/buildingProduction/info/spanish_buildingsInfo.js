@@ -32,7 +32,7 @@ const buildingArray = [
     { id: 'j' , name: 'Panadería'                       },  
     { id: 'k' , name: 'Planta procesadora de alimentos' },  
     { id: 'm' , name: 'Abastecimiento'                  },  
-
+    {id: 'q'  , name: 'Cocina'                          },
 
 ]
 
