@@ -16,7 +16,7 @@ import { Navbar } from '../components/ui/Navbar';
     const {mode} = useSelector(state => state.conf);
 
     return (
-    <Router>
+    <Router basename="/Sim_Company_Web_Calculator">
       <div className={"style-"+mode}>
         
         <Navbar/>
