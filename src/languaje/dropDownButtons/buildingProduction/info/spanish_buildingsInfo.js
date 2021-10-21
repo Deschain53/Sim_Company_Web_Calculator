@@ -25,7 +25,15 @@ const buildingArray = [
     { id: 'c' , name: 'Laboratorio de química'          },                  
     { id: 'a' , name: 'I+D automotriz'                  },          
     { id: 'f' , name: 'Diseño de moda'                  },          
-    { id: 'E' , name: 'Central eléctrica'               },             
+    { id: 'E' , name: 'Central eléctrica'               },  
+    //Update
+    { id: 'e' , name: 'Matadero'                        },  
+    { id: 'i' , name: 'Molino'                          },  
+    { id: 'j' , name: 'Panadería'                       },  
+    { id: 'k' , name: 'Planta procesadora de alimentos' },  
+    { id: 'm' , name: 'Abastecimiento'                  },  
+
+
 ]
 
 export const spanish_buildingInfo = {

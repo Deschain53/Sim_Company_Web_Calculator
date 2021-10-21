@@ -25,7 +25,13 @@ const buildingArray = [
     { id: 'c' , name:  'Chemistry Laboratory'           },                      
     { id: 'a' , name:  'Automotive R&D'                 },                  
     { id: 'f' , name:  'Fashion design'                 },                  
-    { id: 'E' , name:  'Power plant'                    },              
+    { id: 'E' , name:  'Power plant'                    },       
+    //Update
+    {id: 'e', name: 'Slaughterhouse'                    },
+    {id: 'i', name: 'Mill'                              },
+    {id: 'j', name: 'Bakery'                            },
+    {id: 'k', name: 'Food processing plant'             },
+    {id: 'm', name: 'Supply house'                      },       
 ]
 
 export const english_buildingInfo = {
