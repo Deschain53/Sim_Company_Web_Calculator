@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { instructions_index } from '../../languaje/instructions/instructions_index';
+import { instructions_index } from '../../languaje/instructions/instructions_Index';
 import { ConsiderationsProduction } from './InstructionsSections/ConsiderationsProduction';
 import { InstructionsProduction } from './InstructionsSections/InstructionsProduction';
 import { ProductionTableParts } from './InstructionsSections/ProductionTableParts';
