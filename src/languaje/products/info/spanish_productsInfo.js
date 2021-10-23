@@ -134,7 +134,7 @@ export const spanish_productsInfo = [
     {id: 135, name: "Azucar"},
     {id: 129, name: "Haburguesa"},
     {id: 130, name: "Lasaña"},
-    {id: 131, name: "Albonsigas"},
+    {id: 131, name: "Albóndigas"},
     {id: 132, name: "Cocteles"},
     {id: 141, name: "Aceite vegetal"},
     {id: 142, name: "Ensalada"},

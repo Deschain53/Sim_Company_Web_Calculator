@@ -31,8 +31,9 @@ const buildingArray = [
     {id: 'i', name: 'Mill'                              },
     {id: 'j', name: 'Bakery'                            },
     {id: 'k', name: 'Food processing plant'             },
-    {id: 'm', name: 'Supply house'                      },       
+    {id: 'm', name: 'Catering'                          },       
     {id: 'q', name: 'Kitchen'                           },
+    {id: '6', name: 'Beverage factory'                  },
 ]
 
 export const english_buildingInfo = {
