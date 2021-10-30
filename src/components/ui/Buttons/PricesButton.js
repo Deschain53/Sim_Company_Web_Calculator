@@ -4,6 +4,7 @@ import { checkIfPricesAreInitilizedFromStorage } from '../../../actions/configur
 import { updatePrices } from '../../../actions/prices';
 import { usePrecios } from '../../../hooks/usePrecios';
 import { buttons_index } from '../../../languaje/buttons/buttons_index';
+import { LinearProgressWithLabel } from '../Progress/LinearProgressWithLabel';
 
 export const PricesButton = () => {
     const dispatch = useDispatch();
@@ -11,9 +12,28 @@ export const PricesButton = () => {
     const { pricesInitilizedFromStorage } = useSelector( state => state.conf );
     const { languaje } = useSelector(state => state.conf);
 
-    const {precios, /*extraePreciosPrueba,*/ extraePreciosOnline} = usePrecios();
+    const {precios, /*extraePreciosPrueba,*/ extraePreciosOnline, 
+        numberProducts, productsExtracted} = usePrecios();
 
     const [isPricesExtracted, setIsPricesExtracted] = useState(false);
+
+    const [valueProgress, setValueProgress] = useState(-1);
+    
+    
+    const calculateValueProgress = (valueActual=1,valueFinal=100) => {
+        setValueProgress(100*(valueFinal - valueActual)/valueFinal);
+    }
+    
+    const incrementValue = () => {
+        calculateValueProgress(valueProgress+1,numberProducts);
+    }
+
+    useEffect(() => {
+
+        console.log(numberProducts);
+        console.log(productsExtracted);
+        incrementValue();
+    }, [productsExtracted])
 
     const handleGetPrices = () => {
         //extraePreciosPrueba();
@@ -37,18 +57,42 @@ export const PricesButton = () => {
 
     return (
         <div className="container mt-2 mb-2">
-          <div className="row align-items-center">
-            <div className="col-sm-3"> </div>
-                <button 
-                    className={"btn btn-block col-sm-6 btn-outline-" 
-                                + (isPricesExtracted ? "success" 
-                                    : (pricesInitilizedFromStorage) ? "warning" : "danger")} 
-                    onClick = { handleGetPrices }
-                > 
-                    {buttonsInfo.getPrices}
-                </button>
-            <div className="col-sm-3"> </div>
-          </div>
+            <div className="row align-items-center">
+
+                <div className="col-sm-3"> </div>
+
+                <div className="col-sm-6 align-items-center">
+                    <button 
+                        className={"btn btn-block btn-outline-" 
+                                    + (isPricesExtracted ? "success" 
+                                        : (pricesInitilizedFromStorage) ? "warning" : "danger")} 
+                        onClick = { handleGetPrices }
+                    > 
+                        {buttonsInfo.getPrices}
+                    </button>
+                </div>
+
+                <div className="col-sm-3"> </div>
+
+            </div>
+
+            {   //Indicate if it shows the progress bar or not
+                (valueProgress === -1)
+                ?   (<></>)
+                :
+                (
+                    <div className="row align-items-center">
+                        <div className="col-12">
+                            <LinearProgressWithLabel  value={valueProgress} />
+                        </div>
+                    </div>
+                )
+            }
+
+
+
+
+
         </div>
 
 

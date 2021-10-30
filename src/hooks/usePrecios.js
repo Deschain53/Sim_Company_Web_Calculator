@@ -7,7 +7,12 @@ export const usePrecios = () => {
     const {productsNormalJSON} = useSelector( state => state.products );
 
     const [precios, setPrecios] = useState([{}]);
+
+    const [productsExtracted, setProductsExtracted] = useState(0);  
+
     const productosJSON = productsNormalJSON;
+    const numberProducts = productosJSON.length;
+    //console.log(productosJSON);
     
     const getPrecios = async(id) =>{
         try{
@@ -75,6 +80,10 @@ export const usePrecios = () => {
          
     };
 
+    const incrementProductsExtracted = () => {
+        setProductsExtracted(productsExtracted+1);
+    }
+
     const extraePreciosOnline =  () => {
 
         //const miniPrueba = [ {db_letter: 80}, {db_letter:81 }, {db_letter:82 }, {db_letter: 98 }];
@@ -83,8 +92,9 @@ export const usePrecios = () => {
         console.log(newPreciosPromises);        
         Promise.all(newPreciosPromises).then(
             newPreciosR => {
+                incrementProductsExtracted();
                 //console.log(newPreciosR);
-                setPrecios([...newPreciosR])
+                setPrecios([...newPreciosR]);
                 //return newPreciosR;
                 }
         );
@@ -94,5 +104,5 @@ export const usePrecios = () => {
        setPrecios(preciosObjectPrueba());
     };
 
-    return {precios, extraePreciosPrueba, extraePreciosOnline};
+    return {precios, extraePreciosPrueba, extraePreciosOnline, numberProducts, productsExtracted};
 }
