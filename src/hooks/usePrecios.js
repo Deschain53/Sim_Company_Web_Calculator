@@ -39,7 +39,7 @@ export const usePrecios = () => {
     
     };
 
-    const precioObject = async(producto) => {
+    const precioObject = async(producto) => {   //The process of one promise to get and process the price
         const preciosProducto = await getPrecios(producto);
         const preciosOrdenados = getProductosOrdenados(preciosProducto);
     
@@ -49,6 +49,7 @@ export const usePrecios = () => {
         }
         
         console.log(objectPreciosOrdenados);
+        incrementProductsExtracted();
     
         return objectPreciosOrdenados;
     };
@@ -81,22 +82,25 @@ export const usePrecios = () => {
     };
 
     const incrementProductsExtracted = () => {
-        setProductsExtracted(productsExtracted+1);
+        //if(productsExtracted !== numberProducts-1){
+            setProductsExtracted(productsExtracted+1);
+        //}
     }
 
     const extraePreciosOnline =  () => {
 
         //const miniPrueba = [ {db_letter: 80}, {db_letter:81 }, {db_letter:82 }, {db_letter: 98 }];
                                     //productosJSON   //miniPrueba
-        const newPreciosPromises = productosJSON.map( ({db_letter}) =>  precioObject(db_letter));
+        const newPreciosPromises = productosJSON.map( ({db_letter}) =>  precioObject(db_letter));   //Array of individual promises
         console.log(newPreciosPromises);        
-        Promise.all(newPreciosPromises).then(
+        Promise.all(newPreciosPromises).then(   
             newPreciosR => {
-                incrementProductsExtracted();
+                //The next lines are executed once all promises are fullfilled
                 //console.log(newPreciosR);
                 setPrecios([...newPreciosR]);
+                setProductsExtracted(numberProducts);
                 //return newPreciosR;
-                }
+            }
         );
     };
 

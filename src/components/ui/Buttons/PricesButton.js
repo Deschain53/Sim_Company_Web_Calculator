@@ -21,24 +21,32 @@ export const PricesButton = () => {
     
     
     const calculateValueProgress = (valueActual=1,valueFinal=100) => {
-        setValueProgress(100*(valueFinal - valueActual)/valueFinal);
+        if(valueActual > -1){
+            setValueProgress(100*(1-(valueFinal - valueActual)/valueFinal));
+        }
     }
     
-    const incrementValue = () => {
+    /*const incrementValue = () => {
         calculateValueProgress(valueProgress+1,numberProducts);
-    }
+    }*/
 
     useEffect(() => {
+        if(productsExtracted!==0){
+            console.log(numberProducts);
+            console.log(productsExtracted);
+            calculateValueProgress(productsExtracted,numberProducts);
+        }
 
-        console.log(numberProducts);
-        console.log(productsExtracted);
-        incrementValue();
+        if(numberProducts === productsExtracted){
+            setIsPricesExtracted(true);
+        }
+
     }, [productsExtracted])
 
     const handleGetPrices = () => {
         //extraePreciosPrueba();
         extraePreciosOnline();
-        setIsPricesExtracted(true);
+       
     }
 
     useEffect(() => {
