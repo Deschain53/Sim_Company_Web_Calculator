@@ -49,7 +49,8 @@ export const usePrecios = () => {
         }
         
         console.log(objectPreciosOrdenados);
-        incrementProductsExtracted();
+        setProductsExtracted((productActual)=> (productActual+1));
+        console.log(productsExtracted);
     
         return objectPreciosOrdenados;
     };
@@ -81,11 +82,11 @@ export const usePrecios = () => {
          
     };
 
-    const incrementProductsExtracted = () => {
+    /*const incrementProductsExtracted = () => {
         //if(productsExtracted !== numberProducts-1){
             setProductsExtracted(productsExtracted+1);
         //}
-    }
+    }*/
 
     const extraePreciosOnline =  () => {
 
