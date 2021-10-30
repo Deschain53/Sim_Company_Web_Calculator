@@ -32,8 +32,6 @@ export const PricesButton = () => {
 
     useEffect(() => {
         if(productsExtracted!==0){
-            console.log(numberProducts);
-            console.log(productsExtracted);
             calculateValueProgress(productsExtracted,numberProducts);
         }
 

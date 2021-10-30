@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Sim_Company_Web_Calculator/static/css/main.ae62ca88.chunk.css",
-    "main.js": "/Sim_Company_Web_Calculator/static/js/main.3be25c5e.chunk.js",
-    "main.js.map": "/Sim_Company_Web_Calculator/static/js/main.3be25c5e.chunk.js.map",
+    "main.js": "/Sim_Company_Web_Calculator/static/js/main.e9952523.chunk.js",
+    "main.js.map": "/Sim_Company_Web_Calculator/static/js/main.e9952523.chunk.js.map",
     "runtime-main.js": "/Sim_Company_Web_Calculator/static/js/runtime-main.f67b6ef4.js",
     "runtime-main.js.map": "/Sim_Company_Web_Calculator/static/js/runtime-main.f67b6ef4.js.map",
-    "static/js/2.68d4f74a.chunk.js": "/Sim_Company_Web_Calculator/static/js/2.68d4f74a.chunk.js",
-    "static/js/2.68d4f74a.chunk.js.map": "/Sim_Company_Web_Calculator/static/js/2.68d4f74a.chunk.js.map",
+    "static/js/2.53ccf66b.chunk.js": "/Sim_Company_Web_Calculator/static/js/2.53ccf66b.chunk.js",
+    "static/js/2.53ccf66b.chunk.js.map": "/Sim_Company_Web_Calculator/static/js/2.53ccf66b.chunk.js.map",
     "index.html": "/Sim_Company_Web_Calculator/index.html",
     "static/css/main.ae62ca88.chunk.css.map": "/Sim_Company_Web_Calculator/static/css/main.ae62ca88.chunk.css.map",
-    "static/js/2.68d4f74a.chunk.js.LICENSE.txt": "/Sim_Company_Web_Calculator/static/js/2.68d4f74a.chunk.js.LICENSE.txt"
+    "static/js/2.53ccf66b.chunk.js.LICENSE.txt": "/Sim_Company_Web_Calculator/static/js/2.53ccf66b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f67b6ef4.js",
-    "static/js/2.68d4f74a.chunk.js",
+    "static/js/2.53ccf66b.chunk.js",
     "static/css/main.ae62ca88.chunk.css",
-    "static/js/main.3be25c5e.chunk.js"
+    "static/js/main.e9952523.chunk.js"
   ]
 }

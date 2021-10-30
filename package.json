@@ -1,6 +1,6 @@
 {
   "name": "journal-app",
-  "homepage": "https://deschain53.github.io/Sim_Company_Web_Calculator/",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

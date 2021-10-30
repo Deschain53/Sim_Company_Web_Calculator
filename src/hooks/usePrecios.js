@@ -48,10 +48,8 @@ export const usePrecios = () => {
             precio: preciosOrdenados
         }
         
-        console.log(objectPreciosOrdenados);
         setProductsExtracted((productActual)=> (productActual+1));
-        console.log(productsExtracted);
-    
+        
         return objectPreciosOrdenados;
     };
 
