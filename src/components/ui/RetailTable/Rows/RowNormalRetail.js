@@ -4,6 +4,7 @@ import { IconButton, makeStyles, TableRow } from '@material-ui/core'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
+import { EditableCell } from '../Cells/EditableCell';
 
 export const RowNormalRetail = ({row, open, setOpen}) => {
 
@@ -36,7 +37,12 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
           <StyledTableCell component="th" scope="row" mode={mode}>
             {product}
           </StyledTableCell>
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>
+          <StyledTableCell>
+            <EditableCell idProduct={product} valueInitial={cost}/>
+          </StyledTableCell>
+          {
+            /*<StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>*/
+          }
           <StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice < 100 ? processDecimals(sellingPrice) : processDecimals(sellingPrice,0)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
           <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 
