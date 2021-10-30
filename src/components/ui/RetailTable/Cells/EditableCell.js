@@ -1,9 +1,13 @@
 import React from 'react'
 import { useSelector  } from 'react-redux';
-import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
+//import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 import { useForm } from '../../../../hooks/useForm';
 
-export const EditableCell = ({idProduct,valueInitial=0}) => {
+const actionDefault = (idProduct) => {
+    console.log('Submit from ' + idProduct);
+}
+
+export const EditableCell = ({idProduct,valueInitial=0, actionOnSubmit = actionDefault }) => {
 
     const {mode} = useSelector(state => state.conf);
 
@@ -11,12 +15,12 @@ export const EditableCell = ({idProduct,valueInitial=0}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submit from ' + idProduct);
+        actionOnSubmit(idProduct);
     };
 
     const { value } = formValues;
 
-    const inputClassName = "form-control " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
+    const inputClassName = "form-control fs-6 " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
 
     return (
             <form onSubmit={handleSubmit}>

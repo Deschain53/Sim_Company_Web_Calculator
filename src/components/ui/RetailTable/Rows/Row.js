@@ -21,6 +21,7 @@ export const Row = ({row}) => {
     row: PropTypes.shape({
         product: PropTypes.string.isRequired,         
         cost: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
         sellingPrice: PropTypes.number.isRequired,
         unitsHour: PropTypes.number.isRequired,
         profitHour: PropTypes.number.isRequired,
