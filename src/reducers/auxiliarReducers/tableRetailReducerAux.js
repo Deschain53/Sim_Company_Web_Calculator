@@ -109,3 +109,16 @@ export const calculateProfitHour = (productTable, admin) => {
     const profitHour = (sellingPrice - cost) * unitsHour - employCost;
     return profitHour;
 }
+
+export const getUnitsHourComplete = (productInfo, bonus, quality) => {
+
+    const { retailModeling, marketSaturation} = productInfo.productJSON;
+    const { sellingPrice } = productInfo;
+
+    //Calculating units/hour
+    const unitsHourDefault = getUnitsHourDefault( retailModeling, 
+        quality, marketSaturation , sellingPrice );
+    
+    const newUnitsHour = unitsHourDefault/(1-(bonus/100));
+    return newUnitsHour;
+}
