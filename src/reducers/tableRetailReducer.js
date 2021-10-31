@@ -93,7 +93,6 @@ export const tableRetailReducer = (state = initialState, action) => {
                 const { unitsHour, cost, sellingPrice } = productTable;
                 const { wages, admin } = action.payload;
                 const employCost = wages*( 1 + admin/100);
-                console.log( wages, admin , employCost);
                 const newProfitHour = (sellingPrice - cost) * unitsHour - employCost;
                 return {
                     ...productTable,

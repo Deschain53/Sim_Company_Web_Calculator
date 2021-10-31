@@ -11,7 +11,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
 
   const dispatch = useDispatch();
 
-  const {buildingLevel} = useSelector( state => state.production );
+  const {buildingLevel} = useSelector( state => state.retail );
   const {mode} = useSelector(state => state.conf);
 
     const useRowStyles = makeStyles({

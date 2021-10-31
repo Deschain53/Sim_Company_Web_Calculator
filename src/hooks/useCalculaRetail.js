@@ -47,7 +47,10 @@ export const useCalculaRetail = () => {
             dispatch( calculateProfitHour(admin,wages) );    
         }
         // eslint-disable-next-line
-    }, [prices, quality, bonus, PCM])
+    }, [prices, quality, bonus, PCM, admin,wages])
+
+
+
 
     /*useEffect(() => {
         if(!isFirstRender){

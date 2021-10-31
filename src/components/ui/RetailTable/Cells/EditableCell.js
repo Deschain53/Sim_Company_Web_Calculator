@@ -1,5 +1,6 @@
 import React , { useEffect } from 'react';
 import { useSelector  } from 'react-redux';
+import { verifyNumber } from '../../../../auxiliar/verify';
 //import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 import { useFormReceptive } from '../../../../hooks/useFormReceptive';
 
@@ -17,7 +18,7 @@ export const EditableCell = ({idProduct,valueInitial=0, actionOnSubmit = actionD
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        actionOnSubmit(idProduct, value);
+        actionOnSubmit(idProduct, verifyNumber(value) );
     };
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export const EditableCell = ({idProduct,valueInitial=0, actionOnSubmit = actionD
             <form onSubmit={handleSubmit}>
                 <div>
                     <input    
-                    type = "number"
+                    type = "text"
                     name = "value"
                     className={ inputClassName } 
                     id="value" 
