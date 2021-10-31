@@ -45,11 +45,7 @@ export const tableRetailReducer = (state = initialState, action) => {
                 }else{
                     return productInfo;
                 }
-            } )
-            //console.log(productInformation);
-
-            //return  state;
-            
+            } )            
             
         case types.updateSellPrice:
             return  state.map( productTable => {
