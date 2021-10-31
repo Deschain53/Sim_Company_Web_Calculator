@@ -22,6 +22,7 @@ export const EditableCell = ({idProduct,valueInitial=0, actionOnSubmit = actionD
 
     useEffect(() => {
         setValues({value:valueInitial});
+        // eslint-disable-next-line
     }, [valueInitial])
 
     const inputClassName = "form-control fs-6 " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");

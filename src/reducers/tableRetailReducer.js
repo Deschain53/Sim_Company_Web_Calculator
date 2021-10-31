@@ -1,4 +1,3 @@
-import { StarsTwoTone } from '@material-ui/icons';
 import { types } from '../types/typesRetailProduction';
 import { createData, getPrice, getUnitsHourDefault } from './auxiliarReducers/tableRetailReducerAux';
 
@@ -25,12 +24,12 @@ export const tableRetailReducer = (state = initialState, action) => {
         case types.updateMarketPrices:
             return  state.map( productTable => {
 
-                const { marketPrices, quality } = action.payload;
+                const { marketPrices, quality, PCM } = action.payload;
                 const newPrice = getPrice( productTable.id, marketPrices, quality);
                 
                 return {
                     ...productTable,
-                    cost: newPrice === undefined ? -1 : newPrice ,
+                    cost: newPrice === undefined ? -1 : (newPrice*(100-PCM)/100) ,
                 }
             });
 
@@ -43,9 +42,9 @@ export const tableRetailReducer = (state = initialState, action) => {
                 }else{
                     return productInfo;
                 }
-            } )        
+            });     
 
-        case types.updateSellPriceOfOneProduct: //-------------
+        case types.updateSellPriceOfOneProduct: 
             console.log(action.payload);
             const productInformationSell = state.find(({id}) => id === action.payload.idProduct );
             const newProductInformationSell = {...productInformationSell, sellingPrice: action.payload.newPrice};
@@ -56,7 +55,7 @@ export const tableRetailReducer = (state = initialState, action) => {
                 }else{
                     return productInfo;
                 }
-            } )            
+            });            
             
         case types.updateSellPrice:
             return  state.map( productTable => {
@@ -75,7 +74,7 @@ export const tableRetailReducer = (state = initialState, action) => {
             return state.map( productTable => {
 
                 const { bonus, quality } = action.payload;
-                const { retailModeling, marketSaturation, retailData } = productTable.productJSON;
+                const { retailModeling, marketSaturation, /*retailData */} = productTable.productJSON;
 
                 const unitsHourDefault = getUnitsHourDefault( retailModeling, 
                     quality, marketSaturation , productTable.sellingPrice );
@@ -88,7 +87,22 @@ export const tableRetailReducer = (state = initialState, action) => {
                 }
             });
 
+        case types.calculateProfitHour:
+            return state.map( productTable => {
+
+                const { unitsHour, cost, sellingPrice } = productTable;
+                const { wages, admin } = action.payload;
+                const employCost = wages*( 1 + admin/100);
+                console.log( wages, admin , employCost);
+                const newProfitHour = (sellingPrice - cost) * unitsHour - employCost;
+                return {
+                    ...productTable,
+                    profitHour: newProfitHour,
+                }
+            });
+
             
+
         default:
         return state;
     }

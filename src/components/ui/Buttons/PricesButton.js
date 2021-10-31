@@ -38,7 +38,7 @@ export const PricesButton = () => {
         if(numberProducts === productsExtracted){
             setIsPricesExtracted(true);
         }
-
+    // eslint-disable-next-line
     }, [productsExtracted])
 
     const handleGetPrices = () => {

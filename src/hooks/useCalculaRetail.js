@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import { evaluate } from 'mathjs';
+//import { evaluate } from 'mathjs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsBuildingRetail } from '../data/getData/getProductsBuilding';
-import { setJSONInformation, updateMarketPrices, updateSellPrice, calculateUnitsHour } from '../actions/tableR';
+import { setJSONInformation, updateMarketPrices, updateSellPrice, calculateUnitsHour, 
+    calculateProfitHour } from '../actions/tableR';
 
 export const useCalculaRetail = () => {
 
@@ -15,17 +16,47 @@ export const useCalculaRetail = () => {
 
     const [isFirstRender, setIsFirstRender] = useState(true);
 
-    const {quality,fase,building,PCM,admin, bonus} = retail;
+    const {quality,fase,building,PCM,admin, bonus, typeSellPrice} = retail;
 
     const {productsJSON, wages} = useMemo(() => getProductsBuildingRetail(products,fase,building), [products,fase,building]);
 
     useEffect(() => {
         dispatch( setJSONInformation( productsJSON) );
-        dispatch( updateMarketPrices( prices, quality, bonus) );
-        dispatch( updateSellPrice(retail));
+        dispatch( updateMarketPrices( prices, quality, PCM) );
+        dispatch( updateSellPrice(typeSellPrice));
         dispatch( calculateUnitsHour( bonus, quality) );
+        dispatch( calculateProfitHour(admin,wages) );
+        setIsFirstRender(false);
+        // eslint-disable-next-line
+    }, [])
 
-    }, [productsJSON, retail])
+    useEffect(() => {
+        if(!isFirstRender){
+            dispatch( setJSONInformation( productsJSON) );
+            dispatch( updateMarketPrices( prices, quality, PCM) );
+            dispatch( calculateUnitsHour( bonus, quality) );
+            dispatch( calculateProfitHour(admin,wages) );    
+        }
+        // eslint-disable-next-line
+    }, [productsJSON])
+
+    useEffect(() => {
+        if(!isFirstRender){
+            dispatch( updateMarketPrices( prices, quality, PCM) );
+            dispatch( calculateUnitsHour( bonus, quality) );
+            dispatch( calculateProfitHour(admin,wages) );    
+        }
+        // eslint-disable-next-line
+    }, [prices, quality, bonus, PCM])
+
+    /*useEffect(() => {
+        if(!isFirstRender){
+            dispatch( calculateUnitsHour( bonus, quality) );
+            dispatch( calculateProfitHour() );     
+        }
+    }, [tableR])*/
+
+
 
 
     /*//Para ejemplo 

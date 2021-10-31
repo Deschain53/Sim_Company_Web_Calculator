@@ -15,14 +15,14 @@ export const setJSONInformation = (productsJSON) => {
     }
 }
 
-export const updateMarketPrices = (marketPrices, quality = 0) => {
+export const updateMarketPrices = (marketPrices, quality = 0, PCM =0) => {
 
     return (dispatch) => {
 
         dispatch( 
             {
                 type: types.updateMarketPrices,
-                payload: { marketPrices, quality }
+                payload: { marketPrices, quality, PCM }
             }
         )
 
@@ -31,21 +31,28 @@ export const updateMarketPrices = (marketPrices, quality = 0) => {
 }
 
 export const calculateUnitsHour = (bonus = 0, quality = 0) => {
-
     return (dispatch) => {
-
         dispatch( 
             {
                 type: types.calculateUnitsHour,
                 payload: { bonus, quality }
             }
-        )
-
-        
+        )        
     }
 }
 
-export const updateSellPrice = ({typeSellPrice='average'}) => {
+export const calculateProfitHour = (admin = 0,wages = 1) => {
+    return (dispatch) => {
+        dispatch( 
+            {
+                type: types.calculateProfitHour,
+                payload: { admin,wages }
+            }
+        )        
+    }
+}
+
+export const updateSellPrice = (typeSellPrice='average') => {
 
     return (dispatch) => {
 
