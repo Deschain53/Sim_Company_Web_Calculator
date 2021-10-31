@@ -11,7 +11,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
 
   const dispatch = useDispatch();
 
-  const {buildingLevel} = useSelector( state => state.retail );
+  const {buildingLevel, admin, bonus,quality} = useSelector( state => state.retail );
   const {mode} = useSelector(state => state.conf);
 
     const useRowStyles = makeStyles({
@@ -31,11 +31,11 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
     }
 
     const updateCostAction = (idProduct, newCost) => {
-      dispatch( updateCostOfOneProduct(idProduct, newCost) );
+      dispatch( updateCostOfOneProduct(idProduct, newCost, admin) );
     }
     
-    const updateSellAction = (idProduct, newCost) => {
-      dispatch( updateSellPriceOfOneProduct(idProduct, newCost) );
+    const updateSellAction = (idProduct, newPrice) => {
+      dispatch( updateSellPriceOfOneProduct(idProduct, newPrice, admin, bonus, quality) );
     }
 
     return (

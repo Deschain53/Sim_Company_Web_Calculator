@@ -1,5 +1,8 @@
 import { types } from '../types/typesRetailProduction';
-import { createData, getPrice, getUnitsHourDefault } from './auxiliarReducers/tableRetailReducerAux';
+import { createData, getPrice, getUnitsHourDefault, recalculateProfitPerHour,
+    calculateProfitHour } from './auxiliarReducers/tableRetailReducerAux';
+
+
 
 
 const initialState = [
@@ -36,9 +39,11 @@ export const tableRetailReducer = (state = initialState, action) => {
         case types.updateCostOfOneProduct:
             const productInformationCost = state.find(({id}) => id === action.payload.idProduct );
             const newProductInformationCost = {...productInformationCost, cost: action.payload.newPrice};
+            const newPH = calculateProfitHour(newProductInformationCost, action.payload.admin);
+            
             return state.map( productInfo => {
                 if(productInfo.id === action.payload.idProduct){
-                    return newProductInformationCost;
+                    return {...newProductInformationCost, profitHour:newPH};
                 }else{
                     return productInfo;
                 }
@@ -46,12 +51,17 @@ export const tableRetailReducer = (state = initialState, action) => {
 
         case types.updateSellPriceOfOneProduct: 
             console.log(action.payload);
-            const productInformationSell = state.find(({id}) => id === action.payload.idProduct );
-            const newProductInformationSell = {...productInformationSell, sellingPrice: action.payload.newPrice};
+            const {idProduct, newPrice, admin, bonus, quality} = action.payload;
+            const productInformationSell = state.find(({id}) => id === idProduct );
+            const newProductInformationSell = {...productInformationSell, sellingPrice: newPrice};
+            const profitHourRecalculated = recalculateProfitPerHour(newProductInformationSell,admin,bonus,quality);
+            const newProductInformationSellWithProfitHourRecalculated = {...newProductInformationSell, profitHour:profitHourRecalculated};
             console.log(newProductInformationSell);
+            console.log(newProductInformationSellWithProfitHourRecalculated);
+
             return state.map( productInfo => {
                 if(productInfo.id === action.payload.idProduct){
-                    return newProductInformationSell;
+                    return newProductInformationSellWithProfitHourRecalculated;//newProductInformationSell;
                 }else{
                     return productInfo;
                 }
@@ -90,8 +100,9 @@ export const tableRetailReducer = (state = initialState, action) => {
         case types.calculateProfitHour:
             return state.map( productTable => {
 
-                const { unitsHour, cost, sellingPrice } = productTable;
                 const { wages, admin } = action.payload;
+
+                const { unitsHour, cost, sellingPrice } = productTable;
                 const employCost = wages*( 1 + admin/100);
                 const newProfitHour = (sellingPrice - cost) * unitsHour - employCost;
                 return {

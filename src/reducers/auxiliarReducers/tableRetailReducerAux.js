@@ -81,3 +81,31 @@ export const getUnitsHourDefault = ( model = null, quality = 0, saturationDefaul
     
     return unitsPerHourDefault;
 }
+
+export const recalculateProfitPerHour = (productInfo, admin,bonus, quality) => {
+
+    const { retailModeling, marketSaturation, storeBaseSalary } = productInfo.productJSON;
+    const { cost, sellingPrice } = productInfo;
+
+    const allWages = storeBaseSalary*(1+admin/100);
+
+    //Calculating units/hour
+    const unitsHourDefault = getUnitsHourDefault( retailModeling, 
+        quality, marketSaturation , sellingPrice );
+    
+    const newUnitsHour = unitsHourDefault/(1-(bonus/100));
+
+    //Calculating profit/hour
+
+    const newProfitHour = (sellingPrice - cost) * newUnitsHour - allWages;
+
+    return newProfitHour;
+}
+
+export const calculateProfitHour = (productTable, admin) => {
+    const { unitsHour, cost, sellingPrice } = productTable;
+    const { storeBaseSalary:wages } = productTable.productJSON;
+    const employCost = wages*( 1 + admin/100);
+    const profitHour = (sellingPrice - cost) * unitsHour - employCost;
+    return profitHour;
+}

@@ -67,23 +67,23 @@ export const updateSellPrice = (typeSellPrice='average') => {
     }
 }
 
-export const updateCostOfOneProduct = (idProduct = 1, newPrice = 0) => {
+export const updateCostOfOneProduct = (idProduct = 1, newPrice = 0, admin=0,) => {
     return (dispatch) => {
         dispatch( 
             {
                 type: types.updateCostOfOneProduct,
-                payload: { idProduct, newPrice }
+                payload: { idProduct, newPrice, admin }
             }
         )
     }
 }
 
-export const updateSellPriceOfOneProduct = (idProduct = 1, newPrice = 0) => {
+export const updateSellPriceOfOneProduct = (idProduct = 1, newPrice = 0, admin=0, bonus=0, quality=0) => {
     return (dispatch) => {
         dispatch( 
             {
                 type: types.updateSellPriceOfOneProduct,
-                payload: { idProduct, newPrice }
+                payload: { idProduct, newPrice, admin, bonus, quality }
             }
         )
     }
