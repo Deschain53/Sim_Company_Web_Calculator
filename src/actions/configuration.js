@@ -27,7 +27,7 @@ export const checkIfRetailsAreInitilizedFromStorage = () => {
     return ( dispatch ) => {
             dispatch({
                 type: types.checkingRetailsInStorage,
-                payload: localStorage.getItem('retails') === null ? false : true
+                payload: localStorage.getItem('products') === null ? false : true
             })
     }
 }

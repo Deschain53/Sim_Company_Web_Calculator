@@ -12,7 +12,9 @@ export const useRetails = () => {
     },);
 
     const [productsExtracted, setRetailsExtracted] = useState(0);  
+    const numberJSON = productosJSON.length;
     const numberProducts = productosJSON.length*3;
+    //console.log(numberProducts);
     
     const getRetail = async(fase, id) =>{
         try{
@@ -43,6 +45,7 @@ export const useRetails = () => {
         console.log(newRetailsPromises);        
         Promise.all(newRetailsPromises).then(   
             newProductsResolve => {
+                console.log(newProductsResolve);
                 //The next lines are executed once all promises are fullfilled
                 setProducts((productsActual) => {
                     const {productsRecessionJSON,productsNormalJSON, productsBoomJSON} = productsActual;
@@ -50,22 +53,20 @@ export const useRetails = () => {
                     switch (fase) {
                         case 0:
                             return {productsRecessionJSON: newProductsResolve ,productsNormalJSON, productsBoomJSON};
-                            break;
 
                         case 1:
                             return {productsRecessionJSON ,productsNormalJSON: newProductsResolve, productsBoomJSON};
-                            break;
 
                         case 2:
                             return {productsRecessionJSON ,productsNormalJSON, productsBoomJSON: newProductsResolve};
-                            break;
                     
                         default:
                             return {...productsActual}
-                            break;
                     }
                 });
-                setRetailsExtracted(numberProducts*fase+1);     //Set the counter to 1/3 of total number of products
+                setRetailsExtracted(numberJSON*(fase+1));     //Set the counter to 1/3 of total number of products
+                console.log('Antiguo set retail extracted'+numberJSON*(fase+1));
+                console.log('Actual contador: ' + productsExtracted + ' - '+ numberProducts)
             }
         );
     };

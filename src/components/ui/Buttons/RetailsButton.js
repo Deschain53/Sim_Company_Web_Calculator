@@ -32,6 +32,7 @@ export const RetailsButton = () => {
         }
 
         if(numberProducts === productsExtracted){
+            console.log('Productos JSON actualizados')
             setIsRetailsExtracted(true);
         }
     // eslint-disable-next-line
