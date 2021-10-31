@@ -61,16 +61,23 @@ export const updateSellPrice = ({typeSellPrice='average'}) => {
 }
 
 export const updateCostOfOneProduct = (idProduct = 1, newPrice = 0) => {
-
     return (dispatch) => {
-
         dispatch( 
             {
                 type: types.updateCostOfOneProduct,
                 payload: { idProduct, newPrice }
             }
         )
+    }
+}
 
-        
+export const updateSellPriceOfOneProduct = (idProduct = 1, newPrice = 0) => {
+    return (dispatch) => {
+        dispatch( 
+            {
+                type: types.updateSellPriceOfOneProduct,
+                payload: { idProduct, newPrice }
+            }
+        )
     }
 }

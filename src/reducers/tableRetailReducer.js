@@ -35,13 +35,24 @@ export const tableRetailReducer = (state = initialState, action) => {
             });
 
         case types.updateCostOfOneProduct:
-            console.log(action.payload);
-            const productInformation = state.find(({id}) => id === action.payload.idProduct );
-            const newProductInformation = {...productInformation, cost: action.payload.newPrice};
-            console.log(newProductInformation);
+            const productInformationCost = state.find(({id}) => id === action.payload.idProduct );
+            const newProductInformationCost = {...productInformationCost, cost: action.payload.newPrice};
             return state.map( productInfo => {
                 if(productInfo.id === action.payload.idProduct){
-                    return newProductInformation;
+                    return newProductInformationCost;
+                }else{
+                    return productInfo;
+                }
+            } )        
+
+        case types.updateSellPriceOfOneProduct: //-------------
+            console.log(action.payload);
+            const productInformationSell = state.find(({id}) => id === action.payload.idProduct );
+            const newProductInformationSell = {...productInformationSell, sellingPrice: action.payload.newPrice};
+            console.log(newProductInformationSell);
+            return state.map( productInfo => {
+                if(productInfo.id === action.payload.idProduct){
+                    return newProductInformationSell;
                 }else{
                     return productInfo;
                 }

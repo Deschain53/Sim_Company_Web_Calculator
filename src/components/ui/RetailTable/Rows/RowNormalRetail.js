@@ -5,7 +5,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 import { EditableCell } from '../Cells/EditableCell';
-import { updateCostOfOneProduct } from '../../../../actions/tableR';
+import { updateCostOfOneProduct, updateSellPriceOfOneProduct } from '../../../../actions/tableR';
 
 export const RowNormalRetail = ({row, open, setOpen}) => {
 
@@ -33,6 +33,10 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
     const updateCostAction = (idProduct, newCost) => {
       dispatch( updateCostOfOneProduct(idProduct, newCost) );
     }
+    
+    const updateSellAction = (idProduct, newCost) => {
+      dispatch( updateSellPriceOfOneProduct(idProduct, newCost) );
+    }
 
     return (
         <TableRow className={classes.root}>
@@ -47,10 +51,14 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
           <StyledTableCell mode={mode}>
             <EditableCell idProduct={row.id} valueInitial={cost} actionOnSubmit={updateCostAction}/>
           </StyledTableCell>
+
+          <StyledTableCell mode={mode}>
+            <EditableCell idProduct={row.id} valueInitial={sellingPrice} actionOnSubmit={updateSellAction}/>
+          </StyledTableCell>
           {
             /*<StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>*/
+            /*<StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice < 100 ? processDecimals(sellingPrice) : processDecimals(sellingPrice,0)}</StyledTableCell>*/
           }
-          <StyledTableCell align="right" mode={mode}>$&nbsp;{sellingPrice < 100 ? processDecimals(sellingPrice) : processDecimals(sellingPrice,0)}</StyledTableCell>
           <StyledTableCell align="right" mode={mode}>{processDecimals(unitsHour*buildingLevel)}</StyledTableCell>
           <StyledTableCell align="right" mode={ mode !== 'dark' ? mode : 
             Math.sign(profitHour) === -1 ? "dark_negative" : "dark_positive" }
