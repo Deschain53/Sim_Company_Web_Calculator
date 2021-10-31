@@ -50,14 +50,11 @@ export const tableRetailReducer = (state = initialState, action) => {
             });     
 
         case types.updateSellPriceOfOneProduct: 
-            console.log(action.payload);
             const {idProduct, newPrice, admin, bonus, quality} = action.payload;
             const productInformationSell = state.find(({id}) => id === idProduct );
             const newProductInformationSell = {...productInformationSell, sellingPrice: newPrice};
             const profitHourRecalculated = recalculateProfitPerHour(newProductInformationSell,admin,bonus,quality);
             const newProductInformationSellWithProfitHourRecalculated = {...newProductInformationSell, profitHour:profitHourRecalculated};
-            console.log(newProductInformationSell);
-            console.log(newProductInformationSellWithProfitHourRecalculated);
 
             return state.map( productInfo => {
                 if(productInfo.id === action.payload.idProduct){

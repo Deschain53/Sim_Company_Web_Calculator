@@ -34,6 +34,7 @@ export const useCalculaRetail = () => {
         if(!isFirstRender){
             dispatch( setJSONInformation( productsJSON) );
             dispatch( updateMarketPrices( prices, quality, PCM) );
+            dispatch( updateSellPrice(typeSellPrice));
             dispatch( calculateUnitsHour( bonus, quality) );
             dispatch( calculateProfitHour(admin,wages) );    
         }
@@ -48,32 +49,6 @@ export const useCalculaRetail = () => {
         }
         // eslint-disable-next-line
     }, [prices, quality, bonus, PCM, admin,wages])
-
-
-
-
-    /*useEffect(() => {
-        if(!isFirstRender){
-            dispatch( calculateUnitsHour( bonus, quality) );
-            dispatch( calculateProfitHour() );     
-        }
-    }, [tableR])*/
-
-
-
-
-    /*//Para ejemplo 
-    const pJ = productsJSON[0];
-    const model = pJ.retailModeling;
-    const price = 52;
-    const saturation = pJ.marketSaturation;
-    const amount = 10;
-    const letras = getLettersModel(model);
-
-    console.log(model,saturation);
-    console.log(evaluate(model,{price,saturation,amount, Math}))
-    const x = 10;                           
-    console.log(evaluate('x^2 + 1',{x}));         */
   
     return { tableR , productsJSON }
 }
