@@ -6,5 +6,6 @@ export const types = {
     calculateUnitsHour: '[TableR] Calculate units/hour',
     calculateProfitHour: '[TableR] Calculate profit/hour',
     calculateAndUpdateBestPrice: '[TableR] Calculate and update best price',
-    
+    updateCostOfOneProduct: '[TableR] Update cost of one product',
+    updateSellPriceOfOneProduct: '[TableR] Update sell price of one product'
 }

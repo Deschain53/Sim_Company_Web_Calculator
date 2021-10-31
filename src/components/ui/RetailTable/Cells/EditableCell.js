@@ -13,12 +13,14 @@ export const EditableCell = ({idProduct,valueInitial=0, actionOnSubmit = actionD
 
     const [formValues, handleInputChange] = useForm({value:valueInitial});
 
+    const { value } = formValues;
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        actionOnSubmit(idProduct);
+        actionOnSubmit(idProduct, value);
     };
 
-    const { value } = formValues;
+
 
     const inputClassName = "form-control fs-6 " + (mode ==='dark' ? "text-white bg-dark " : "text-black bg-light ");
 

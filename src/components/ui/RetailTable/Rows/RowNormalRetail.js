@@ -1,12 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconButton, makeStyles, TableRow } from '@material-ui/core'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { StyledTableCell } from '../../../../styles/material-ui-styles/tableStyles';
 import { EditableCell } from '../Cells/EditableCell';
+import { updateCostOfOneProduct } from '../../../../actions/tableR';
 
 export const RowNormalRetail = ({row, open, setOpen}) => {
+
+  const dispatch = useDispatch();
 
   const {buildingLevel} = useSelector( state => state.production );
   const {mode} = useSelector(state => state.conf);
@@ -27,6 +30,10 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
       return Number.parseFloat(numero).toFixed(numeroDecimales);
     }
 
+    const updateCostAction = (idProduct, newCost) => {
+      dispatch( updateCostOfOneProduct(idProduct, newCost) );
+    }
+
     return (
         <TableRow className={classes.root}>
           <StyledTableCell mode={mode}>
@@ -38,7 +45,7 @@ export const RowNormalRetail = ({row, open, setOpen}) => {
             {product}
           </StyledTableCell>
           <StyledTableCell mode={mode}>
-            <EditableCell idProduct={row.id} valueInitial={cost}/>
+            <EditableCell idProduct={row.id} valueInitial={cost} actionOnSubmit={updateCostAction}/>
           </StyledTableCell>
           {
             /*<StyledTableCell align="right" mode={mode}>$&nbsp;{ (cost < 100) ? processDecimals(cost) : cost }</StyledTableCell>*/

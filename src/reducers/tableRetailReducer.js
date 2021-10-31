@@ -33,6 +33,23 @@ export const tableRetailReducer = (state = initialState, action) => {
                     cost: newPrice === undefined ? -1 : newPrice ,
                 }
             });
+
+        case types.updateCostOfOneProduct:
+            console.log(action.payload);
+            const productInformation = state.find(({id}) => id === action.payload.idProduct );
+            const newProductInformation = {...productInformation, cost: action.payload.newPrice};
+            console.log(newProductInformation);
+            return state.map( productInfo => {
+                if(productInfo.id === action.payload.idProduct){
+                    return newProductInformation;
+                }else{
+                    return productInfo;
+                }
+            } )
+            //console.log(productInformation);
+
+            //return  state;
+            
             
         case types.updateSellPrice:
             return  state.map( productTable => {
