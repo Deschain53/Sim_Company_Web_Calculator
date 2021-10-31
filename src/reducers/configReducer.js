@@ -6,6 +6,7 @@ const initialState = {
     mode: 'dark', 
     languaje: 'english' , 
     pricesInitilizedFromStorage: 'false', 
+    retailsInitilizedFromStorage: 'false', 
     }; 
 
 const initialStateFromStorage = JSON.parse(localStorage.getItem('conf')) || initialState;
@@ -30,6 +31,12 @@ export const configReducer = ( state = initialStateFromStorage, action ) => {
             return {
                 ...state,
                 pricesInitilizedFromStorage: action.payload  
+            }
+
+        case types.checkingPricesInStorage:
+            return {
+                ...state,
+                retailsInitilizedFromStorage: action.payload  
             }
 
         case types.changeLanguaje:

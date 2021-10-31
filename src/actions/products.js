@@ -10,6 +10,6 @@ export const updateProducts = (newProducts) => {
             }
         )
 
-        //dispatch({type: types.saveProducts});
+        dispatch({type: types.saveProducts});
     }
 }

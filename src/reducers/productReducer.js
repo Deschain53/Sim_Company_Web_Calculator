@@ -4,7 +4,10 @@ import { types } from '../types/types';
 const initialState = getJSONProductsLocal();
 //falta funcion para comprobar si hay JSON en localStorage para usar eso
 
-export const productReducer = (state = initialState, action) => {
+const initialStateFromStorage = JSON.parse(localStorage.getItem('products')) 
+    || initialState;
+
+export const productReducer = (state = initialStateFromStorage, action) => {
     switch (action.type) {
         case types.updateProducts:
             return action.payload;        
@@ -12,7 +15,9 @@ export const productReducer = (state = initialState, action) => {
         case types.resetProducts:
             return initialState ;
 
-        //falta save prices para guardar en memoria los productos
+        case types.saveProducts:
+            localStorage.setItem( 'products',JSON.stringify(state) || null );
+            return state;
     
         default:
             return state;

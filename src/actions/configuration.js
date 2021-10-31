@@ -16,12 +16,19 @@ const selectValidLanguaje = (id) => {
 
 export const checkIfPricesAreInitilizedFromStorage = () => {
     return ( dispatch ) => {
-
             dispatch({
                 type: types.checkingPricesInStorage,
                 payload: localStorage.getItem('prices') === null ? false : true
             })
+    }
+}
 
+export const checkIfRetailsAreInitilizedFromStorage = () => {
+    return ( dispatch ) => {
+            dispatch({
+                type: types.checkingRetailsInStorage,
+                payload: localStorage.getItem('retails') === null ? false : true
+            })
     }
 }
 
