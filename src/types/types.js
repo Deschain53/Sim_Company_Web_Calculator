@@ -14,6 +14,7 @@ export const types = {
     //For productReducer:
     updateProducts: '[Product] Modify',
     resetProducts: '[Product] Reset',
+    saveProducts: '[Prices] Save Products',
 
     //For productionReducer:
     changeFaseP: '[Production] Change Fase',
