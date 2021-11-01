@@ -33,7 +33,7 @@ export const configReducer = ( state = initialStateFromStorage, action ) => {
                 pricesInitilizedFromStorage: action.payload  
             }
 
-        case types.checkingPricesInStorage:
+        case types.checkingRetailsInStorage:
             return {
                 ...state,
                 retailsInitilizedFromStorage: action.payload  
