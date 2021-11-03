@@ -5,12 +5,12 @@ import { TableHeadMain } from './TableHeadMain';
 import { Row } from './Rows/Row';
 import { useCalculaProduction } from '../../../hooks/useCalculaProduction'
 
-const orderArrayDescendantByProfitHourContract = (array) => {
+const orderArrayDescendantBy = (array,property='') => {
   array.sort(function (a, b) {
-    if (a.profitHourContract > b.profitHourContract) {
+    if (a[`${property}`] > b[`${property}`]) {
       return 1;
     }
-    if (a.profitHourContract < b.profitHourContract) {
+    if (a[`${property}`] < b[`${property}`]) {
       return -1;
     }
     // a must be equal to b
@@ -18,12 +18,12 @@ const orderArrayDescendantByProfitHourContract = (array) => {
   })
 };
 
-const orderArrayAscendantByProfitHourContract = (array) => {
+const orderArrayAscendantBy = (array,property='') => {
   array.sort(function (a, b) {
-    if (a.profitHourContract > b.profitHourContract) {
+    if (a[`${property}`] > b[`${property}`]) {
       return -1;
     }
-    if (a.profitHourContract < b.profitHourContract) {
+    if (a[`${property}`] < b[`${property}`]) {
       return 1;
     }
     // a must be equal to b
@@ -32,30 +32,25 @@ const orderArrayAscendantByProfitHourContract = (array) => {
 };
 
 export const TableCollapsibleProduction = () => {
-  const [open, setOpen] = useState(false);
+  const [up, setUp] = useState(false);
   const {tableP} = useCalculaProduction();
 
-  useMemo(() => {
-    if(open){
-      orderArrayAscendantByProfitHourContract(tableP);
+  const order = (property) => {
+    if(up){
+      orderArrayAscendantBy(tableP,property);
     }else{
-      orderArrayDescendantByProfitHourContract(tableP);
+      orderArrayDescendantBy(tableP,property);
     }
-  // eslint-disable-next-line
-  }, [open])
-
-  useEffect(() => {
-    setOpen(true);
-  }, [])
-
+  }
   
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
 
-        <TableHeadMain
-          open={ open }
-          setOpen= { setOpen }          
+        <TableHeadMain  
+          up = { up }
+          setUp = { setUp } 
+          order = { order }
         />
 
         <TableBody>
